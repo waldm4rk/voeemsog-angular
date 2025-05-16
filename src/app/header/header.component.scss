@@ -9,6 +9,14 @@ body, html {
   overflow-x: hidden;
 }
 
+.logo{
+  z-index: 100000;
+}
+
+.search-icon{
+  display: none;
+}
+
 header {
   width: 100vw;
   margin-top: 5vh;
@@ -32,22 +40,20 @@ header {
   z-index: 99;
   backdrop-filter: blur(10px);
   background: radial-gradient(ellipse at top, rgb(0, 0, 0), rgba(0, 0, 0, 0.749), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5), transparent, transparent);
-
-
   opacity: 0;
-  transition: opacity 0.5s ease, backdrop-filter 0.5s ease
-}
-
-.hiddenI {
-  display: none;
-}
-
-.searchBar.visibleI {
-  display: block;
+  transition: opacity 0.5s ease, backdrop-filter 0.5s ease;
+  pointer-events: none;
 }
 
 .overlay.visibleI {
   opacity: 1;
+  pointer-events: auto;
+  background: radial-gradient(
+    ellipse at top, 
+    rgba(0, 0, 0, 0.8), 
+    rgba(0, 0, 0, 0.6), 
+    transparent
+  );
 }
 
 .navCont {
@@ -66,7 +72,6 @@ header {
     left: 50%;
     transform: translateX(-50%) translateY(-10px);
     z-index: 99;
-
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -85,7 +90,7 @@ header {
       border: 2px solid white;
       width: 60vw;
       height: 50px;
-      border-radius: 15px;
+      border-radius: 18px;
       color: white;
       outline: none;
       padding-left: 15px;
@@ -96,10 +101,10 @@ header {
       right: 6px;
       height: 50px;
       width: 50px;
+      margin-right: 1px;
       cursor: pointer;
     }
   }
-
 
   nav {
     color: white;
@@ -107,7 +112,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    a{
+    a {
       color: white;
       text-decoration: none;
     }
@@ -119,6 +124,7 @@ header {
       padding: 0;
       width: 70vw;
       margin: 0;
+
       .burger {
         display: none;
         flex-direction: column;
@@ -127,6 +133,8 @@ header {
         height: 18px;
         cursor: pointer;
         z-index: 101;
+        width: 35px;
+        margin-bottom: 7px;
 
         .burger-line {
           width: 100%;
@@ -137,24 +145,7 @@ header {
         }
       }
 
-      @media (max-width: 900px) {
-        .navCont nav ul li {
-          display: none;
-        }
-
-        .navCont nav ul li.logo,
-        .navCont nav ul li.burger {
-          display: flex;
-          align-items: center;
-        }
-
-        .navCont nav ul {
-          justify-content: space-between;
-          width: 90vw;
-        }
-      }
-
-      li{
+      li {
         position: relative;
         color: inherit;
         text-decoration: none;
@@ -189,15 +180,78 @@ header {
   }
 }
 
-.search-icon {
-  display: none;
+.mobile-menu {
+  position: absolute;
+  top: 180%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  padding: 50px;
+  overflow: hidden;
+  
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      list-style: none;
+      text-align: center;
+      transform: translateY(-20px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      
+      @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.04s;
+        }
+      }
+      
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 40px;
+        display: block;
+        padding: 0.8rem 1rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+      }
+    }
+  }
+  
+  &.open ul li {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
+.desktop-link {
+  @media (max-width: 730px) {
+    display: none !important;
+  }
+}
 
-@media (max-width: 950px){
-  .navCont{
-    nav{
-      ul{
+@media (max-width: 950px) {
+  .navCont {
+    nav {
+      ul {
         width: 90vw;
       }
     }
@@ -205,38 +259,46 @@ header {
 }
 
 @media (max-width: 730px) {
-  .navCont nav ul li:not(.logo):not(.burger) {
-    display: none;
-  }
-
-  .navCont nav ul li.logo,
-  .navCont nav ul li.burger {
+  .navCont nav ul .burger {
     display: flex;
-    align-items: center;
   }
 
   .search-icon {
-    display: flex !important;
+    display: flex;
     cursor: pointer;
+    height: 40px;
+  }
+
+  .logo{
+    scale: 0.8;
   }
 
   .navCont nav ul {
     justify-content: space-between;
     width: 90vw;
   }
+
+  .navCont{
+    .searchBar{
+      input{
+        width: 87vw;
+        height: 60px;
+        font-size: 20px;
+        border-radius: 20px;
+      }
+      .icon{
+        width: 60px;
+        margin-top: 5px;
+        margin-right: 1.5px;
+      }
+    }
+  }
 }
 
-.navCont.open nav ul li {
-  display: flex !important;
-}
-
-.navCont.open .search-icon {
-  display: block;
-}
-
-@media (max-width: 440px){
+@media (max-width: 440px) {
   .logo {
     width: 70%;
+    scale: none;
     height: auto;
     z-index: 1;
 

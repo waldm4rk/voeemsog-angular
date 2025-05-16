@@ -12,9 +12,9 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   lastScrollTop = 0;
-  headerTop = '0'; // Состояние для top стиля header
-  isVisibleSearch = false; // Состояние видимости панели поиска
-  isBurgerOpen = false; // Состояние бургер меню
+  headerTop = '0';
+  isVisibleSearch = false;
+  isBurgerOpen = false;
 
   constructor(private router: Router) {}
 
@@ -43,19 +43,28 @@ export class HeaderComponent {
   toggleSearch(event: Event) {
     event.stopPropagation();
     this.isVisibleSearch = !this.isVisibleSearch;
-  }
-
-  closeSearchOutside(event: MouseEvent) {
-    const searchBarElement = document.querySelector('.searchBar');
-    const searchTriggersElements = document.querySelectorAll('.search-text');
-
-    if (searchBarElement && !searchBarElement.contains(event.target as Node) &&
-        searchTriggersElements && ![...searchTriggersElements].some(el => el.contains(event.target as Node))) {
-      this.isVisibleSearch = false;
-    }
+    this.isBurgerOpen = false;
   }
 
   toggleBurger() {
     this.isBurgerOpen = !this.isBurgerOpen;
+    this.isVisibleSearch = false;
+    
+    if (this.isBurgerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeMenu() {
+    this.isBurgerOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  closeAll() {
+    this.isBurgerOpen = false;
+    this.isVisibleSearch = false;
+    document.body.style.overflow = ''; 
   }
 }

@@ -5,14 +5,22 @@
         <li class="burger" (click)="toggleBurger()">
           <img src="assets/burger.svg" alt="">
         </li>
-        <li><a routerLink="/about">О НАС</a></li>
-        <li><a routerLink="/requests">ЗАЯВКИ</a></li>
+        <li class="desktop-link"><a routerLink="/about">О НАС</a></li>
+        <li class="desktop-link"><a routerLink="/requests">ЗАЯВКИ</a></li>
         <li class="logo"><a routerLink="/"><img src="assets/logo.svg" alt=""></a></li>
-        <li><a routerLink="/archive">АРХИВ</a></li>
-        <li class="search-text" (click)="toggleSearch($event)">ПОИСК</li>
+        <li class="desktop-link"><a routerLink="/archive">АРХИВ</a></li>
+        <li class="search-text desktop-link" (click)="toggleSearch($event)">ПОИСК</li>
         <li class="search-text search-icon" (click)="toggleSearch($event)"><img src="assets/search.svg" alt=""></li>
       </ul>
     </nav>
+
+      <div class="mobile-menu" [ngClass]="{'open': isBurgerOpen}" (click)="$event.stopPropagation()">
+        <ul>
+          <li><a routerLink="/" (click)="closeMenu()">О НАС</a></li>
+          <li><a routerLink="/" (click)="closeMenu()">ЗАЯВКИ</a></li>
+          <li><a routerLink="/" (click)="closeMenu()">АРХИВ</a></li>
+        </ul>
+      </div>
 
     <div class="searchBar" [ngClass]="{'visible': isVisibleSearch}">
       <input type="text">
@@ -21,4 +29,4 @@
   </div>
 </header>
 
-<div class="overlay" [ngClass]="{'visibleI': isVisibleSearch}" (click)="isVisibleSearch = false"></div>
+<div class="overlay" [ngClass]="{'visibleI': isVisibleSearch || isBurgerOpen}" (click)="closeAll()"></div>
