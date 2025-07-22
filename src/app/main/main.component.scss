@@ -11,12 +11,16 @@ html, body {
 
 
 
-section {
+.headSec {
   height: 100vh;
   background-image: url(/../assets/mainbg.svg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 
   .txts {
     color: white;
@@ -27,7 +31,8 @@ section {
     gap: 13px;
     height: 50%;
     font-size: 43px;
-    padding-top: 10vh;
+    width: 100%;
+    
 
     h1 {
       font-weight: 400;
@@ -77,3 +82,58 @@ section {
     }
   }
 }
+
+@media (max-width: 960px) {
+  .headSec {
+    .txts {
+      font-size: 25px;
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 615px) {
+  .headSec {
+    .txts {
+      font-size: 3vw;
+      width: 100%;
+      height: 40%;
+      h1, h3{
+        font-weight: 500;
+      }
+    }
+    .whereBtn{
+      button{
+        width: 250px;
+        height: 70px;
+        font-size: 4.9vw;
+        border: solid white 2px;
+      }
+    }
+  }
+}
+
+@media (max-width: 465px) {
+  .headSec {
+    .txts {
+      font-weight: 800;
+      font-size: 2.8vw;
+            h1, h3{
+        font-weight: 600;
+      }
+
+      h3{
+        font-size: 4vw;
+      }
+    }
+        .whereBtn{
+      button{
+        width: 225px;
+        height: 55px;
+        font-size: 4.9vw;
+        border: solid white 2px;
+      }
+    }
+  }
+}
+
