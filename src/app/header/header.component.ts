@@ -32,7 +32,7 @@ export class HeaderComponent {
     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
     if (currentScroll > this.lastScrollTop && currentScroll > 0) {
-      this.headerTop = '-15vh';
+      this.headerTop = '-16vh';
     } else if (currentScroll === 0) {
       this.headerTop = '0';
     }
