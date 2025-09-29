@@ -1,1 +1,9 @@
-{"version":3,"sources":["app.component.scss","app.component.css"],"names":[],"mappings":"AAAA;EACI,UAAA;EACA,SAAA;ACCJ;;ADCA;EACE,SAAA;EACA,UAAA;EACA,kBAAA;ACEF","file":"app.component.css"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,CAAC,CAAA;EACG,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;CACZ;;AACD,AAAA,IAAI,EAAE,IAAI,CAAC;EACT,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,UAAU,EAAE,MAAM;CACnB",
+    "sources": [
+        "app.component.scss"
+    ],
+    "names": [],
+    "file": "app.component.css"
+}
