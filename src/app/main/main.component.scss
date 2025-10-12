@@ -1,6 +1,7 @@
 *{
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -96,7 +97,8 @@ html, body {
 .current {
   position: relative;
   width: 100%;
-  height: 120vh;
+  max-height: calc(100vh + 150px);
+  height:max-content;
   background-image: url('/assets/currentBg.svg');
   background-size: cover;
   background-position: center;
@@ -105,16 +107,16 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
+  justify-content: flex-start;
+  gap: 100px;
   .curText{
     color: white;
-    font-size: 50px;
     text-align: center;
-    margin-bottom: 5vh;
+    margin-top: 13%;
     h1{
       font-weight: 200;
-      padding-bottom: 100px;
+      font-size: 64px;
+      line-height: 85.3px;
     }
   }
 .winDiv {
@@ -124,13 +126,14 @@ html, body {
   align-items: flex-start;
   gap: 5vw;
   margin-bottom: 100px;
-
+  width: 100vw;
 .windowWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 
+  width: 450px;
   .windowTitle {
     margin-bottom: 30px;
     font-size: 30px;
@@ -141,8 +144,8 @@ html, body {
 
   .window {
     position: relative;
-    width: 450px;
-    height: 450px;
+    width: 100%;
+    height: 100%;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     background-size: cover, 100% 100%, 100% 100%;
@@ -184,10 +187,10 @@ html, body {
     }
   }
 
-  // ключевой момент:
-  &:hover .windowTitle {
-    transform: translateY(-10px);
-  }
+  // // ключевой момент:
+  // &:hover .windowTitle {
+  //   transform: translateY(-10px);
+  // }
 
   @media (max-width: 460px) {
     .window {
@@ -282,7 +285,15 @@ html, body {
     height: 130vh;
   }
 }
-
+@media (max-width: 1500px) {
+  .current{
+    .winDiv{
+      .windowWrap{
+        width: calc(33% - 50px);
+      }
+    }
+  }
+}
 
 @media (max-width: 960px) {
 
@@ -292,6 +303,11 @@ html, body {
       .window{
         max-width: 450px;
         min-width: 30px;
+      }
+    }
+    .curText{
+      h1{
+        font-size: 37.5px;
       }
     }
   }
@@ -320,6 +336,13 @@ html, body {
         height: 70px;
         font-size: 4.9vw;
         border: solid white 2px;
+      }
+    }
+  }
+  .current{
+    .curText{
+      h1{
+        font-size: 27px;
       }
     }
   }
