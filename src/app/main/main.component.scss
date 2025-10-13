@@ -2,6 +2,7 @@
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 html, body {
@@ -9,7 +10,6 @@ html, body {
   padding: 0;
   overflow-x: hidden;
 }
-
 
 
 .headSec {
@@ -60,7 +60,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 25px;
-
+    height: 200px;
     button {
       width: 364px;
       height: 72px;
@@ -74,7 +74,6 @@ html, body {
       cursor: pointer;
       box-shadow: none;
       outline: none;
-
       &:hover {
         background-color: white;
         color: black;
@@ -86,7 +85,9 @@ html, body {
         transform: translateY(15px);
       }
     }
-
+    .arrow{
+      height: 60%;
+    }
     .arrow img {
       transition: transform 0.3s ease;
       pointer-events: none; /* Чтобы стрелка не ловила hover */
@@ -97,7 +98,7 @@ html, body {
 .current {
   position: relative;
   width: 100%;
-  max-height: calc(100vh + 150px);
+  // max-height: calc(100vh + 150px);
   height:max-content;
   background-image: url('/assets/currentBg.svg');
   background-size: cover;
@@ -119,33 +120,76 @@ html, body {
       line-height: 85.3px;
     }
   }
+    .wallText{
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    line-height: 85px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    font-weight: 300;
+    width: fit-content;
+    padding: 10px 20px;
+    a{
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      position: relative;
+       &::after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.2);
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          filter: blur(10px);
+          transition: opacity 0.5s ease;
+          z-index: -1;
+          border-radius: 20px;
+        }
+
+        &:hover {
+          color: white;
+
+          &::after {
+            opacity: 0.7;
+          }
+        }
+    }
+  }
 .winDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  gap: 5vw;
-  margin-bottom: 100px;
+  gap: 1vw;
   width: 100vw;
 .windowWrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-
-  width: 450px;
+  width: 550px;
+  height: 550px;
+  padding: 20px;
   .windowTitle {
-    margin-bottom: 30px;
-    font-size: 30px;
+    margin-bottom: 15px;
+    font-size: 28px;
     font-weight: 300;
     color: white;
     transition: transform 0.5s ease;
+    overflow: hidden;
   }
 
+    overflow: hidden;
   .window {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 451px;
+    height: 451px;
     aspect-ratio: 1 / 1;
     overflow: hidden;
     background-size: cover, 100% 100%, 100% 100%;
@@ -160,24 +204,23 @@ html, body {
     flex-direction: column;
     color: white;
 
+
     h2{
       font-weight: 500;
+      font-size: 32px;
     }
 
     h3{
       margin-bottom: 30px;
       font-weight: 300;
-    }
-
-    h2,h3{
-      font-size: 25px;
+      font-size: 20px;
     }
 
 
 
     filter: grayscale(100%);
     transform: scale(1);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 
     &:hover {
       filter: grayscale(0%);
@@ -185,6 +228,9 @@ html, body {
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
       cursor: pointer;
     }
+    .windowWrap &:hover{
+      transform: scale(1.03);
+    } 
   }
 
   // // ключевой момент:
@@ -282,27 +328,41 @@ html, body {
 
 @media (max-width: 1550px) {
   .current{
-    height: 130vh;
+    min-height: 130vh;
   }
 }
-@media (max-width: 1500px) {
-  .current{
-    .winDiv{
-      .windowWrap{
-        width: calc(33% - 50px);
-      }
-    }
-  }
-}
+// @media (max-width: 1500px) {
+//   .current{
+//     .winDiv{
+//       .windowWrap{
+//         width: calc(33% - 50px);
+//         aspect-ratio: 1 / 1 !important;
+//         height: auto !important;
+//       }
+//     }
+//   }
+// }
 
 @media (max-width: 960px) {
 
   .current{
-    height: 150vh;
+    min-height: 150vh;
     .mainCur{
-      .window{
-        max-width: 450px;
-        min-width: 30px;
+      // .window{
+      //   max-width: 450px;
+      //   min-width: 30px;
+      // }
+    }
+    .winDiv{
+      .windowWrap{
+        .window{
+          h2{
+            font-size: 18.75px;
+          }
+          h3{
+            font-size: 15px;
+          }
+        }
       }
     }
     .curText{
@@ -319,6 +379,24 @@ html, body {
     }
   }
 }
+
+// @media (max-width: 800px){
+//   .current{
+//     .winDiv{
+//       flex-direction: column;
+//       flex-wrap: nowrap;
+//       align-items: center;
+//       .windowWrap{
+//         width: 300px;
+//         height: 300px;
+//         .window{
+//           width: 100%;
+//           height: 100%;
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media (max-width: 615px) {
   .headSec {
