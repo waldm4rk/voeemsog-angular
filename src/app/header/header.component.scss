@@ -13,6 +13,17 @@ body, html {
 .logo{
   z-index: 100000;
 }
+.navCont{
+  nav{
+    ul{
+      .logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
 
 .search-icon{
   display: none;
@@ -224,7 +235,7 @@ header {
       a {
         color: white;
         text-decoration: none;
-        font-size: 40px;
+        font-size: 25px;
         display: block;
         padding: 0.8rem 1rem;
         transition: all 0.3s ease;
@@ -253,6 +264,12 @@ header {
     nav {
       ul {
         width: 90vw;
+        font-size: 14px;
+      }
+      .logo{
+        img{
+          transform: scale(0.8);
+        }
       }
     }
   }
@@ -269,12 +286,18 @@ header {
     height: 30px;
   }
 
-  .logo{
-    scale: 0.8;
+  .navCont {
+    nav {
+      .logo{
+        img{
+          transform: scale(1);
+        }
+      }
+    }
   }
 
   .navCont nav ul {
-    justify-content: space-between;
+    justify-content: space-around;
     width: 90vw;
   }
 
@@ -295,17 +318,26 @@ header {
   }
 }
 
-@media (max-width: 440px) {
-  .logo {
-    width: 70%;
-    scale: none;
-    height: auto;
-    z-index: 1;
-
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
+@media (max-width: 500px) {
+  .navCont {
+    nav {
+      .logo{
+        img{
+          transform: scale(0.7);
+        }
+      }
+    }
+  }
+}
+@media (max-width: 430px){
+  .navCont {
+    nav {
+      .logo{
+        width: 60%;
+        img{
+          transform: scale(0.5);
+        }
+      }
     }
   }
 }
