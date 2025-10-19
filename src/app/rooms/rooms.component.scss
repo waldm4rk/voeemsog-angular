@@ -18,7 +18,8 @@ html {
   min-height: 1418px;
   aspect-ratio: 9 / 10;
   height: auto;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("assets/rooms/bg.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("assets/rooms/bg.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -60,7 +61,7 @@ html {
     align-items: center;
     margin-top: 100px;
     .search {
-        position: relative;
+      position: relative;
       input {
         width: 450px;
         height: 40px;
@@ -86,73 +87,78 @@ html {
         }
       }
     }
-    .rooms{
-        width: 100%;
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
-        .table-container{
-            padding: 0 60px;
-            table{
-                font-size: 20px;
-                text-transform: uppercase;
-                border-spacing: 0px !important;
-                thead{
-                    tr{
-                        th{
-                            text-shadow: 0 0 15px black;
-                            padding: 0 !important;
-                        }
-                    }
-                }
-                tr{
-                    height: 50px;
-                    th{
-                        padding: 0 40px;
-                        word-break: break-word;
-                    }
-                    td{
-                        border: 1px solid white;
-                        padding: 10px;
-                        background: transparent;
-                        backdrop-filter: blur(20px);
-                    }
-                }
-                td:not(:first-child){
-                        text-align: center;
-                        width: 150px;
-                }
-                tbody{
-                    tr{
-                        cursor: pointer;
-                    }
-                }
+    .rooms {
+      width: 100%;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      .table-container {
+        padding: 0 60px;
+        table {
+          font-size: 20px;
+          text-transform: uppercase;
+          border-spacing: 0px !important;
+          thead {
+            tr {
+              th {
+                text-shadow: 0 0 15px black;
+                padding: 0 !important;
+              }
             }
+          }
+          tr {
+            height: 50px;
+            th {
+              padding: 0 40px;
+              word-break: break-word;
+            }
+            td {
+              border: 1px solid white;
+              padding: 10px;
+              background: transparent;
+              backdrop-filter: blur(20px);
+            }
+          }
+          td:not(:first-child) {
+            text-align: center;
+            width: 150px;
+          }
+          tbody {
+            tr {
+              cursor: pointer;
+              td{
+                a{
+                  text-decoration: none;
+                  color: white;
+                }
+              }
+            }
+          }
         }
+      }
     }
   }
 }
 
-
-@media (max-width: 500px){
-    .wrapper{
-        .main{
-            .search{
-                input{
-                    width: 350px;
-                }
-            }
+@media (max-width: 500px) {
+  .wrapper {
+    .main {
+      .search {
+        input {
+          width: 350px;
         }
+      }
     }
+  }
 }
-@media (max-width: 360px){
-    .wrapper{
-        .main{
-            .search{
-                input{
-                    width: 300px;
-                }
-            }
+@media (max-width: 360px) {
+  .wrapper {
+    .main {
+      .search {
+        input {
+          width: 300px;
         }
+      }
     }
+  }
 }

@@ -6,18 +6,12 @@ import { filter } from 'rxjs/operators';
 
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet, FooterComponent, HttpClientModule],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  data$: Observable<any>;
-
-    constructor(private http: HttpClient) {
-        this.data$ = this.http.get('https://dummyjson.com/users');
-    }
   
 }
