@@ -1,0 +1,44 @@
+<div class="wrapper">
+  <div class="title">
+    <h1>Архив</h1>
+    <h4>Комнаты</h4>
+  </div>
+  <div class="main">
+    <div class="search">
+      <form (ngSubmit)="filterByName()">
+        <input type="text" [(ngModel)]="userInput" name="userInput" maxlength="40"/>
+        <button type="submit"><img src="/assets/rooms/search.svg" alt="" /></button>
+      </form>
+    </div>
+    <div class="rooms">
+      <div class="table-container">
+        <table class="voeemsog-table">
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Код</th>
+              <th>Доступ</th>
+              <th>Свет</th>
+              <th>Этаж</th>
+              <th>Дата публикации</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let room of data" tabindex="0" role="button">
+              <td><a href="/room?code={{ room.code }}" class="row-link">{{ room.name }}</a></td>
+              <td>{{ room.code }}</td>
+              <td>{{ room.dangerType }}</td>
+              <td>{{ formatLight(room.lightLevel) }}</td>
+              <td>{{ room.floor }}</td>
+              <td>{{ getPublicationDate() }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pages">
+        <button class="prev" (click)="prevPage()">Предыдущая</button>
+        <button class="next" (click)="nextPage()">Следующая</button>
+      </div>
+    </div>
+  </div>
+</div>

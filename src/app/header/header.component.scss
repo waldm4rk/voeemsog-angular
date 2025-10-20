@@ -259,6 +259,27 @@ header {
   }
 }
 
+
+@media (min-width: 2000px){
+  .navCont{
+    nav{
+      ul{
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@media (min-width: 2300px){
+  .navCont{
+    nav{
+      ul{
+        font-size: 26px;
+      }
+    }
+  }
+}
+
 @media (max-width: 950px) {
   .navCont {
     nav {

@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, importProvidersFrom } from '@angular/core';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { filter } from 'rxjs/operators';
 
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
   imports: [HeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'project';
+  
 }

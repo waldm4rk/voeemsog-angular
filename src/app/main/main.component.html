@@ -5,7 +5,7 @@
     </div>
         <div class="btnDiv">
             <div class="whereBtn">
-                <button>Где я?</button>
+                <button onClick="document.getElementsByClassName('info')[0].scrollIntoView({ behavior: 'smooth', block: 'center' });">Где я?</button>
                 <div class="arrow">
                     <img src="assets/arrow.svg" alt="">
                 </div>
@@ -50,20 +50,23 @@
     <h1>Добро пожаловать в измерение voeemsog.</h1>
     <div class="flexWrap">
       <div>
-        <p>Нам жаль, что вы оказались здесь. не пытайтесь искать выход самостоятельно. лорем ипсум магнум жарим чипсы
-    здесь вы не найдёте ни блекджека, ни джек блека, ни выхода. тут много опасных монстров и комнат, которые могут вас убить, так что лучше вообще не суйтесь. Присоединяйтесь к нашей организации, и тогда мы позаботимся о том, чтобы как можно эффективнее использовать оставшееся время вашей жизни, а также растянуть её до того момента, пока мы не решим наконец от вас избавиться.
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Нам жаль, что вы оказались здесь. не пытайтесь искать выход самостоятельно. лорем ипсум магнум жарим чипсы
+    здесь вы не найдёте ни блекджека, ни джек блека, ни выхода. тут много опасных монстров и комнат, которые могут вас убить, так что лучше вообще не суйтесь.<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Присоединяйтесь к нашей организации, и тогда мы позаботимся о том, чтобы как можно эффективнее использовать оставшееся время вашей жизни, а также растянуть её до того момента, пока мы не решим наконец от вас избавиться.
     Желаем вам безболезненной смерти.</p>
       </div>
       <div>
-        <img src="assets/trailerPlaceholder.png">
+        <iframe class="trailer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0"></iframe>
       </div>
     </div>
-    <div class="archiveLink">
-      <h2><a href="#">Перейти в архив</a></h2>
-        <img class="infoMark" src="assets/navButtons/infoMark.png" alt="!" width="32.25px" height="32.25px">
-        <span class="tooltiptext">Архив это каталог<br/> каноничного контента.<br/>
-          <img src="assets/tooltipArrow.svg" alt="">
-        </span>
+    <div class="archiveWrap">
+      <div class="archiveLink">
+        <h2><a href="#">Перейти в архив</a></h2>
+          <img class="infoMark" src="assets/navButtons/infoMark.png" alt="!" width="32.25px" height="32.25px">
+          <span class="tooltiptext">Архив это каталог<br/> каноничного контента.<br/>
+            <img src="assets/tooltipArrow.svg" alt="">
+          </span>
+      </div>
+      <div></div>
     </div>
   </div>
 </section>
