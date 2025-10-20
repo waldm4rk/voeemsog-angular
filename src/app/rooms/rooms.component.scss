@@ -91,7 +91,9 @@ html {
       width: 100%;
       margin-top: 40px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       .table-container {
         padding: 0 60px;
         table {
@@ -126,14 +128,22 @@ html {
           tbody {
             tr {
               cursor: pointer;
-              td{
-                a{
+              td {
+                a {
                   text-decoration: none;
                   color: white;
                 }
               }
             }
           }
+        }
+      }
+      .pages {
+        margin-top: 50px;
+        button {
+          padding: 10px;
+          font-size: 20px;
+          cursor: pointer;
         }
       }
     }
