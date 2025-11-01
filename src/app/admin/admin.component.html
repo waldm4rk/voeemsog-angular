@@ -1,1 +1,82 @@
-<p>admin works!</p>
+<div class="wrapper">
+    <div class="input">
+        <form action="" (ngSubmit)="formatText()">
+            <div class="meta">
+                <input [(ngModel)]="room.code" type="text" name="code" placeholder="Айди">
+                <input [(ngModel)]="room.name" type="text" name="name" placeholder="Название">
+            </div>
+            <textarea name="text" [(ngModel)]="unformatted" rows="40" placeholder="Текст" cols="100" id=""></textarea>
+            <button type="submit">Проверить</button>
+        </form>
+    </div>
+    <div class="page">
+        <div class="title">
+            <div class="seal"><img src="assets/room/sit seal.png" alt=""></div>
+            <div class="info">
+                <div class="id">{{room.code}}</div>
+                <div class="name">{{room.name}}</div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="containerWrap" *ngFor="let paragraph of paragraphs">
+                <div class="container" *ngIf="paragraph.reverse == false">
+                    <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) != 'INFO'">
+                        <img 
+                            [src]="paragraph.params.at(0)"
+                            [style.max-width]="paragraph.params.at(1)"
+                            [style.aspect-ratio]="paragraph.params.at(2)"
+                        >
+                    </div>
+                    <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
+                        <img src="assets/room/danger.svg">
+                        <img src="assets/room/light.svg">
+                        <img src="assets/room/floor.svg">
+                    </div>
+                    <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
+                        
+                    </div>
+                </div>
+                <div class="container reverse" *ngIf="paragraph.reverse == true">
+                    <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) != 'INFO'">
+                        <img src={{paragraph.params.at(0)}}>
+                    </div>
+                    <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
+                        <img src="assets/room/danger.svg">
+                        <img src="assets/room/light.svg">
+                        <img src="assets/room/floor.svg">
+                    </div>
+                    <div class="text" [innerHTML]="paragraph.text">
+                        
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="container reverse">
+                <div class="images">
+                    <img src="assets/room/danger.svg">
+                    <img src="assets/room/light.svg">
+                    <img src="assets/room/floor.svg">
+                </div>
+                <span class="text">
+                    {{ 
+                        sliceStringBySentences(data.at(0)?.description, 10, 0)
+                         }}.
+                </span>
+            </div>
+            <div class="container">
+                <div class="images">
+                    <img class="big" src="assets/room/shape.svg">
+                </div>
+                <span class="text">
+                </span>
+            </div> -->
+        </div>
+        <div class="footer">
+            <img src="assets/room/footer line.png">
+            <div class="footerText">
+                <a href="#">Back</a>
+                <span>Page <input type="text" pattern="^[0-9]*$"> / 2</span>
+                <a href="#">Next page ></a>
+            </div>
+        </div>
+    </div>
+</div>
