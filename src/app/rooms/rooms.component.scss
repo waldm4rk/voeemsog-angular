@@ -3,7 +3,7 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Cormorant Garamond", serif;
+  font-family: "Montserrat", serif;
 }
 body,
 html {
@@ -36,6 +36,7 @@ html {
       text-transform: uppercase;
       position: relative;
       display: inline-block;
+      font-family: "Cormorant Garamond", serif !important;
     }
     h1::after {
       content: "";
@@ -52,6 +53,7 @@ html {
       letter-spacing: 2px;
       text-transform: uppercase;
       margin-top: 6px;
+      font-family: "Cormorant Garamond", serif !important;
     }
   }
   .main {
@@ -65,7 +67,7 @@ html {
       input {
         width: 450px;
         height: 40px;
-        border-radius: 14px;
+        border-radius: 20px;
         border: 1px solid white;
         background: transparent;
         backdrop-filter: blur(20px);
@@ -75,14 +77,14 @@ html {
       }
       button {
         position: absolute;
-        right: 10px;
+        right: 15px;
         cursor: pointer;
         top: 50%;
         transform: translateY(-50%);
         background: transparent;
         border: none;
         img {
-          width: 25px;
+          width: 22px;
           aspect-ratio: 1 / 1;
         }
       }
@@ -97,14 +99,16 @@ html {
       .table-container {
         padding: 0 60px;
         table {
-          font-size: 20px;
-          text-transform: uppercase;
+          font-size: 16px;
           border-spacing: 0px !important;
           thead {
             tr {
               th {
                 text-shadow: 0 0 15px black;
                 padding: 0 !important;
+                letter-spacing: 2px;
+                
+              border-bottom: 1px solid gray;
               }
             }
           }
@@ -115,24 +119,35 @@ html {
               word-break: break-word;
             }
             td {
-              border: 1px solid white;
               padding: 10px;
               background: transparent;
-              backdrop-filter: blur(20px);
             }
+          }
+          td:first-child{
+            min-width: 280px;
           }
           td:not(:first-child) {
             text-align: center;
             width: 150px;
           }
           tbody {
+            
+              backdrop-filter: blur(20px);
             tr {
               cursor: pointer;
               td {
+              border-bottom: 1px solid gray;
                 a {
                   text-decoration: none;
                   color: white;
                 }
+              }
+              &:hover{
+                background: rgb(255, 255, 255);
+                color: black;
+              }
+              &:hover > td{
+                border-bottom: 1px solid white !important; 
               }
             }
           }

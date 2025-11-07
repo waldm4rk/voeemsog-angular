@@ -6,7 +6,7 @@
   <div class="main">
     <div class="search">
       <form (ngSubmit)="filterByName()">
-        <input type="text" [(ngModel)]="userInput" name="userInput" maxlength="40"/>
+        <input type="text" [(ngModel)]="userInput" name="userInput" maxlength="40" placeholder="Название или код..."/>
         <button type="submit"><img src="/assets/rooms/search.svg" alt="" /></button>
       </form>
     </div>
@@ -17,18 +17,18 @@
             <tr>
               <th>Название</th>
               <th>Код</th>
-              <th>Доступ</th>
+              <th>Опасность</th>
               <th>Свет</th>
               <th>Этаж</th>
               <th>Дата публикации</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let room of data" tabindex="0" role="button">
-              <td><a href="/room?code={{ room.code }}" class="row-link">{{ room.name }}</a></td>
+            <tr (click)="redirectToPage(room.code)" *ngFor="let room of data" tabindex="0" role="button">
+              <td>{{ room.name }}</td>
               <td>{{ room.code }}</td>
-              <td>{{ room.dangerType }}</td>
-              <td>{{ formatLight(room.lightLevel) }}</td>
+              <td>{{ room.dangerType }} / 5</td>
+              <td>{{ room.lightLevel }} / 5</td>
               <td>{{ room.floor }}</td>
               <td>{{ getPublicationDate() }}</td>
             </tr>

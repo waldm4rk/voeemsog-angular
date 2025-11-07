@@ -20,6 +20,9 @@ export interface ApiResponse {
   lightLevel: number;
   date: Date;
 }
+export interface StringMap {
+  [key: string]: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -42,5 +45,12 @@ export class ApiService {
     // 🚀 Используем метод .get() из HttpClient
     // <T> позволяет типизировать возвращаемые данные
     return this.http.get<T>(url, { observe: 'response' });
+  }
+  loginToAdmin(key: string): Observable<HttpResponse<void>>{
+    const url = `${this.BASE_URL}/admin/login`;
+    const StringData: StringMap = {
+      apiKey: key
+    }
+    return this.http.post<void>(url, StringData, {observe: 'response'});
   }
 }

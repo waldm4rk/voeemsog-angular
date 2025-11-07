@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService, ApiResponse } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 @Component({
@@ -19,7 +19,7 @@ export class RoomsComponent implements OnInit {
   langCode: string = "ru_RU";
   page: number = 1;
   lastPage: number = 999999;
-  constructor(private dataService: ApiService) {}
+  constructor(private dataService: ApiService, private router: Router) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
     this.fetchRoomData();
@@ -113,12 +113,19 @@ export class RoomsComponent implements OnInit {
     this.updateButtonStates(true);
   }
 
+  redirectToPage(code: string): void{
+    this.router.navigateByUrl('/room?code=' + code);
+  }
+
   filterByName(): void{
+    if(this.userInput?.length == 0){
+      this.fetchRoomData();
+      return;
+    }
     this.dataService.getData<ApiResponse[]>(`rooms/name/${this.userInput}?lang=${this.langCode}`).subscribe({
         next: (response: HttpResponse<ApiResponse[]>) => {
           // Access the status code here:
           const statusCode = response.status;
-          console.log(`HTTP Status Code: ${statusCode}`); // ✅
 
           // Access the body (the data) and default to an empty array if null:
           this.data = response.body ?? [];
@@ -129,14 +136,16 @@ export class RoomsComponent implements OnInit {
           this.loading = false;
         },
       });
-
+    this.dataService.getData<ApiResponse[]>(`rooms/code/${this.userInput}?lang=${this.langCode}`).subscribe({
+      next: (response: HttpResponse<ApiResponse[]>) => {
+        this.data = this.data.concat(response.body ?? []);
+      },
+      error: (err) => {
+          this.loading = false;
+      },
+    });
   }
 
-
-  formatLight(level: number): string {
-    const max = 5; // если у тебя шкала 1-5
-    return `${level}/${max}`;
-  }
 
   // Пример для даты публикации, можно использовать реальную дату
   getPublicationDate(): string {
