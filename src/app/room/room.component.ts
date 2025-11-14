@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService, ApiResponse } from '../services/api.service';
+import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import { ApiService, ApiResponse} from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { paragraph } from 'app/admin/admin.component';
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
@@ -15,11 +16,13 @@ export class RoomComponent implements OnInit {
   loading: boolean = false;
   paragraphs: string[] = [];
   langCode: string = "ru_RU";
-  constructor(private dataService: ApiService) {}
+  paragraphsObject: paragraph[] = [];
+  constructor(private dataService: ApiService, private cd: ChangeDetectorRef) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
     this.fetchUserData();
   }
+
 
   fetchUserData(): void {
     this.loading = true;
@@ -32,11 +35,10 @@ export class RoomComponent implements OnInit {
           this.loading = false;
           console.log('Данные получены в компоненте:', this.data);
 
-          this.paragraphs = this.sliceStringBySentences(
-            this.data.at(0)?.description
-          );
+          this.formatText(this.data.at(0)?.description || '');
+          this.cd.detectChanges();
+          
 
-          console.log(this.paragraphs);
         },
         error: (err) => {
           console.error('Ошибка запроса:', err);
@@ -44,9 +46,69 @@ export class RoomComponent implements OnInit {
         },
       });
   }
-  sliceStringBySentences(text: string | undefined): string[] {
-    if (!text) return [''];
-    const sentences = text.split('NEW');
-    return sentences;
+  formatText(text: string): string{
+     let formatted = text || '';
+    // жирный: *текст*
+    formatted = formatted.replace(
+      /(?<!\*)\*([^*]+)\*(?!\*)/g,
+      '<strong>$1</strong>'
+    );
+
+    // курсив: **текст**
+    formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<em>$1</em>');
+
+    // перечеркнутый: --текст--
+    formatted = formatted.replace(/--([^-\n]+)--/g, '<s>$1</s>');
+
+    // подчеркнутый: _текст_
+    formatted = formatted.replace(/_([^_\n]+)_/g, '<u>$1</u>');
+
+    this.paragraphsObject = [];
+
+    let paragraphs = formatted.split('$NEW');
+    paragraphs.forEach((element) => {
+      let imagesBool = false;
+      let params: string[] = [];
+      let reverse = false;
+      if (element.includes('$IMG')) {
+        const regex = /\$IMG\(([^)]+)\)/;
+        const match = element.match(regex);
+
+        if (match && match[1]) {
+          params = match[1].split(',').map((p) => p.trim());
+        }
+
+        element = element.replace(regex, ``);
+        if (element.includes('$REVERSE')) {
+          reverse = true;
+          element = element.replaceAll('$REVERSE', '');
+        }
+        imagesBool = true;
+      }
+      while (element.indexOf('$IMG') != -1) {
+        const regex = /\$IMG\(([^)]+)\)/;
+        const match = element.match(regex);
+
+        if (match && match[1]) {
+          params = match[1].split(',').map((p) => p.trim());
+        }
+
+        element = element.replace(
+          regex,
+          `<img src="${params.at(0)}" style="max-width:${params.at(
+            1
+          )}; aspect-ratio:${params.at(2)}; flex: 0 0 ${params.at(
+            1
+          )} !important;"/>`
+        );
+      }
+      this.paragraphsObject.push({
+        text: element,
+        images: imagesBool,
+        params: params,
+        reverse: reverse,
+      });
+    });
+    return formatted;
   }
 }

@@ -9,6 +9,7 @@ import {
   HttpResponse,
   HttpErrorResponse,
 } from '@angular/common/http';
+import { AdminService } from 'app/admin.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -17,18 +18,27 @@ import {
   imports: [CommonModule, RouterModule, FormsModule],
 })
 export class AdminComponent implements OnInit {
-  constructor(private dataService: ApiService, private router: Router) {}
+  lang: any;
+  uuid: any;
+  constructor(
+    private dataService: ApiService,
+    private router: Router,
+    private adminService: AdminService
+  ) {}
   loading: boolean = false;
-  room: roomInfo = {
+  room: room = {
     code: '',
-    floor: 1.1,
+    floor: 1,
     dangerType: 1,
-    name: '1',
-    description: '1',
-    size: '1',
-    color: '1',
-    lightLevel: 5,
+    size: '',
+    color: '',
+    lightLevel: 0,
     date: new Date(),
+  };
+  roomTranslation: roomTranslation = {
+    lang: 'en_US',
+    name: '',
+    description: '',
   };
   unformatted: string = '';
   paragraphs: paragraph[] = [];
@@ -77,7 +87,7 @@ export class AdminComponent implements OnInit {
   }
 
   formatText(): void {
-    let formatted = this.unformatted;
+    let formatted = this.roomTranslation.description;
     // жирный: *текст*
     formatted = formatted.replace(
       /(?<!\*)\*([^*]+)\*(?!\*)/g,
@@ -108,17 +118,14 @@ export class AdminComponent implements OnInit {
           params = match[1].split(',').map((p) => p.trim());
         }
 
-        element = element.replace(
-          regex,
-          ``
-        );
-        if(element.includes("$REVERSE")){
+        element = element.replace(regex, ``);
+        if (element.includes('$REVERSE')) {
           reverse = true;
-          element = element.replaceAll("$REVERSE", "");
+          element = element.replaceAll('$REVERSE', '');
         }
         imagesBool = true;
       }
-      while(element.indexOf("$IMG") != -1){
+      while (element.indexOf('$IMG') != -1) {
         const regex = /\$IMG\(([^)]+)\)/;
         const match = element.match(regex);
 
@@ -128,14 +135,18 @@ export class AdminComponent implements OnInit {
 
         element = element.replace(
           regex,
-          `<img src="${params.at(0)}" style="max-width:${params.at(1)}; aspect-ratio:${params.at(2)}"/>`
+          `<img src="${params.at(0)}" style="max-width:${params.at(
+            1
+          )}; aspect-ratio:${params.at(2)}; flex: 0 0 ${params.at(
+            1
+          )} !important;"/>`
         );
       }
       this.paragraphs.push({
         text: element,
         images: imagesBool,
         params: params,
-        reverse: reverse
+        reverse: reverse,
       });
     });
     // paragraphs = paragraphs.map((element) => {
@@ -158,18 +169,44 @@ export class AdminComponent implements OnInit {
     //   return element; // обязательно вернуть
     // });
   }
+  submitRoom(): void {
+    this.adminService.sendRoom(this.room).subscribe({
+      next: (res) => console.log('OK', res),
+      error: (err) => console.error('Error', err),
+    });
+  }
+  submitTranslation(): void {
+    this.dataService
+      .getData<string>('rooms/code/uuid/' + this.room.code)
+      .subscribe({
+        next: (res) => {
+          this.uuid = res.body;
+          this.adminService
+            .sendTranslation(this.roomTranslation, this.uuid)
+            .subscribe({
+              next: (res2) => console.log('OK', res2),
+              error: (err2) => console.error('Error', err2),
+            });
+        },
+        error: (err) => console.error('Error', err),
+      });
+  }
 }
 
-export interface roomInfo {
+export interface room {
   code: string;
   floor: number;
   dangerType: number;
-  name: string;
-  description: string;
   size: string;
   color: string;
   lightLevel: number;
   date: Date;
+}
+
+export interface roomTranslation {
+  lang: string;
+  name: string;
+  description: string;
 }
 export interface paragraph {
   text: string;

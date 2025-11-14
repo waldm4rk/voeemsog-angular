@@ -75,10 +75,9 @@
         }
         .container{
             display: flex;
-            width: 100%;
             flex-direction: row;
             justify-content: space-between;
-            padding: 0 120px;
+            padding: 0 100px;
             margin-bottom: 30px;
             gap: 20px;
             .text{
@@ -102,14 +101,6 @@
                 height: fit-content;
                 gap: 23px;
                 float: right;
-                img{
-                    aspect-ratio: 1 / 1;
-                    max-width: 80px;
-                }
-                .big{
-                    max-width: 250px;
-                    aspect-ratio: 1 / 1;
-                }
             }
         }
     }

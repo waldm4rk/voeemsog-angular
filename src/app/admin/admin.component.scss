@@ -13,8 +13,9 @@
             .meta{
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
                 justify-content: center;
-                gap: 100px;
+                gap: 20px;
                 input{
                     max-width: 50%;
                     padding: 10px;
@@ -101,14 +102,6 @@
                 height: fit-content;
                 gap: 23px;
                 float: right;
-                img{
-                    aspect-ratio: 1 / 1;
-                    max-width: 80px;
-                }
-                .big{
-                    max-width: 250px;
-                    aspect-ratio: 1 / 1;
-                }
             }
         }
     }

@@ -3,9 +3,17 @@
         <form action="" (ngSubmit)="formatText()">
             <div class="meta">
                 <input [(ngModel)]="room.code" type="text" name="code" placeholder="Айди">
-                <input [(ngModel)]="room.name" type="text" name="name" placeholder="Название">
+                <input [(ngModel)]="roomTranslation.name" type="text" name="name" placeholder="Название">
+                <input [(ngModel)]="room.dangerType" type="text" name="dangerType" placeholder="Опасность (число)">
+                <input [(ngModel)]="room.size" type="text" name="size" placeholder="Размер (2x2)">
+                <input [(ngModel)]="room.color" type="text" name="color" placeholder="Цвет (на английском)">
+                <input [(ngModel)]="room.lightLevel" type="text" name="lightLevel" placeholder="Свет (число)">
             </div>
-            <textarea name="text" [(ngModel)]="unformatted" rows="40" placeholder="Текст" cols="100" id=""></textarea>
+            <textarea name="text" [(ngModel)]="roomTranslation.description" rows="40" placeholder="Текст" cols="100" id=""></textarea>
+            <select [(ngModel)]="roomTranslation.lang" name="lang" id="lang">
+                <option value="en_US">en_US</option>
+                <option value="ru_RU">ru_RU</option>
+            </select>
             <button type="submit">Проверить</button>
         </form>
     </div>
@@ -14,7 +22,7 @@
             <div class="seal"><img src="assets/room/sit seal.png" alt=""></div>
             <div class="info">
                 <div class="id">{{room.code}}</div>
-                <div class="name">{{room.name}}</div>
+                <div class="name">{{roomTranslation.name}}</div>
             </div>
         </div>
         <div class="content">
@@ -28,9 +36,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <img src="assets/room/danger.svg">
-                        <img src="assets/room/light.svg">
-                        <img src="assets/room/floor.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/danger.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/light.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/floor.svg">
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -38,12 +46,16 @@
                 </div>
                 <div class="container reverse" *ngIf="paragraph.reverse == true">
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) != 'INFO'">
-                        <img src={{paragraph.params.at(0)}}>
+                        <img 
+                            [src]="paragraph.params.at(0)"
+                            [style.max-width]="paragraph.params.at(1)"
+                            [style.aspect-ratio]="paragraph.params.at(2)"
+                        >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <img src="assets/room/danger.svg">
-                        <img src="assets/room/light.svg">
-                        <img src="assets/room/floor.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/danger.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/light.svg">
+                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/floor.svg">
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         
@@ -79,4 +91,7 @@
             </div>
         </div>
     </div>
+    
+    <button style="padding: 10px;" (click)="submitRoom()">Опубликовать Комнату!</button>
+    <button style="padding: 10px;" (click)="submitTranslation()">Опубликовать Перевод!</button>
 </div>

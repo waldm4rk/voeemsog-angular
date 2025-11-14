@@ -145,20 +145,4 @@ export class RoomsComponent implements OnInit {
       },
     });
   }
-
-
-  // Пример для даты публикации, можно использовать реальную дату
-  getPublicationDate(): string {
-    return new Date().toLocaleDateString('ru-RU');
-  }
-  // ngOnInit(): void {
-  //   console.log("aa");
-  //   this.api
-  //     .getData('rooms') // 👈 обращается к baseUrl + "/items"
-  //     .subscribe({
-  //       next: (response) => (this.data = response),
-  //       error: (err) => console.error(err),
-  //     });
-  //   console.log(this.data);
-  // }
 }
