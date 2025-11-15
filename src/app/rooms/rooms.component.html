@@ -37,6 +37,9 @@
       </div>
       <div class="pages">
         <button class="prev" (click)="prevPage()">Предыдущая</button>
+        <div>
+          Страница <input type="number" maxlength="2"> / {{this.lastPage}}
+        </div>
         <button class="next" (click)="nextPage()">Следующая</button>
       </div>
     </div>

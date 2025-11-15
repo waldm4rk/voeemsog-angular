@@ -155,10 +155,36 @@ html {
       }
       .pages {
         margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
         button {
           padding: 10px;
-          font-size: 20px;
+          font-size: 16px;
           cursor: pointer;
+          background: none;
+          border: none;
+          color: white;
+          &:disabled{
+            color: gray;
+            cursor: default;
+          }
+        }
+        input{
+          width: 80px;
+          height: 40px;
+          border-radius: 14px;
+          background: none;
+          color: white;
+          border: 1px solid white;
+          text-align: center;
+          font-size: 18px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button{
+          display: none;
         }
       }
     }
