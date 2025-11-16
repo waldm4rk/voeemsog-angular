@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef} from '@angular/core';
-import { ApiService, ApiResponse} from '../services/api.service';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { ApiService, ApiResponse } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
@@ -15,7 +15,7 @@ export class RoomComponent implements OnInit {
   data: ApiResponse[] = [];
   loading: boolean = false;
   paragraphs: string[] = [];
-  langCode: string = "ru_RU";
+  langCode: string = 'ru_RU';
   paragraphsObject: paragraph[] = [];
   constructor(private dataService: ApiService, private cd: ChangeDetectorRef) {}
   ngOnInit(): void {
@@ -23,22 +23,21 @@ export class RoomComponent implements OnInit {
     this.fetchUserData();
   }
 
-
   fetchUserData(): void {
     this.loading = true;
     const urlParams = new URLSearchParams(window.location.search);
     const tsValue = urlParams.get('code');
     // 📞 Вызываем функцию сервиса, передавая нужный эндпоинт
-    this.dataService.getData<ApiResponse[]>(`rooms/code/${tsValue}?lang=${this.langCode}`).subscribe({
-      next: (response: HttpResponse<ApiResponse[]>) => {
+    this.dataService
+      .getData<ApiResponse[]>(`rooms/code/${tsValue}?lang=${this.langCode}`)
+      .subscribe({
+        next: (response: HttpResponse<ApiResponse[]>) => {
           this.data = response.body || [];
           this.loading = false;
           console.log('Данные получены в компоненте:', this.data);
 
           this.formatText(this.data.at(0)?.description || '');
           this.cd.detectChanges();
-          
-
         },
         error: (err) => {
           console.error('Ошибка запроса:', err);
@@ -46,8 +45,8 @@ export class RoomComponent implements OnInit {
         },
       });
   }
-  formatText(text: string): string{
-     let formatted = text || '';
+  formatText(text: string): string {
+    let formatted = text || '';
     // жирный: *текст*
     formatted = formatted.replace(
       /(?<!\*)\*([^*]+)\*(?!\*)/g,
@@ -62,6 +61,28 @@ export class RoomComponent implements OnInit {
 
     // подчеркнутый: _текст_
     formatted = formatted.replace(/_([^_\n]+)_/g, '<u>$1</u>');
+
+    formatted = formatted.replace(
+  /^>\s*(.+)$/gm,
+  '<li>$1</li>'
+);
+
+// Объединяем подряд идущие <li> в <ul>
+formatted = formatted.replace(
+  /(<li>[\s\S]*?<\/li>)/g,
+  (match) => {
+    // Если это одиночный li — оборачиваем
+    if (!match.startsWith('<ul>')) {
+      const items = match
+        .split('\n')
+        .filter((l) => l.trim().startsWith('<li>'))
+        .join('');
+
+      return `<ul>${items}</ul>`;
+    }
+    return match;
+  }
+);
 
     this.paragraphsObject = [];
 

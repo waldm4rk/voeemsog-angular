@@ -35,7 +35,7 @@
 }
 .page{
     width: 67%;
-    height: 1700px;
+    min-height: 1700px;
     max-width: 1300px;
     aspect-ratio: 7 / 10;
     background-color: white;
@@ -68,7 +68,7 @@
     }
     .content{
         width: 100%;
-        max-height: 75%;
+        min-height: 75%;
         margin-top: 20px;
         overflow-y: hidden;
         .reverse{
