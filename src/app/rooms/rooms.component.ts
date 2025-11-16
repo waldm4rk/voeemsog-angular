@@ -19,6 +19,7 @@ export class RoomsComponent implements OnInit {
   langCode: string = "ru_RU";
   page: number = 1;
   lastPage: number = 999999;
+  cashedLastPage: number = -1;
   constructor(private dataService: ApiService, private router: Router) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -60,8 +61,6 @@ export class RoomsComponent implements OnInit {
 
         // Access the body (the data) and default to an empty array if null:
         this.data = response.body ?? [];
-
-        this.loading = false;
       },
       error: (err) => {
         // Error handler often contains the status code for non-2xx responses
@@ -73,9 +72,11 @@ export class RoomsComponent implements OnInit {
   }
 
   getNumberOfPages(): void {
-    this.loading = true;
-
-    // 📞 Вызываем функцию сервиса, передавая нужный эндпоинт
+    if(this.cashedLastPage != -1){
+      this.lastPage = this.cashedLastPage;
+      this.updateButtonStates(false);
+      return;
+    }
     this.dataService.getData<number>(`rooms/num`).subscribe({
       next: (response: HttpResponse<number>) => {
         // Access the status code here:
@@ -88,6 +89,7 @@ export class RoomsComponent implements OnInit {
 
         // Access the body (the data) and default to an empty array if null:
         this.lastPage = response.body || 0;
+        this.cashedLastPage = this.lastPage;
         console.log(response.body);
         console.log(this.lastPage);
         this.loading = false;
@@ -102,10 +104,26 @@ export class RoomsComponent implements OnInit {
       },
     });
   }
-
   prevPage(): void{
     this.page--;
     this.updateButtonStates(true);
+  }
+
+  goToPage(): void{
+    const inputElement = (document.getElementsByClassName('pageNumber')[0] as HTMLInputElement);
+    const pageNumber = parseInt(inputElement.value, 10);
+    if(!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= this.lastPage){
+      this.page = pageNumber;
+      this.updateButtonStates(true);
+    }else if(pageNumber > this.lastPage){
+      this.page = this.lastPage;
+      inputElement.value = this.lastPage.toString();
+      this.updateButtonStates(true);
+    }else if(pageNumber < 1){
+      this.page = 1;
+      inputElement.value = "1";
+      this.updateButtonStates(true);
+    }
   }
 
   nextPage(): void{
@@ -120,6 +138,7 @@ export class RoomsComponent implements OnInit {
   filterByName(): void{
     if(this.userInput?.length == 0){
       this.fetchRoomData();
+      this.getNumberOfPages();
       return;
     }
     this.dataService.getData<ApiResponse[]>(`rooms/name/${this.userInput}?lang=${this.langCode}`).subscribe({
@@ -129,7 +148,8 @@ export class RoomsComponent implements OnInit {
 
           // Access the body (the data) and default to an empty array if null:
           this.data = response.body ?? [];
-
+          this.lastPage = Math.floor(this.data.length / 10) + (this.data.length % 10 == 0 ? 0 : 1);
+          this.updateButtonStates(false);
           this.loading = false;
         },
         error: (err) => {
