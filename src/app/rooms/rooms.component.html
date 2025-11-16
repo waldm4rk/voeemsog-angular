@@ -38,7 +38,9 @@
       <div class="pages">
         <button class="prev" (click)="prevPage()">Предыдущая</button>
         <div>
-          Страница <input type="number" maxlength="2"> / {{this.lastPage}}
+          <form (ngSubmit)="goToPage()">
+            Страница <input type="number" class="pageNumber" value="{{this.page}}" maxlength="2"> / {{this.lastPage}}
+          </form>
         </div>
         <button class="next" (click)="nextPage()">Следующая</button>
       </div>

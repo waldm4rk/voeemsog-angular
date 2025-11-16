@@ -34,7 +34,7 @@
 }
 .page{
     width: 67%;
-    min-height: 1700px;
+    min-height: 2500px;
     max-width: 1300px;
     aspect-ratio: 7 / 10;
     background-color: white;
@@ -49,6 +49,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        font-feature-settings: 'lnum', 'pnum';
         .info{
             text-align: right;
             .id{
@@ -84,9 +85,10 @@
                 width: 90%;
                 flex: 1;
                 line-height: 27px;
-                font-size: 20px;
+                font-size: 22px;
                 font-weight: 500;
                 text-indent: 1cm;
+                font-feature-settings: 'lnum', 'pnum';
             }
             .images{
                 flex: 0 0 auto;
