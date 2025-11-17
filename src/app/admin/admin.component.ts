@@ -88,6 +88,17 @@ export class AdminComponent implements OnInit {
 
   formatText(): void {
     let formatted = this.roomTranslation.description;
+    this.adminService.getRoomByCode(this.roomTranslation.lang, this.room.code).subscribe({
+      next: (response: ApiResponse[]) => {
+        
+        console.log("BODY =", response);
+        // Cast response.body to any (or the correct type) before accessing .description to avoid the compile error
+        this.roomTranslation.description = response[0].description || '';
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+      },
+    });
     // жирный: *текст*
     formatted = formatted.replace(
       /(?<!\*)\*([^*]+)\*(?!\*)/g,

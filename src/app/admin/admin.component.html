@@ -9,7 +9,7 @@
                 <input [(ngModel)]="room.color" type="text" name="color" placeholder="Цвет (на английском)">
                 <input [(ngModel)]="room.lightLevel" type="text" name="lightLevel" placeholder="Свет (число)">
             </div>
-            <textarea name="text" [(ngModel)]="roomTranslation.description" rows="40" placeholder="Текст" cols="100" id=""></textarea>
+            <textarea name="text" id="descr" [(ngModel)]="roomTranslation.description" rows="40" placeholder="Текст" cols="100" id=""></textarea>
             <select [(ngModel)]="roomTranslation.lang" name="lang" id="lang">
                 <option value="en_US">en_US</option>
                 <option value="ru_RU">ru_RU</option>
