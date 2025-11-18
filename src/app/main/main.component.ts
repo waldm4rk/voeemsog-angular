@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-main',
@@ -7,10 +7,22 @@ import { Component, ElementRef, AfterViewInit } from '@angular/core';
 })
 export class MainComponent implements AfterViewInit {
 
+  showScrollButton = false;
+
   constructor(private el: ElementRef) {}
 
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const y = window.scrollY || document.documentElement.scrollTop;
+    this.showScrollButton = y > 10;
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   ngAfterViewInit(): void {
-    const infoMarks: NodeListOf<HTMLElement> = this.el.nativeElement.querySelectorAll('.infoMark');
+    const infoMarks: NodeListOf<HTMLElement> =
+      this.el.nativeElement.querySelectorAll('.infoMark');
 
     infoMarks.forEach(infoMark => {
       const tooltip = infoMark.nextElementSibling as HTMLElement | null;
