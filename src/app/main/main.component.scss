@@ -39,8 +39,8 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 13px;
-    height: 50%;
+    gap: 6px;
+    height: 30%;
     width: 100%;
 
     h1 {
@@ -60,7 +60,10 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 25px;
+    padding-top: 30px;
     height: 200px;
+    width: 4000px;
+    
     button {
       width: 364px;
       height: 72px;
@@ -129,6 +132,7 @@ body {
     font-weight: 300;
     width: fit-content;
     padding: 10px 20px;
+    
     a {
       color: white;
       text-decoration: none;
@@ -310,15 +314,26 @@ body {
   font-size: 24px;
   cursor: pointer;
   z-index: 999;
-  transition: background-color 0.5s, transform 0.5s;
-  padding-bottom: 3px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition: 0.3s ease-in-out;
 
   &:hover {
     background-color: white;
     color: black;
     box-shadow: 0 0 10px white;
+    transition: 0.3s ease-in-out;
   }
 }
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); 
+}
+
 
 // INFO SECTION
 
@@ -328,6 +343,7 @@ body {
   margin-bottom: 100px;
   background-color: black;
   .infoWrap {
+    padding-bottom: 100px;
     h1 {
       color: white;
       font-weight: 400;
@@ -572,7 +588,7 @@ footer{
       h1 {
         font-size: 37.5px;
       }
-    }
+    } 
     .wallText {
       font-size: 25px;
     }

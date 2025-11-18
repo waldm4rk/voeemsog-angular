@@ -1,0 +1,124 @@
+.archMain{
+    padding-top: 15vh;
+    height: 120vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("assets/rooms/bg.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding-bottom: 10vh;
+
+    .tableFlex{
+        height: 90%;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+            .plates {
+                position: relative;
+                position: relative;
+                display: flex;
+                align-items: center;
+                color: white;
+                font-size: 16px;
+                width: 100%;
+                height: 140px;
+                border: 3px solid rgb(66, 66, 66);
+                cursor: pointer;
+                overflow: hidden;
+                transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+
+                /* картинка через второй класс */
+                &.roomsReports { background-image: url("/../assets/archive/roomsReports.jpg"); }
+                &.creatures { background-image: url("/../assets/archive/creatures.jpg"); }
+                &.literature { background-image: url("/../assets/archive/literature.jpg"); }
+                &.photoVideo { background-image: url("/../assets/archive/photoVideo.jpg"); }
+                &.audio { background-image: url("/../assets/archive/audio.jpg"); }
+                &.other { background-image: url("/../assets/archive/other.jpg"); }
+
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+
+                filter: grayscale(100%);
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    pointer-events: none;
+                    background: radial-gradient(circle, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 100%);
+                    z-index: 1;
+                }
+
+                /* градиент через псевдоэлемент */
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    /* два градиента: серый сверху, черный снизу */
+                    background: 
+                        linear-gradient(to right, transparent 0%, rgba(66,66,66,0.5) 100%), 
+                        linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 100%);
+                    
+                    transition: opacity 0.3s ease; 
+                    z-index: 1;
+                }
+
+
+                &:hover::before {
+                    /* Плавно убираем верхний (серый) градиент, оставляя видимым черный */
+                    opacity: 0; 
+                }
+                
+                &:hover {
+                    filter: grayscale(0%);
+                    transform: scale(1.03);
+                    box-shadow: 0 0 30px rgba(255,255,255,0.7);
+                    border: 3px solid white;    
+                }
+
+                h1 {
+                    position: relative; 
+                    z-index: 2;
+                    margin-left: 5vw;
+                    font-weight: 100;
+                    letter-spacing: 2px;
+                    margin-right: 5vw;
+                }
+            }
+    }
+    
+    .title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+            h1 {
+            font-size: 56px;
+            font-weight: 100;
+            letter-spacing: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            font-family: "Cormorant Garamond", serif !important;
+            color: white;
+            }
+            h1::after {
+            content: "";
+            position: absolute;
+            left: -5px;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* толщина подчёркивания */
+            background-color: white; /* цвет текста */
+            }
+    }
+}
