@@ -10,7 +10,7 @@ import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/
 import { Observable } from 'rxjs';
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet, FooterComponent, ArchiveComponent],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

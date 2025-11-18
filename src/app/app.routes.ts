@@ -3,6 +3,7 @@ import { MainComponent } from './main/main.component';
 import { RoomComponent } from './room/room.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { AdminComponent } from './admin/admin.component';
+import { ArchiveComponent } from './archive/archive.component';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: "admin",
         component: AdminComponent
+    },
+    {
+        path: "archive",
+        component: ArchiveComponent
     }
 ];
