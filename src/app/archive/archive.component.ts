@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './archive.component.scss'
 })
 export class ArchiveComponent {
-
+  gotourl(url: string) {
+    window.location.href = url;
+  }
 }
