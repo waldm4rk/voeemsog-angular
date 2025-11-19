@@ -12,6 +12,11 @@ body, html {
 
 .logo{
   z-index: 100000;
+  a{
+    img{
+      width: 350px;
+    }
+  }
 }
 .navCont{
   nav{
@@ -163,7 +168,8 @@ header {
         text-decoration: none;
         transition: color 0.3s ease;
         cursor: pointer;
-
+        min-width: 150px;
+        text-align: center;
         &::after {
           content: "";
           position: absolute;
