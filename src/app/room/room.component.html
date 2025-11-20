@@ -18,9 +18,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src="assets/danger.jpg">
-                        <img src="assets/light.jpg">
-                        <img src="assets/floor.jpg"></div>
+                        <div class="infoContainer"><img src='assets/room/info/ru/danger{{paragraph.params.at(1)}}.jpg'>
+                        <img src="assets/room/info/ru/light{{paragraph.params.at(2)}}.jpg">
+                        <img src="assets/room/info/ru/floor.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -35,9 +35,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src="assets/danger.jpg">
-                        <img src="assets/light.jpg">
-                        <img src="assets/floor.jpg"></div>
+                        <div class="infoContainer"><img src='assets/room/info/ru/danger{{paragraph.params.at(1)}}.jpg'>
+                        <img src="assets/room/info/ru/light{{paragraph.params.at(2)}}.jpg">
+                        <img src="assets/room/info/ru/floor.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         
