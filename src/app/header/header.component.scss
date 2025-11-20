@@ -25,6 +25,10 @@ body, html {
         display: flex;
         justify-content: center;
         align-items: center;
+        max-width: 300px;
+        img{
+          width: 100%;
+        }
       }
     }
   }
@@ -35,7 +39,7 @@ body, html {
 }
 
 header {
-  width: 100vw;
+  width: 100%;
   margin-top: 5vh;
   display: flex;
   align-items: center;
@@ -169,8 +173,11 @@ header {
         transition: color 0.3s ease;
         cursor: pointer;
         text-align: center;
+        &:not(.logo, .burger, .search-icon){
+          width: 150px;
+        }
         .logo{
-          max-width: 50%;
+          max-width: 300px;
           a{
             max-width: 100%;
             display: inline;

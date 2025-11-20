@@ -158,7 +158,8 @@ html {
         margin-top: 50px;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
         align-items: center;
         gap: 100px;
         button {
@@ -245,38 +246,26 @@ html {
     }
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 650px) {
   .wrapper {
     .main {
       .rooms{
         .table-container{
           padding: 0;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
           table{
-            font-size: 11px;
-            td:first-child{
-              min-width: 180px;
-            }
+          display: block;
+          font-size: 14px !important;
+          white-space: nowrap;
+          width: 750px;
+          min-width: 100%;
           }
         }
-      }
-    }
-  }
-}
-@media (max-width: 600px) {
-  .wrapper {
-    .main {
-      .rooms{
-        .table-container{
-          padding: 0;
-          table{
-            thead{
-              font-size: 10px;
-              font-weight: normal !important;
-            }
-            font-size: 11px;
-            td:first-child{
-              min-width: 140px;
-            }
+        .pages{
+          button{
+            display: none;
           }
         }
       }
