@@ -4,6 +4,7 @@ import { RoomComponent } from './room/room.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { AdminComponent } from './admin/admin.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,14 @@ export const routes: Routes = [
     },
     {
         path: "admin",
+        component: AdminLoginComponent
+    },
+    {
+        path: "archive",
+        component: ArchiveComponent
+    },
+    {
+        path: "admin-dashboard",
         component: AdminComponent
     },
     {

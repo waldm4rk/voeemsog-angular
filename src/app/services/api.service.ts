@@ -46,11 +46,22 @@ export class ApiService {
     // <T> позволяет типизировать возвращаемые данные
     return this.http.get<T>(url, { observe: 'response'});
   }
-  loginToAdmin(key: string): Observable<HttpResponse<void>>{
+  checkKey(key: string): Observable<HttpResponse<void>> {
+  const url = `${this.BASE_URL}/admin/api`;
+  return this.http.post<void>(url, key, {
+    observe: 'response',
+    headers: { 'Content-Type': 'text/plain' } // обязательно text/plain
+  });
+}
+  loginAdmin(key: string): Observable<HttpResponse<void>>{
     const url = `${this.BASE_URL}/admin/login`;
-    const StringData: StringMap = {
-      apiKey: key
-    }
-    return this.http.post<void>(url, StringData, {observe: 'response', withCredentials: true});
+    const body: StringMap = {
+      'apiKey': key
+    };
+    return this.http.post<void>(url, body, {observe: 'response', withCredentials: true});
+  }
+  logout(): Observable<HttpResponse<void>> {
+    const url = `${this.BASE_URL}/admin/logout`;
+    return this.http.post<void>(url, {}, {observe: 'response', withCredentials: true});
   }
 }

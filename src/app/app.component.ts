@@ -2,7 +2,6 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { ArchiveComponent } from './archive/archive.component';
 
 import { filter } from 'rxjs/operators';
 

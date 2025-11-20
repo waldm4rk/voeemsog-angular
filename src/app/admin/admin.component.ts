@@ -43,48 +43,8 @@ export class AdminComponent implements OnInit {
   unformatted: string = '';
   paragraphs: paragraph[] = [];
   ngOnInit(): void {
-    // Вызов при инициализации (или по событию, как в fetchUserData)
-    this.checkApiKey();
   }
 
-  checkApiKey(): void {
-    this.loading = true;
-    const urlParams = new URLSearchParams(window.location.search);
-    const tsValue = urlParams.get('apiKey') || '';
-    this.dataService.loginToAdmin(tsValue).subscribe({
-      next: (response: HttpResponse<void>) => {
-        if (response.status == 401) {
-          this.router.navigate(['/']);
-          console.log('a');
-        }
-        return 'aaa';
-      },
-      error: (err: HttpErrorResponse) => {
-        this.loading = false;
-
-        // 🚨 Этот блок сработает для всех ошибок (4xx, 5xx).
-
-        // Проверяем статус 401 Unauthorized
-        if (err.status === 401) {
-          console.log(
-            `Authorization failed. Redirecting to home. Status: ${err.status}`
-          );
-
-          // Выполняем перенаправление на главную страницу
-          this.router.navigate(['/']);
-        } else {
-          // Обработка других ошибок (404, 500 и т.д.)
-          console.error(
-            `An unexpected error occurred. Status: ${err.status}`,
-            err
-          );
-
-          // Опционально: перенаправление или показ сообщения об ошибке
-          // this.router.navigate(['/error-page']);
-        }
-      },
-    });
-  }
 
   formatText(): void {
     let formatted = this.roomTranslation.description;
@@ -198,6 +158,17 @@ export class AdminComponent implements OnInit {
               next: (res2) => console.log('OK', res2),
               error: (err2) => console.error('Error', err2),
             });
+        },
+        error: (err) => console.error('Error', err),
+      });
+  }
+  logout(): void {
+    this.dataService
+      .logout()
+      .subscribe({
+        next: (res) => {
+          console.log('OK', res);
+          this.router.navigate(['/']);
         },
         error: (err) => console.error('Error', err),
       });
