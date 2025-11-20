@@ -84,25 +84,30 @@
             .text{
                 width: 90%;
                 flex: 1;
+                flex-shrink: 0;
                 line-height: 27px;
                 font-size: 22px;
                 font-weight: 500;
                 text-indent: 1cm;
                 font-feature-settings: 'lnum', 'pnum';
+                vertical-align: middle;
             }
             .images{
-                flex: 0 0 auto;
+                flex: 1;
                 display: flex;
                 height: 100%;
                 flex-direction: column;
                 justify-content: center;
                 align-items: flex-end;
-                flex-shrink: 0;
-
+                flex-shrink: 1;
                 width: fit-content;
                 height: fit-content;
                 gap: 23px;
                 float: right;
+                img{
+                    width: 100%;
+                    object-fit: scale-down;
+                }
             }
         }
     }

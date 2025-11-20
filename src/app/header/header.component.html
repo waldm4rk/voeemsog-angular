@@ -7,7 +7,7 @@
         </li>
         <li class="desktop-link"><a routerLink="/about">О НАС</a></li>
         <li class="desktop-link"><a routerLink="/rooms">КОМНАТЫ</a></li>
-        <li class="logo"><a routerLink="/"><img src="assets/logo.svg" alt=""></a></li>
+        <li class="logo"><img src="assets/logo.svg" alt="" (click)="home()"></li>
         <li class="desktop-link"><a routerLink="/archive">АРХИВ</a></li>
         <li class="search-text desktop-link" (click)="toggleSearch($event)">ПОИСК</li>
         <li class="search-text search-icon" (click)="toggleSearch($event)"><img src="assets/search.svg" alt=""></li>
@@ -16,7 +16,7 @@
 
       <div class="mobile-menu" [ngClass]="{'open': isBurgerOpen}" (click)="$event.stopPropagation()">
         <ul>
-          <li><a routerLink="/" (click)="closeMenu()">КОМНАТЫ</a></li>
+          <li><a routerLink="rooms" (click)="closeMenu()">КОМНАТЫ</a></li>
           <li><a routerLink="/" (click)="closeMenu()">АРХИВ</a></li>
           <li><a routerLink="/" (click)="closeMenu()">О НАС</a></li>
         </ul>

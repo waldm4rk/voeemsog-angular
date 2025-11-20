@@ -169,6 +169,13 @@ header {
         transition: color 0.3s ease;
         cursor: pointer;
         text-align: center;
+        .logo{
+          max-width: 50%;
+          a{
+            max-width: 100%;
+            display: inline;
+          }
+        }
         &::after {
           content: "";
           position: absolute;
@@ -236,7 +243,6 @@ header {
           transition-delay: $i * 0.04s;
         }
       }
-      
       a {
         color: white;
         text-decoration: none;

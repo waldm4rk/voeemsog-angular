@@ -68,4 +68,7 @@ export class HeaderComponent {
     this.isVisibleSearch = false;
     document.body.style.overflow = ''; 
   }
+  home(){
+    this.router.navigate(['/']);
+  }
 }
