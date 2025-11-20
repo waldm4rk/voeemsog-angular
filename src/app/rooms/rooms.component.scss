@@ -13,10 +13,8 @@ html {
 .wrapper {
   width: 100%;
   position: relative;
-  padding-top: 150px;
+  padding: 150px 0;
   color: white;
-  min-height: 1418px;
-  aspect-ratio: 9 / 10;
   height: auto;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("assets/rooms/bg.png");

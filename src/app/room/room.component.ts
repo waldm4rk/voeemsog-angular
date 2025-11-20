@@ -4,12 +4,14 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { paragraph } from 'app/admin/admin.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { CookiesService } from 'app/cookies.service';
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss',
   standalone: true, // обязательно для Standalone Component
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
 })
 export class RoomComponent implements OnInit {
   data: ApiResponse[] = [];
@@ -17,9 +19,19 @@ export class RoomComponent implements OnInit {
   paragraphs: string[] = [];
   langCode: string = 'ru_RU';
   paragraphsObject: paragraph[] = [];
-  constructor(private dataService: ApiService, private cd: ChangeDetectorRef) {}
+  constructor(
+    private dataService: ApiService,
+    private cd: ChangeDetectorRef,
+    private translate: TranslateModule,
+    private cookies: CookiesService
+  ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
+    if (this.cookies.returnLang() == 'en') {
+      this.langCode = 'en_US';
+    } else if (this.cookies.returnLang() == 'ru') {
+      this.langCode = 'ru_RU';
+    }
     this.fetchUserData();
   }
 
@@ -62,27 +74,21 @@ export class RoomComponent implements OnInit {
     // подчеркнутый: _текст_
     formatted = formatted.replace(/_([^_\n]+)_/g, '<u>$1</u>');
 
-    formatted = formatted.replace(
-  /^>\s*(.+)$/gm,
-  '<li>$1</li>'
-);
+    formatted = formatted.replace(/^>\s*(.+)$/gm, '<li>$1</li>');
 
-// Объединяем подряд идущие <li> в <ul>
-formatted = formatted.replace(
-  /(<li>[\s\S]*?<\/li>)/g,
-  (match) => {
-    // Если это одиночный li — оборачиваем
-    if (!match.startsWith('<ul>')) {
-      const items = match
-        .split('\n')
-        .filter((l) => l.trim().startsWith('<li>'))
-        .join('');
+    // Объединяем подряд идущие <li> в <ul>
+    formatted = formatted.replace(/(<li>[\s\S]*?<\/li>)/g, (match) => {
+      // Если это одиночный li — оборачиваем
+      if (!match.startsWith('<ul>')) {
+        const items = match
+          .split('\n')
+          .filter((l) => l.trim().startsWith('<li>'))
+          .join('');
 
-      return `<ul>${items}</ul>`;
-    }
-    return match;
-  }
-);
+        return `<ul>${items}</ul>`;
+      }
+      return match;
+    });
 
     this.paragraphsObject = [];
 

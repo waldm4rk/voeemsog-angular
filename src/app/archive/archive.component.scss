@@ -92,6 +92,7 @@
                     font-weight: 100;
                     letter-spacing: 2px;
                     margin-right: 5vw;
+                    text-transform: uppercase;
                 }
                 h2{
                     margin-right: 5vw;
@@ -109,8 +110,9 @@
             font-weight: 100;
             letter-spacing: 10px;
             text-align: center;
-            text-transform: uppercase;
+            color: white;
             position: relative;
+            text-transform: uppercase;
             display: inline-block;
             font-family: "Cormorant Garamond", serif !important;
             color: white;
@@ -124,5 +126,27 @@
             height: 2px; /* толщина подчёркивания */
             background-color: white; /* цвет текста */
             }
+    }
+}
+@media (max-width: 550px){
+    .archMain{
+        .tableFlex{
+            .plates{
+                h1{
+                    font-size: 20px !important;
+                }
+            }
+        }
+    }
+}
+@media (max-width: 410px){
+    .archMain{
+        .tableFlex{
+            .plates{
+                h1{
+                    font-size: 16px !important;
+                }
+            }
+        }
     }
 }

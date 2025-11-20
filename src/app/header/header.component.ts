@@ -3,11 +3,12 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { TranslateModule } from '@ngx-translate/core';
+import { CookiesService } from 'app/cookies.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -17,7 +18,7 @@ export class HeaderComponent {
   isVisibleSearch = false;
   isBurgerOpen = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cookies: CookiesService, private translate: TranslateModule) {}
 
   ngOnInit(): void {
     this.router.events.pipe(
@@ -26,6 +27,8 @@ export class HeaderComponent {
       this.isVisibleSearch = false;
       this.isBurgerOpen = false;
     });
+
+    this.cookies.updateLang();
   }
 
   @HostListener('window:scroll', [])

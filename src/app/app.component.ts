@@ -7,6 +7,9 @@ import { filter } from 'rxjs/operators';
 
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+
+
 @Component({
   selector: 'app-root',
   imports: [HeaderComponent, RouterOutlet, FooterComponent],
@@ -14,5 +17,11 @@ import { Observable } from 'rxjs';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  
+  constructor(private translate: TranslateService) {
+  translate.addLangs(['en', 'ru']);
+
+  // Берём язык браузера
+  const browserLang = translate.getBrowserLang() || 'en';
+  translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
+}
 }

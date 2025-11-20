@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 /**
@@ -52,6 +52,9 @@ export class ApiService {
     observe: 'response',
     headers: { 'Content-Type': 'text/plain' } // обязательно text/plain
   });
+}
+getNumOfRooms(lang: string): Observable<number> {
+  return this.http.get<number>(`${this.BASE_URL}/rooms/num?lang=${lang}`);
 }
   loginAdmin(key: string): Observable<HttpResponse<void>>{
     const url = `${this.BASE_URL}/admin/login`;

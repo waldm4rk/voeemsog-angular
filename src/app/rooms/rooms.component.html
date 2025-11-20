@@ -1,12 +1,12 @@
 <div class="wrapper">
   <div class="title">
-    <h1>Архив</h1>
-    <h4>Комнаты</h4>
+    <h1>{{'HEADER.ARCHIVE' | translate}}</h1>
+    <h4>{{'HEADER.ROOMS' | translate}}</h4>
   </div>
   <div class="main">
     <div class="search">
       <form (ngSubmit)="filterByName()">
-        <input type="text" [(ngModel)]="userInput" name="userInput" maxlength="40" placeholder="Название или код..."/>
+        <input type="text" [(ngModel)]="userInput" name="userInput" maxlength="40" placeholder="{{'ROOMS.INPUT' | translate}}"/>
         <button type="submit"><img src="/assets/rooms/search.svg" alt="" /></button>
       </form>
     </div>
@@ -15,12 +15,12 @@
         <table class="voeemsog-table">
           <thead>
             <tr>
-              <th>Название</th>
-              <th>Код</th>
-              <th>Опасность</th>
-              <th>Свет</th>
-              <th>Этаж</th>
-              <th>Дата публикации</th>
+              <th>{{'ROOMS.NAME' | translate}}</th>
+              <th>{{'ROOMS.CODE' | translate}}</th>
+              <th>{{'ROOMS.DANGER' | translate}}</th>
+              <th>{{'ROOMS.LIGHT' | translate}}</th>
+              <th>{{'ROOMS.FLOOR' | translate}}</th>
+              <th>{{'ROOMS.DATEPUB' | translate}}</th>
             </tr>
           </thead>
           <tbody>
@@ -36,13 +36,13 @@
         </table>
       </div>
       <div class="pages">
-        <button class="prev" (click)="prevPage()">Предыдущая</button>
+        <button class="prev" (click)="prevPage()">{{'ROOMS.PREV' | translate}}</button>
         <div>
           <form (ngSubmit)="goToPage()">
-            Страница <input type="number" class="pageNumber" value="{{this.page}}" maxlength="2"> / {{this.lastPage}}
+            {{'ROOMS.PAGE' | translate}} <input type="number" class="pageNumber" value="{{this.page}}" maxlength="2"> / {{this.lastPage}}
           </form>
         </div>
-        <button class="next" (click)="nextPage()">Следующая</button>
+        <button class="next" (click)="nextPage()">{{'ROOMS.NEXT' | translate}}</button>
       </div>
     </div>
   </div>

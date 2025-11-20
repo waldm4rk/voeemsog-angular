@@ -1,0 +1,49 @@
+{
+    "HEADER": {
+        "ABOUT": "ABOUT",
+        "ROOMS": "ROOMS",
+        "ARCHIVE": "ARCHIVE",
+        "SEARCH": "SEARCH"
+    },
+    "MAIN":{
+        "WELCOME": "WELCOME TO YOUR",
+        "HORROR": "WORST NIGHTMARE",
+        "BUTTON": "Where am I?",
+        "ACTUAL": "ACTUAL",
+        "WALL": "WALL OF UPDATES",
+        "WELCOMEVOEEMSOG": "Welcome to Voeemsog dimension.",
+        "DESCRIPTION": "Description (Not done).",
+        "GOTOARCHIVE": "Go to archive",
+        "ARCHIVEIS": "Archive is a catalog",
+        "OFCANNON": "of canonical content.",
+        "MEDIA": "Media",
+        "LITERATURE": "Literature",
+        "ROOMS": "Rooms"
+    },
+    "ROOMS":{
+        "INPUT": "Title or code...",
+        "NAME": "Title",
+        "CODE": "Code",
+        "DANGER": "Danger",
+        "LIGHT": "Light",
+        "FLOOR": "Floor",
+        "DATEPUB": "Date",
+        "PREV": "Previous",
+        "PAGE": "Page",
+        "NEXT": "Next"
+    },
+    "ARCHIVE":{
+        "REPORTS": "ROOM REPORTS",
+        "MEDIA": "PHOTO AND VIDEO MATERIALS",
+        "AUDIO": "AUDIO MATERIALS",
+        "CREATURES": "CREATURE GUIDES",
+        "MISC": "MISCELLANEOUS",
+        "SOON": "SOON"
+    },
+
+    "FOOTER":{
+        "SOCIALS": "Socials",
+        "MEMBERS": "Members",
+        "CONTRIBUTORS": "Contributors"
+    }
+}

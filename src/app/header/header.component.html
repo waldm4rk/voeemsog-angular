@@ -5,20 +5,20 @@
         <li class="burger" (click)="toggleBurger()">
           <img src="assets/burger.svg" alt="">
         </li>
-        <li class="desktop-link"><a routerLink="/about">О НАС</a></li>
-        <li class="desktop-link"><a routerLink="/rooms">КОМНАТЫ</a></li>
+        <li class="desktop-link"><a routerLink="/about">{{'HEADER.ABOUT' | translate}}</a></li>
+        <li class="desktop-link"><a routerLink="/rooms">{{'HEADER.ROOMS' | translate}}</a></li>
         <li class="logo"><img src="assets/logo.svg" alt="" (click)="home()"></li>
-        <li class="desktop-link"><a routerLink="/archive">АРХИВ</a></li>
-        <li class="search-text desktop-link" (click)="toggleSearch($event)">ПОИСК</li>
+        <li class="desktop-link"><a routerLink="/archive">{{'HEADER.ARCHIVE' | translate}}</a></li>
+        <li class="search-text desktop-link" (click)="toggleSearch($event)">{{'HEADER.SEARCH' | translate}}</li>
         <li class="search-text search-icon" (click)="toggleSearch($event)"><img src="assets/search.svg" alt=""></li>
       </ul>
     </nav>
 
       <div class="mobile-menu" [ngClass]="{'open': isBurgerOpen}" (click)="$event.stopPropagation()">
         <ul>
-          <li><a routerLink="rooms" (click)="closeMenu()">КОМНАТЫ</a></li>
-          <li><a routerLink="/" (click)="closeMenu()">АРХИВ</a></li>
-          <li><a routerLink="/" (click)="closeMenu()">О НАС</a></li>
+          <li><a routerLink="rooms" (click)="closeMenu()">{{'HEADER.ROOMS' | translate}}</a></li>
+          <li><a routerLink="/" (click)="closeMenu()">{{'HEADER.ARCHIVE' | translate}}</a></li>
+          <li><a routerLink="/" (click)="closeMenu()">{{'HEADER.ABOUT' | translate}}</a></li>
         </ul>
       </div>
 

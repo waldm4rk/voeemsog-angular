@@ -1,15 +1,22 @@
 import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 
+import { TranslateModule } from '@ngx-translate/core';
+import { CookiesService } from 'app/cookies.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
+  imports: [TranslateModule],
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements AfterViewInit {
 
   showScrollButton = false;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef, private cookies: CookiesService) {}
+
+  ngOnInit(): void {
+    this.cookies.updateLang();
+  }
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
