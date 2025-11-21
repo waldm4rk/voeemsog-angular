@@ -30,6 +30,7 @@ html {
       font-size: 56px;
       font-weight: 300;
       letter-spacing: 10px;
+      margin-right: -10px;
       text-align: center;
       text-transform: uppercase;
       position: relative;
@@ -244,7 +245,7 @@ html {
     }
   }
 }
-@media (max-width: 650px) {
+@media (max-width: 780px) {
   .wrapper {
     .main {
       .rooms{

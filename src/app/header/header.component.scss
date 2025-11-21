@@ -297,7 +297,24 @@ header {
     }
   }
 }
-
+@media (max-width: 1500px){
+  .navCont{
+    nav{
+      ul{
+        width: 80vw;
+      }
+    }
+  }
+}
+@media (max-width: 1100px){
+  .navCont{
+    nav{
+      ul{
+        width: 100vw;
+      }
+    }
+  }
+}
 @media (max-width: 950px) {
   .navCont {
     nav {

@@ -1,7 +1,8 @@
 import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -12,10 +13,11 @@ export class MainComponent implements AfterViewInit {
 
   showScrollButton = false;
 
-  constructor(private el: ElementRef, private cookies: CookiesService) {}
+  constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title) {}
 
   ngOnInit(): void {
     this.cookies.updateLang();
+    this.title.setTitle("Voeemsog");
   }
 
   @HostListener('window:scroll', [])

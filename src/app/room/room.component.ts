@@ -4,8 +4,9 @@ import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { paragraph } from 'app/admin/admin.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
@@ -23,7 +24,9 @@ export class RoomComponent implements OnInit {
     private dataService: ApiService,
     private cd: ChangeDetectorRef,
     private translate: TranslateModule,
-    private cookies: CookiesService
+    private cookies: CookiesService,
+    private translateService: TranslateService,
+    private title: Title
   ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -50,6 +53,7 @@ export class RoomComponent implements OnInit {
 
           this.formatText(this.data.at(0)?.description || '');
           this.cd.detectChanges();
+          this.title.setTitle(this.data.at(0)?.code + ": " + this.data.at(0)?.name);
         },
         error: (err) => {
           console.error('Ошибка запроса:', err);

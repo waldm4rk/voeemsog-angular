@@ -5,8 +5,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
+import {Title} from "@angular/platform-browser";
 @Component({
   selector: 'app-room',
   templateUrl: './rooms.component.html',
@@ -26,7 +27,9 @@ export class RoomsComponent implements OnInit {
     private dataService: ApiService,
     private router: Router,
     private translate: TranslateModule,
-    private cookies: CookiesService
+    private cookies: CookiesService,
+    private title: Title,
+    private translateService: TranslateService
   ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -37,7 +40,10 @@ export class RoomsComponent implements OnInit {
     }
     this.fetchRoomData();
     this.getNumberOfPages();
-  }
+    this.translateService.use(this.cookies.returnLang()).subscribe((translations: any) => {
+      this.title.setTitle("Voeemsog | " + (translations?.['MAIN']?.['ROOMS'] ?? "Rooms"));
+    });
+    }
 
   updateButtonStates(click: boolean): void {
     console.log(this.page + ' / ' + this.lastPage);

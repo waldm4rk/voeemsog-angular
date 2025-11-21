@@ -17,7 +17,7 @@
       <div class="mobile-menu" [ngClass]="{'open': isBurgerOpen}" (click)="$event.stopPropagation()">
         <ul>
           <li><a routerLink="rooms" (click)="closeMenu()">{{'HEADER.ROOMS' | translate}}</a></li>
-          <li><a routerLink="/" (click)="closeMenu()">{{'HEADER.ARCHIVE' | translate}}</a></li>
+          <li><a routerLink="archive" (click)="closeMenu()">{{'HEADER.ARCHIVE' | translate}}</a></li>
           <li><a routerLink="/" (click)="closeMenu()">{{'HEADER.ABOUT' | translate}}</a></li>
         </ul>
       </div>
