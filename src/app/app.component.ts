@@ -8,11 +8,12 @@ import { filter } from 'rxjs/operators';
 import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { LangComponent } from "./lang/lang.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [HeaderComponent, RouterOutlet, FooterComponent],
+  imports: [HeaderComponent, RouterOutlet, FooterComponent, LangComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
