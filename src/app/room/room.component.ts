@@ -42,21 +42,22 @@ export class RoomComponent implements OnInit {
     this.loading = true;
     const urlParams = new URLSearchParams(window.location.search);
     const tsValue = urlParams.get('code');
-    // 📞 Вызываем функцию сервиса, передавая нужный эндпоинт
     this.dataService
       .getData<ApiResponse[]>(`rooms/code/${tsValue}?lang=${this.langCode}`)
       .subscribe({
         next: (response: HttpResponse<ApiResponse[]>) => {
           this.data = response.body || [];
           this.loading = false;
-          console.log('Данные получены в компоненте:', this.data);
-
+          if(this.data.length == 0){
+            window.location.href = '/';
+            return;
+          }
           this.formatText(this.data.at(0)?.description || '');
           this.cd.detectChanges();
           this.title.setTitle(this.data.at(0)?.code + ": " + this.data.at(0)?.name);
         },
         error: (err) => {
-          console.error('Ошибка запроса:', err);
+          window.location.href = '/';
           this.loading = false;
         },
       });
