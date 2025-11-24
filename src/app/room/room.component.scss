@@ -39,9 +39,9 @@
 }
 
 .page {
-  padding: 130px 0;
   position: relative;
   overflow: hidden;
+  padding: 60px 0;
   .title {
     display: flex;
     flex-direction: row;
@@ -49,6 +49,9 @@
     font-feature-settings: "lnum", "pnum";
     .info {
       text-align: right;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       .id {
         font-size: 100px;
       }
@@ -60,6 +63,7 @@
       img {
         width: 100%;
         height: auto;
+        mix-blend-mode: darken;
       }
     }
   }
@@ -162,7 +166,6 @@
 @media (max-width: 1550px) {
   .page {
     width: 80%;
-    padding-top: 100px;
     .title {
       .info {
         .id {
@@ -178,7 +181,6 @@
 @media (max-width: 1100px) {
   .page {
     width: 85%;
-    padding-top: 80px;
     .title {
       .info {
         .id {
@@ -266,7 +268,6 @@
 @media (max-width: 700px) {
   .page {
     width: 90%;
-    padding-top: 60px;
     .title {
       flex-direction: column;
       align-items: center;

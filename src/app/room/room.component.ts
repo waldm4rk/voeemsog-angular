@@ -20,11 +20,12 @@ export class RoomComponent implements OnInit {
   paragraphs: string[] = [];
   langCode: string = 'ru_RU';
   paragraphsObject: paragraph[] = [];
+  author: string = '';
   constructor(
     private dataService: ApiService,
     private cd: ChangeDetectorRef,
     private translate: TranslateModule,
-    private cookies: CookiesService,
+    public cookies: CookiesService,
     private translateService: TranslateService,
     private title: Title
   ) {}
@@ -102,6 +103,14 @@ export class RoomComponent implements OnInit {
       let imagesBool = false;
       let params: string[] = [];
       let reverse = false;
+      if(element.includes('$AUTHOR')){
+        const regex = /\$AUTHOR\(([^)]+)\)/;
+        const match = element.match(regex);
+        if (match && match[1]) {
+          this.author = match[1].trim();
+        }
+        element = element.replace(regex, ``);
+      }
       if (element.includes('$IMG')) {
         const regex = /\$IMG\(([^)]+)\)/;
         const match = element.match(regex);

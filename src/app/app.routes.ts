@@ -5,6 +5,8 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { AdminComponent } from './admin/admin.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { LiteratureComponent } from './literature/literature.component';
+import { StoryComponent } from './story/story.component';
 
 export const routes: Routes = [
     {
@@ -32,7 +34,11 @@ export const routes: Routes = [
         component: AdminComponent
     },
     {
-        path: "archive",
-        component: ArchiveComponent
+        path: "literature",
+        component: LiteratureComponent
+    },
+    {
+        path: "story/:id",
+        component: StoryComponent
     }
 ];

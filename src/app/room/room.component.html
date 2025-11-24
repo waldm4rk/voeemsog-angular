@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="page">
         <div class="title">
-            <div class="seal"><img src="assets/room/sit seal.png" alt=""></div>
+            <div class="seal"><img src="https://ik.imagekit.io/voeemsog/{{this.author}}.jpg?ver=1" alt=""></div>
             <div class="info">
                 <div class="id">{{data.at(0)?.code}}</div>
                 <div class="name">{{data.at(0)?.name}}</div>
@@ -18,9 +18,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='assets/room/info/ru/danger{{paragraph.params.at(1)}}.jpg'>
-                        <img src="assets/room/info/ru/light{{paragraph.params.at(2)}}.jpg">
-                        <img src="assets/room/info/ru/floor.jpg"></div>
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{paragraph.params.at(1)}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{paragraph.params.at(1)}}.jpg">
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -35,9 +35,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='assets/room/info/ru/danger{{paragraph.params.at(1)}}.jpg'>
-                        <img src="assets/room/info/ru/light{{paragraph.params.at(2)}}.jpg">
-                        <img src="assets/room/info/ru/floor.jpg"></div>
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{paragraph.params.at(1)}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{paragraph.params.at(1)}}.jpg">
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         

@@ -20,6 +20,20 @@ export interface ApiResponse {
   lightLevel: number;
   date: Date;
 }
+export interface StoryCategory{
+  id: string,
+  title: string,
+  lang: string
+}
+export interface Story{
+  id: string,
+  title: string,
+  text: string,
+  category: StoryCategory,
+  date: Date,
+  readingTime: number,
+  lang: string
+}
 export interface StringMap {
   [key: string]: string;
 }
