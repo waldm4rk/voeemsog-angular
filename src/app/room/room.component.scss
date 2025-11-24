@@ -160,6 +160,7 @@
     height: 60px;
     &:hover {
       transform: translateX(-230px);
+      cursor:help;
     }
   }
 }

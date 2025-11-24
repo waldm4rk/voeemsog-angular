@@ -18,8 +18,8 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{paragraph.params.at(1)}}.jpg'>
-                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{paragraph.params.at(1)}}.jpg">
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{this.data.at(0)?.dangerType}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{this.data.at(0)?.lightLevel}}.jpg">
                         <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
@@ -35,8 +35,8 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{paragraph.params.at(1)}}.jpg'>
-                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{paragraph.params.at(1)}}.jpg">
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/danger-{{this.data.at(0)?.dangerType}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/light-{{(this.data.at(0)?.lightLevel || 0)}}.jpg">
                         <img src="https://ik.imagekit.io/voeemsog/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
