@@ -53,6 +53,7 @@ export class LiteratureComponent {
           const categories: StoryCategory[] = response.body ?? [];
           categories.forEach(cat => {
             this.stories.set(cat.id, []);
+            console.log(cat.id);
           });
           this.fetchStories();
         },
@@ -71,6 +72,7 @@ export class LiteratureComponent {
         next: (response: HttpResponse<Story[]>) => {
           const stories = response.body ?? [];
           this.stories.set(key, stories);
+          console.log(this.stories);
         },
         error: (err) => {
           // Error handler often contains the status code for non-2xx responses
@@ -82,5 +84,6 @@ export class LiteratureComponent {
   }
   redirectToPage(id: string): void {
     this.router.navigateByUrl('/story/' + id);
+    console.log("aaa");
   }
 }

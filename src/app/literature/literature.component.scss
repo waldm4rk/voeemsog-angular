@@ -127,3 +127,17 @@
     }
   }
 }
+@media (max-width: 415px){
+  .wrapper{
+    .main{
+      padding: 40px 20px;
+      .category{
+        .cat_title{
+          h1{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
