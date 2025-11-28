@@ -2,6 +2,8 @@ import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Story } from 'app/services/api.service';
+import { HostListener } from '@angular/core';
+
 
 @Component({
   selector: 'app-story',
@@ -33,4 +35,15 @@ export class StoryComponent {
         },
       });
   }
+
+ @HostListener('window:scroll', [])
+  onScroll() {
+    const speed = -0.3; // скорость параллакса одинаковая для всех
+    const cubes = document.querySelectorAll<HTMLElement>('.cube');
+
+    cubes.forEach(cube => {
+      cube.style.top = `${window.scrollY * speed}px`;
+    });
+  }
+
 }

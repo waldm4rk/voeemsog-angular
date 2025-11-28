@@ -1,0 +1,120 @@
+.main {
+  position: relative; // для z-index фонового слоя
+  height: auto;
+  min-height: 120vh;  // чтобы был скролл
+
+    .title {
+    padding-top: 200px;
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: 10px;
+      margin-right: -10px;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      font-family: "Cormorant Garamond", serif !important;
+    }
+    h1::after {
+      content: "";
+      position: absolute;
+      left: -5px;
+      bottom: 0;
+      width: 100%;
+      height: 2px; /* толщина подчёркивания */
+      background-color: white; /* цвет текста */
+    }
+    h4 {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-family: "Cormorant Garamond", serif !important;
+    }
+  }
+
+  .storyTitle{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    color: white;
+    margin-top: 50px;
+    font-family: "Cormorant Garamond", serif !important;
+    font-size: 29px;
+    h5{
+      color: grey;
+    }
+  }
+
+  .story{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    .storyTxt{
+      max-width: 550px;
+      font-size: 20px;
+      line-height: 1.6;
+      margin: 50px 0;
+      font-family: "Cormorant Garamond", serif !important;
+    }
+  }
+
+  .bg {
+    position: fixed; // фон под всеми блоками
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 400px;      // отступ от верха
+    gap: 300px;             // расстояние между кубами
+    background-color: rgb(24, 28, 29);
+    overflow: hidden;
+    z-index: -1;               // ниже контента
+
+    .cube {  
+      width: 90%;
+      max-width: 1000px;
+      height: 120px;
+      background-color: rgb(117, 136, 141);
+      filter: blur(150px);
+      margin: 0 auto;          // по центру по горизонтали
+      position: relative;      // для параллакса
+      transform-origin: center;
+      transition: top 0.05s linear;
+
+      @media (max-width: 1200px) {
+        max-width: 700px;
+      }
+
+      @media (max-width: 768px) {
+        max-width: 90%;       // полностью адаптивно для мобильных
+      }
+    }
+
+    .cube:nth-child(1) { transform: rotate(20deg); }
+    .cube:nth-child(2) { transform: rotate(-20deg); }
+    .cube:nth-child(3) { transform: rotate(20deg); }
+  }
+
+  // Контент поверх кубов
+  .title,
+  .Story {
+    position: relative;
+    z-index: 1; // поверх фона
+  }
+}
