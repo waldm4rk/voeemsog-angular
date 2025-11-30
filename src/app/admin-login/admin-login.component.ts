@@ -23,10 +23,12 @@ export class AdminLoginComponent implements OnInit {
     private dataService: ApiService,
     private router: Router,
     private adminService: AdminService
-  ) {}
-  ngOnInit(): void {
+  ) {
+
     // Вызов при инициализации (или по событию, как в fetchUserData)
     this.checkApiKey();
+  }
+  ngOnInit(): void {
   }
 
   checkApiKey(): void {
@@ -59,7 +61,7 @@ export class AdminLoginComponent implements OnInit {
           );
 
           // Опционально: перенаправление или показ сообщения об ошибке
-          // this.router.navigate(['/error-page']);
+          this.router.navigate(['/']);
         }
       },
     });
