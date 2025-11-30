@@ -70,7 +70,13 @@
       font-size: 20px;
       line-height: 1.6;
       margin: 50px 0;
-      font-family: "Cormorant Garamond", serif !important;
+      pre{
+        white-space: pre-wrap;   /* сохраняет переносы и пробелы, но добавляет авто-перенос */
+        word-wrap: break-word;
+        max-width: 550px;
+        font-family: "Cormorant Garamond", serif !important;
+        font-size: 20px;
+      }
     }
   }
 

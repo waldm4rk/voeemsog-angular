@@ -41,6 +41,12 @@
         "SOON": "SOON",
         "ARCHIVE": "Archive"
     },
+    "LITERATURE":{
+        "READINGTIME": "Reading time",
+        "MINUTES": "min.",
+        "STORIES": "STORIES",
+        "ADDED": "added"
+    },
     "ERROR":{
         "ERROR": "Error",
         "TITLE": "Seems like you're lost...",

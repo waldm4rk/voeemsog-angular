@@ -8,6 +8,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { LiteratureComponent } from './literature/literature.component';
 import { StoryComponent } from './story/story.component';
 import { ErrorComponent } from './error/error.component';
+import { AdminChooseComponent } from './admin-choose/admin-choose.component';
 
 export const routes: Routes = [
     {
@@ -45,6 +46,10 @@ export const routes: Routes = [
     {
         path: "error",
         component: ErrorComponent
+    },
+    {
+        path: "admin-choose",
+        component: AdminChooseComponent
     },
 
 
