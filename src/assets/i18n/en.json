@@ -41,7 +41,14 @@
         "SOON": "SOON",
         "ARCHIVE": "Archive"
     },
-
+    "ERROR":{
+        "ERROR": "Error",
+        "TITLE": "Seems like you're lost...",
+        "SUBTITLE": "In Voeemsog it's absolutely normal",
+        "BUTTON": "Back",
+        "NOTE": "* the button does not guarantee the subject's transfer to a safe room.",
+        "SUB": "Sincerely, SIT."
+    },
     "FOOTER":{
         "SOCIALS": "Socials",
         "MEMBERS": "Members",
