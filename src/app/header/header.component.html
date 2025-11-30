@@ -23,7 +23,9 @@
       </div>
 
     <div class="searchBar" [ngClass]="{'visible': isVisibleSearch}">
-      <input type="text">
+      <form (submit)="searchRooms(); $event.preventDefault()">
+        <input type="text">
+      </form>
       <img class="icon" src="assets/strelka.svg" alt="">
     </div>
   </div>

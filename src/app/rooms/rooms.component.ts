@@ -8,6 +8,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
 import {Title} from "@angular/platform-browser";
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-room',
   templateUrl: './rooms.component.html',
@@ -29,7 +30,8 @@ export class RoomsComponent implements OnInit {
     private translate: TranslateModule,
     private cookies: CookiesService,
     private title: Title,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -42,6 +44,13 @@ export class RoomsComponent implements OnInit {
     this.getNumberOfPages();
     this.translateService.use(this.cookies.returnLang()).subscribe((translations: any) => {
       this.title.setTitle("Voeemsog | " + (translations?.['MAIN']?.['ROOMS'] ?? "Rooms"));
+    });
+    this.route.queryParams.subscribe(params => {
+      const search = params['s'] || '';
+      if(search && search.length >= 0) {
+        this.userInput = search;
+        this.filterByName();
+      }
     });
     }
 
