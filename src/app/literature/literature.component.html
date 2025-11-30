@@ -13,21 +13,8 @@
             <div class="cat_content">
                 <div class="story" *ngFor="let story of item.value" (click)="redirectToPage(story.id)">
                     <h4>{{story.title}}</h4>
-                    <p class="reading_time">Время чтения: <b>{{story.readingTime}} мин.</b></p>
+                    <p class="reading_time">{{'LITERATURE.READINGTIME' | translate}}: <b>{{story.readingTime}} {{'LITERATURE.MINUTES' | translate}}</b></p>
                     <pre class="text">{{story.text.slice(0, 271)}}...</pre>
-                </div>
-            </div>
-        </div>
-        <div class="category">
-            <div class="cat_title">
-                <h1>Основной сюжет</h1>
-                <hr/>
-            </div>
-            <div class="cat_content">
-                <div class="story">
-                    <h4>Первый</h4>
-                    <p class="reading_time">Время чтения: <b>2 мин.</b></p>
-                    <pre class="text">123123...</pre>
                 </div>
             </div>
         </div>

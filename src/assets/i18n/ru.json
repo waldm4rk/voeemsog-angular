@@ -41,6 +41,12 @@
         "SOON": "СКОРО",
         "ARCHIVE": "Архив"
     },
+    "LITERATURE":{
+        "READINGTIME": "Время чтения",
+        "MINUTES": "мин.",
+        "STORIES": "ИСТОРИИ",
+        "ADDED": "добавлено"
+    },
     "ERROR":{
         "ERROR": "Ошибка",
         "TITLE": "Кажется, вы заблудились...",
