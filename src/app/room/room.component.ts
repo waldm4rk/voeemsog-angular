@@ -50,7 +50,7 @@ export class RoomComponent implements OnInit {
           this.data = response.body || [];
           this.loading = false;
           if(this.data.length == 0){
-            window.location.href = '/';
+            window.location.href = '/error';
             return;
           }
           this.formatText(this.data.at(0)?.description || '');
@@ -58,7 +58,7 @@ export class RoomComponent implements OnInit {
           this.title.setTitle(this.data.at(0)?.code + ": " + this.data.at(0)?.name);
         },
         error: (err) => {
-          window.location.href = '/';
+          window.location.href = '/error';
           this.loading = false;
         },
       });

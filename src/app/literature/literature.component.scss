@@ -63,7 +63,9 @@
       justify-content: flex-start;
       gap: 20px;
       font-family: "Montserrat", sans-serif;
+      counter-reset: number;
       .story {
+        counter-increment: number;
         width: 340px;
         min-width: 280px;
         position: relative;
@@ -94,7 +96,7 @@
         &::before {
           position: absolute;
           right: 30px;
-          content: "1";
+          content: counter(number)"";
           font-size: 200px;
           z-index: 0;
           font-family: "Cormorant Garamond", sans-serif;
@@ -113,6 +115,9 @@
         position: relative;
         z-index: 1;
       }
+    }
+    .category:not(:first-child){
+      margin-top: 80px;
     }
   }
 }
