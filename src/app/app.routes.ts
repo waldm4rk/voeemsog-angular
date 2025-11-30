@@ -7,6 +7,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { LiteratureComponent } from './literature/literature.component';
 import { StoryComponent } from './story/story.component';
+import { AboutComponent } from './about/about.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     {
         path: "story/:id",
         component: StoryComponent
+    },
+    {
+        path: "about",
+        component: AboutComponent
     }
 ];
