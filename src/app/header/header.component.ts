@@ -74,4 +74,13 @@ export class HeaderComponent {
   home(){
     this.router.navigate(['/']);
   }
+  searchRooms(){
+    const inputElement = (document.querySelector('.searchBar input') as HTMLInputElement);
+    const query = inputElement.value.trim();
+    if(query.length > 0){
+      this.router.navigate(['/rooms'], { queryParams: { s: query } });
+      this.isVisibleSearch = false;
+      inputElement.value = '';
+    }
+  }
 }
