@@ -65,8 +65,16 @@ export class NewsComponent {
     this.dataService.getData<Post[]>(`post?${requestParams}`).subscribe({
       next: (response: HttpResponse<Post[]>) => {
 
-        this.posts = response.body ?? [];
         this.loading = false;
+        if(response.body == null) return;
+        this.posts = response.body?.sort((a, b) => {
+        // pinned сначала
+        if (a.pinned && !b.pinned) return -1;
+        if (!a.pinned && b.pinned) return 1;
+
+        // дальше — обычная сортировка по дате, если нужно
+        return new Date(b.postDate).getTime() - new Date(a.postDate).getTime();
+      });
       },
       error: (err) => {
         console.error(`HTTP Error Status Code: ${err.status}`);

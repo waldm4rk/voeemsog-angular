@@ -13,7 +13,7 @@
                 <img *ngIf="post.pinned" src="assets/news/pin.jpg" alt="">
             </h2> 
             <div class="meta">{{post.postDate}}<br/>Теги: {{post.tags.join(', ')}}<br/><a *ngIf="this.isAuthorized" (click)="deletePost(post.id)">X</a></div>
-            <div class="postText"><pre>{{post.text}}</pre></div>
+            <div class="postText" style="white-space: pre;" [innerHTML]="post.text"></div>
         </div>
     </section>
 </div>
