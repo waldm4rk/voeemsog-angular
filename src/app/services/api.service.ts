@@ -37,6 +37,18 @@ export interface Story{
 export interface StringMap {
   [key: string]: string;
 }
+export interface PostCategory{
+  id: string,
+  title: string,
+  lang: string,
+  cat_code: number
+}
+export interface Post{
+  id: string,
+  title: string,
+  text: string,
+  post_date: Date
+}
 @Injectable({
   providedIn: 'root'
 })
