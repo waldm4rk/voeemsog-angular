@@ -7,6 +7,7 @@ import { ArchiveComponent } from './archive/archive.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { LiteratureComponent } from './literature/literature.component';
 import { StoryComponent } from './story/story.component';
+import { AboutComponent } from './about/about.component';
 import { ErrorComponent } from './error/error.component';
 import { AdminChooseComponent } from './admin-choose/admin-choose.component';
 import { NewsComponent } from './news/news.component';
@@ -46,6 +47,10 @@ export const routes: Routes = [
         component: StoryComponent
     },
     {
+        path: "about",
+        component: AboutComponent
+    },
+  {
         path: "error",
         component: ErrorComponent
     },
