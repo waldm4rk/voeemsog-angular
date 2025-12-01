@@ -189,6 +189,7 @@ body {
 
       overflow: hidden;
       .window {
+        border: 2px solid grey;
         position: relative;
         width: 451px;
         height: 451px;
@@ -198,7 +199,7 @@ body {
         background-position: center, center, center;
         background-repeat: no-repeat, no-repeat, no-repeat;
 
-        transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+        transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
 
         display: flex;
         justify-content: flex-end;
@@ -222,6 +223,7 @@ body {
         box-shadow: 0 0 10px rgba(0, 0, 0, 1);
 
         &:hover {
+          border: 2px solid white;
           filter: grayscale(0%);
           transform: scale(1.03);
           box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
@@ -243,7 +245,7 @@ body {
 
     /* Для первого блока: Текст 1 */
     .windowWrap:nth-child(1) .window {
-      background-image: url("/assets/dashed/bigDash.svg"),
+      background-image:
         radial-gradient(
           ellipse at center,
           rgba(0, 0, 0, 0) 0%,
@@ -255,7 +257,7 @@ body {
 
     /* Для второго блока: Текст 2 */
     .windowWrap:nth-child(2) .window {
-      background-image: url("/assets/dashed/bigDash.svg"),
+      background-image:
         radial-gradient(
           ellipse at center,
           rgba(0, 0, 0, 0) 0%,
@@ -267,7 +269,7 @@ body {
 
     /* Для третьего блока: Текст 3 */
     .windowWrap:nth-child(3) .window {
-      background-image: url("/assets/dashed/bigDash.svg"),
+      background-image:
         radial-gradient(
           ellipse at center,
           rgba(0, 0, 0, 0) 0%,
