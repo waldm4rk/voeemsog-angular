@@ -19,6 +19,7 @@ import { AdminService } from 'app/admin.service';
 })
 export class AdminLoginComponent implements OnInit {
   adminPass: string = '';
+  isAuthorized: boolean = false;
   constructor(
     private dataService: ApiService,
     private router: Router,
@@ -37,6 +38,7 @@ export class AdminLoginComponent implements OnInit {
         if (response.status == 401) {
           this.router.navigate(['/']);
         }
+        this.isAuthorized = true;
         return 'aaa';
       },
       error: (err: HttpErrorResponse) => {

@@ -47,7 +47,9 @@ export interface Post{
   id: string,
   title: string,
   text: string,
-  post_date: Date
+  postDate: Date,
+  tags: string[],
+  pinned: boolean
 }
 @Injectable({
   providedIn: 'root'
@@ -79,6 +81,10 @@ export class ApiService {
     headers: { 'Content-Type': 'text/plain' } // обязательно text/plain
   });
 }
+  checkCookie(): Observable<HttpResponse<void>> {
+    const url = `${this.BASE_URL}/admin/check-cookie`;
+    return this.http.get<void>(url, {observe: 'response', withCredentials: true});
+  }
 getNumOfRooms(lang: string): Observable<number> {
   return this.http.get<number>(`${this.BASE_URL}/rooms/num?lang=${lang}`);
 }

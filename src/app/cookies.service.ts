@@ -44,4 +44,7 @@ returnLang(): string {
   this.updateLang();
   return this.cookieService.get('lang');
 }
+getCookie(name: string): string {
+  return this.cookieService.get(name);
+}
 }

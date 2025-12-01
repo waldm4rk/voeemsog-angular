@@ -10,6 +10,7 @@ import { StoryComponent } from './story/story.component';
 import { ErrorComponent } from './error/error.component';
 import { AdminChooseComponent } from './admin-choose/admin-choose.component';
 import { NewsComponent } from './news/news.component';
+import { AdminNewsComponent } from './admin-news/admin-news.component';
 
 export const routes: Routes = [
     {
@@ -56,7 +57,10 @@ export const routes: Routes = [
         path: "news",
         component: NewsComponent
     },
-
+    {
+        path: "admin-news",
+        component: AdminNewsComponent
+    },
 
 
     {path: '**', component: ErrorComponent}

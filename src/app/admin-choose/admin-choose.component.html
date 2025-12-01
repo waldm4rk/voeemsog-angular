@@ -1,1 +1,4 @@
-<p>admin-choose works!</p>
+<div class="wrapper" *ngIf="isAuthorized">
+    <a href="/admin-dashboard">Комнаты</a>
+    <a href="/admin-news">Новости</a>
+</div>
