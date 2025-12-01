@@ -53,6 +53,15 @@
     margin-top: 50px;
     font-family: "Cormorant Garamond", serif !important;
     font-size: 29px;
+
+    .titleWrap{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 30%;
+      gap: 10px;
+    }
+
     h5{
       color: grey;
     }

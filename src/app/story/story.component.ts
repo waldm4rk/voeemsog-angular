@@ -38,7 +38,7 @@ export class StoryComponent {
           }
         },
         error: (err) => {
-          window.location.href = '/error';
+          // window.location.href = '/error';
         },
       });
   }
