@@ -1,4 +1,13 @@
 <div class="wrapper">
+<div class="lamp">
+    <div class="click-point" (click)="toggleLamp($event)"></div>
+    <div class="white" [class.active]="isLampActive"></div>
+    <div class="light" [class.active]="isLampActive">
+        <div class="shape"></div>  
+    </div>
+</div>
+
+
     <h2 class="title">О нас</h2>
     <section class="info">
         <p class="description">
