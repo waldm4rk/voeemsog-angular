@@ -25,4 +25,17 @@ export class AdminService {
       .set('lang', lang);
     return this.http.get<ApiResponse[]>(`${this.baseUrl}/rooms/code/${roomCode}`, { params, withCredentials: true });
   }
+  sendNews(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/post`, data, { withCredentials: true });
+  }
+  deletePost(postId: any): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/post/${postId}`, { withCredentials: true });
+  }
+}
+export interface PostDTO{
+  title: string;
+  text: string;
+  tags: string[];
+  postDate: Date;
+  pinned: boolean;
 }

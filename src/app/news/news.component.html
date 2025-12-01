@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <h2 class="title">Стена обновлений</h2>
+    <div class="categories">
+        <div class="category" class="{{category}}" (click)="addFilter(category)" *ngFor="let category of categories">
+            <div class="checkmark"></div>
+            <span class="categoryName">{{category}}</span>
+        </div>
+    </div>
+    <section class="posts" *ngIf="!loading">
+        <div class="post {{post.tags.join(' ')}} {{post.pinned == true ? 'pinned' : ''}}" *ngFor="let post of this.posts" >
+            <h2 class="postTitle">
+                <span>{{post.title}}</span>
+                <img *ngIf="post.pinned" src="assets/news/pin.jpg" alt="">
+            </h2> 
+            <div class="meta">{{post.postDate}}<br/>Теги: {{post.tags.join(', ')}}<br/><a *ngIf="this.isAuthorized" (click)="deletePost(post.id)">X</a></div>
+            <div class="postText"><pre>{{post.text}}</pre></div>
+        </div>
+    </section>
+</div>

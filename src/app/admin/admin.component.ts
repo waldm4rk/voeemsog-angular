@@ -20,6 +20,7 @@ import { AdminService } from 'app/admin.service';
 export class AdminComponent implements OnInit {
   lang: any;
   uuid: any;
+  isAuthorized: boolean = false;
   constructor(
     private dataService: ApiService,
     private router: Router,
@@ -43,7 +44,18 @@ export class AdminComponent implements OnInit {
   unformatted: string = '';
   paragraphs: paragraph[] = [];
   ngOnInit(): void {
-  }
+  this.dataService.checkCookie().subscribe({
+    next: (response: HttpResponse<void>) => {
+      // Любой успешный ответ → авторизован
+      this.isAuthorized = true;
+    },
+    error: (err: HttpErrorResponse) => {
+      // Любая ошибка (401, 403, 404) → редирект
+      console.error('Unauthorized or error', err);
+      this.router.navigate(['/error']);
+    },
+  });
+}
 
 
   formatText(): void {
