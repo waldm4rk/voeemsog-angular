@@ -100,12 +100,14 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 500px;
-            background: white;
-            filter: blur(150px);
-            opacity: 1;
+            width: 600px;
+            height: 700px;
+            background:
+            radial-gradient(circle, color-mix(in srgb, rgb(153, 183, 190), rgba(255,200,100,0) 50%) 0%, transparent 100%),
+            radial-gradient(circle, color-mix(in srgb, rgb(153, 183, 190), rgba(100,200,255,0) 50%) 0%, transparent 100%);
+            filter: blur(400px);
             z-index: 1;
+            mix-blend-mode: screen;
         }
     }
 }
@@ -117,7 +119,7 @@
         text-transform: uppercase;
         letter-spacing: 15%;
         text-align: center;
-        margin-top: 40px;
+        margin-top: -70px;
     }
     .info{
         display: flex;
@@ -160,12 +162,12 @@
             display: flex;
             flex-direction: row;
             justify-content: center;
-            gap: 200px;
+            gap: 100px;
             margin-top: 90px;
             flex-wrap: wrap;
             .card{
                 padding: 40px 50px;
-                background: rgb(35, 44, 45, 0.5);
+                background: rgb(35, 44, 45, 0.3);
                 min-width: 340px;
                 transition: 0.5s;
                 .name{
@@ -182,7 +184,6 @@
                 }
                 &:hover{
                     transform: scale(1.05);
-                    box-shadow: 0 0 30px rgba(255,255,255,0.7);
                 }
             }
         }
