@@ -47,6 +47,7 @@ body {
       font-weight: 400;
       letter-spacing: 5px;
       font-size: 64px;
+      text-wrap-mode: nowrap;
     }
 
     h3 {
@@ -362,11 +363,11 @@ body {
       flex-direction: row;
       flex-wrap: wrap;
       align-items: flex-start;
-      padding: 0 90px;
+      padding-left: 1cm;
       div{
         flex: 1;
         height: 100%;
-        width: 40vw;
+        width: 100%;
         max-width: 960px;
       }
     }
@@ -818,7 +819,15 @@ footer{
     }
   }
 }
-
+@media (max-width: 370px) {
+  .headSec{
+    .txts{
+      h1{
+        font-size: 23px !important;
+      }
+    }
+  }
+}
 @media (max-width: 350px) {
   .current {
     .wallText {

@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { AdminChooseComponent } from './admin-choose/admin-choose.component';
 import { NewsComponent } from './news/news.component';
 import { AdminNewsComponent } from './admin-news/admin-news.component';
+import { LicenseComponent } from './license/license.component';
 
 export const routes: Routes = [
     {
@@ -65,6 +66,10 @@ export const routes: Routes = [
     {
         path: "admin-news",
         component: AdminNewsComponent
+    },
+    {
+        path: "license",
+        component: LicenseComponent
     },
 
 

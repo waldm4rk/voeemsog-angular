@@ -30,7 +30,8 @@
         "DATEPUB": "Date",
         "PREV": "Previous",
         "PAGE": "Page",
-        "NEXT": "Next"
+        "NEXT": "Next",
+        "ERROR": "No rooms found"
     },
     "ARCHIVE":{
         "REPORTS": "ROOM REPORTS",
@@ -72,6 +73,7 @@
     "FOOTER":{
         "SOCIALS": "Socials",
         "MEMBERS": "Members",
-        "CONTRIBUTORS": "Contributors"
+        "CONTRIBUTORS": "Contributors",
+        "LICENSE": "License"
     }
 }

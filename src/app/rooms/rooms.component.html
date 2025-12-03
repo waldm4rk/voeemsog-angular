@@ -12,7 +12,7 @@
     </div>
     <div class="rooms">
       <div class="table-container">
-        <table class="voeemsog-table">
+        <table class="voeemsog-table" *ngIf="data.length != 0">
           <thead>
             <tr>
               <th>{{'ROOMS.NAME' | translate}}</th>
@@ -34,12 +34,13 @@
             </tr>
           </tbody>
         </table>
+        <h2 *ngIf="data.length == 0">{{'ROOMS.ERROR' | translate}}</h2>
       </div>
       <div class="pages">
         <button class="prev" (click)="prevPage()">{{'ROOMS.PREV' | translate}}</button>
         <div>
           <form (ngSubmit)="goToPage()">
-            {{'ROOMS.PAGE' | translate}} <input type="number" class="pageNumber" value="{{this.page != 0 ? this.page : ''}}" maxlength="2"> / {{this.lastPage}}
+            {{'ROOMS.PAGE' | translate}} <input type="number" class="pageNumber" value="{{data.length == 0 ? '' : this.page}}" maxlength="2"> / {{this.lastPage}}
           </form>
         </div>
         <button class="next" (click)="nextPage()">{{'ROOMS.NEXT' | translate}}</button>

@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
-import {Title} from "@angular/platform-browser";
+import {Meta, Title} from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-room',
@@ -31,7 +31,8 @@ export class RoomsComponent implements OnInit {
     private cookies: CookiesService,
     private title: Title,
     private translateService: TranslateService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private meta: Meta
   ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -52,6 +53,8 @@ export class RoomsComponent implements OnInit {
         this.filterByName();
       }
     });
+    this.meta.updateTag({name: 'description', content:"Main, most popular and canonical type of content in Voeemsog - rooms! Dozens of rooms are right here... just step in."})
+
     }
 
   updateButtonStates(click: boolean): void {
@@ -119,9 +122,6 @@ export class RoomsComponent implements OnInit {
         this.cashedLastPage = this.lastPage;
         this.loading = false;
         this.updateButtonStates(false);
-        if(this.data.length == 0){
-            this.page = 0;
-        }
       },
       error: (err) => {
         console.error(err.status);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { CookiesService } from 'app/cookies.service';
 @Component({
   selector: 'app-archive',
@@ -13,7 +13,8 @@ export class ArchiveComponent {
     private translate: TranslateModule,
     private translateService: TranslateService,
     private title: Title,
-    private cookies: CookiesService
+    private cookies: CookiesService,
+    private meta: Meta
   ) {}
   gotourl(url: string) {
     window.location.href = url;
@@ -22,5 +23,7 @@ export class ArchiveComponent {
     this.translateService.use(this.cookies.returnLang()).subscribe((translations: any) => {
       this.title.setTitle("Voeemsog | " + (translations?.['ARCHIVE']?.['ARCHIVE'] ?? "Archive"));
     });
+    this.meta.updateTag({name: 'description', content:"Archive is a library of canonical content: photos, 3d scenes, videos, music and much-much more is waiting for you!"})
+
   }
 }
