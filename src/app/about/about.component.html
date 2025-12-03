@@ -8,60 +8,54 @@
 </div>
 
 
-    <h2 class="title">О нас</h2>
+    <h2 class="title">{{'HEADER.ABOUT' | translate}}</h2>
     <section class="info">
-        <p class="description">
-            <b>Voeemsog</b>  - это активно развивающийся проект совместного веб-творчества. Не просто сборник историй - это целый мир, готовый стать объектом вашего исследования или основой для вашего творчества.
-            <br/><br/>
-            Наша основа - это параллельное измерение Voeemsog, полное тайн и загадок. Мы даём вам ключ от этой двери. Ваше воображение здесь - главный инструмент.
-            <br/><br/>
-            <b>Ваше творчество может стать каноном.</b> Если ваша работа развивает вселенную и соответствует её духу, с вашего согласия мы официально добавляем её в канон Voeemsog. Пишите, рисуйте, сочиняйте музыку, делайте видео - вы навсегда остаётесь автором, а ваше имя будет упомянуто в истории этого мира.
+        <p class="description" [innerHTML]="'ABOUT.DESCRIPTION' | translate">
         </p>
         <div class="socials">
-            <img src="assets/about/Youtube.svg" alt="">
+            <a href=""><img src="assets/about/Youtube.svg" alt=""></a>
             <img src="assets/about/Reddit.svg" alt="">
             <img src="assets/about/Discord.svg" alt="">
             <img src="assets/about/Tiktok.svg" alt="">
             <img src="assets/about/X.svg" alt="">
         </div>
     </section>
-    <section class="team">
-        <h3>Команда Voeemsog</h3>
+    <section id="team" class="team">
+        <h3>{{'ABOUT.TEAM' | translate}}</h3>
         <div class="cards">
             <div class="card">
                 <h4 class="name">&#64;n_the_great</h4>
                 <ul class="roles">
                     <li class="role">Backend</li>
-                    <li class="role">Литература</li>
-                    <li class="role">Комнаты</li>
-                    <li class="role">Лор</li>
+                    <li class="role">{{'MAIN.LITERATURE' | translate}}</li>
+                    <li class="role">{{'ABOUT.ROOMS' | translate}}</li>
+                    <li class="role">{{'ABOUT.LORE' | translate}}</li>
                 </ul>
             </div>
             <div class="card">
                 <h4 class="name">&#64;artwmbepoppin</h4>
                 <ul class="roles">
-                    <li class="role">Дизайн</li>
-                    <li class="role">Музыка</li>
-                    <li class="role">Комнаты</li>
-                    <li class="role">Лор</li>
+                    <li class="role">{{'ABOUT.DESIGN' | translate}}</li>
+                    <li class="role">{{'ABOUT.MUSIC' | translate}}</li>
+                    <li class="role">{{'ABOUT.ROOMS' | translate}}</li> 
+                    <li class="role">{{'ABOUT.LORE' | translate}}</li>
                 </ul>
             </div>
             <div class="card">
                 <h4 class="name">&#64;Quyx</h4>
                 <ul class="roles">
                     <li class="role">Frontend</li>
-                    <li class="role">Продвижение</li>
-                    <li class="role">Комнаты</li>
-                    <li class="role">Лор</li>
+                    <li class="role">{{'ABOUT.PR' | translate}}</li>
+                    <li class="role">{{'ABOUT.ROOMS' | translate}}</li>
+                    <li class="role">{{'ABOUT.LORE' | translate}}</li>
                 </ul>
             </div>
         </div>
     </section>
     <section class="donate">
-        <h3><a href="https://www.paypal.com/ncp/payment/XZSLYEQ8NVX28">Поддержать проект</a></h3>
+        <h3><a href="https://www.paypal.com/ncp/payment/XZSLYEQ8NVX28">{{'ABOUT.DONATEBUTTON' | translate}}</a></h3>
         <p class="description">
-            Все пожертвования проекту добровольны и не открывают эксклюзивный
-контент — они заполняют шкалу пожертвований, приближая всех читателей к достижению коллективной цели. Когда шкала заполнится, будет опубликован контент, выбранный целью в опросе.
+            {{ 'ABOUT.DONATE' | translate }}    
         </p>
     </section>
 </div>

@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CookiesService } from 'app/cookies.service';
 import { ApiService, Post, PostCategory } from 'app/services/api.service';
 import { NgFor } from '@angular/common';
@@ -7,9 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminService } from 'app/admin.service';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-news',
-  imports: [NgFor, FormsModule, CommonModule],
+  imports: [NgFor, FormsModule, CommonModule, TranslateModule],
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss',
 })
@@ -30,6 +32,8 @@ export class NewsComponent {
     private dataService: ApiService,
     private adminService: AdminService,
     private title: Title,
+    private route: ActivatedRoute,
+    private translate: TranslateModule
   ) {}
   ngOnInit() {
     let title = "Voeemsog | ";
@@ -41,7 +45,6 @@ export class NewsComponent {
       title += "Новости";
     }
     this.title.setTitle(title);
-    console.log(this.langCode);
     this.dataService.checkCookie().subscribe({
       next: (response: HttpResponse<void>) => {
         // Любой успешный ответ → авторизован
@@ -52,7 +55,16 @@ export class NewsComponent {
         console.error('Unauthorized or error', err);
       },
     });
+    
     this.fetchCategories();
+  }
+  ngAfterViewInit() {
+  setTimeout(() => {
+    const section = Number(this.route.snapshot.queryParamMap.get('tag'));
+    if (section && !isNaN(section)) {
+      this.addFilter(this.categories[section]);
+    }
+  });
   }
 
   fetchPosts(): void {
@@ -122,28 +134,38 @@ export class NewsComponent {
     }
     this.fetchPosts();
   }
-  filter() {
-    const posts = Array.from(
-      document.getElementsByClassName('post')
-    ) as HTMLElement[];
+  // filter() {
+  //   const posts = Array.from(
+  //     document.getElementsByClassName('post')
+  //   ) as HTMLElement[];
+  //   if (this.filterCat.length === 0) {
+  //     // Если ни одной категории не выбрано — показываем все посты
+  //     posts.forEach((el) => (el.style.display = ''));
+  //     return;
+  //   }
+
+  //   for (let el of posts) {
+  //     // Проверяем, есть ли у элемента хотя бы один класс из filterCat
+  //     const matches = this.filterCat.some((cat) => el.classList.contains(cat));
+
+  //     if (matches) {
+  //       el.style.display = ''; // Показываем
+  //     } else {
+  //         el.style.display = 'none'; // Скрываем
+  //     }
+  //   }
+  // }
+  get filter(): Post[] {
     if (this.filterCat.length === 0) {
-      // Если ни одной категории не выбрано — показываем все посты
-      posts.forEach((el) => (el.style.display = ''));
-      return;
+      return this.posts; // show all
     }
 
-    for (let el of posts) {
-      // Проверяем, есть ли у элемента хотя бы один класс из filterCat
-      const matches = this.filterCat.some((cat) => el.classList.contains(cat));
-
-      if (matches) {
-        el.style.display = ''; // Показываем
-      } else {
-          el.style.display = 'none'; // Скрываем
-      }
-    }
+    return this.posts.filter(post =>
+      this.filterCat.some(cat =>
+        post.tags?.includes(cat)
+      )
+    );
   }
-
   addFilter(category: string) {
     const index = this.filterCat.indexOf(category);
 
@@ -153,9 +175,11 @@ export class NewsComponent {
     } else {
       // Категории нет — добавляем
       this.filterCat.push(category);
+      console.log(this.filterCat);
     }
-    document.getElementsByClassName(category)[0].classList.toggle('active');
-    this.filter(); // Применяем фильтр
+    console.log(this.filterCat);
+    console.log(category);
+    document.getElementsByClassName(category)[0]?.classList.toggle('active');
   }
   deletePost(postId: string) {
     this.adminService.deletePost(postId).subscribe({

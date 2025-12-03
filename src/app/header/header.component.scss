@@ -49,6 +49,7 @@ header {
   left: 0;
   z-index: 1000;
   transition: top 0.5s ease-in-out;
+  text-transform: uppercase;
 }
 
 .overlay {
@@ -109,12 +110,13 @@ header {
       font-size: 1rem;
       background-color: rgba(0, 0, 0, 0.297);
       border: 2px solid white;
-      width: 60vw;
+      width: calc(60vw - 80px);
       height: 50px;
       border-radius: 18px;
       color: white;
       outline: none;
       padding-left: 15px;
+      padding-right: 80px;
     }
     .icon {
       position: absolute;
@@ -360,7 +362,7 @@ header {
   .navCont{
     .searchBar{
       input{
-        width: 87vw;
+        width: calc(87vw - 80px);
         height: 60px;
         font-size: 20px;
         border-radius: 20px;

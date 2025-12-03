@@ -123,6 +123,7 @@ body {
     }
   }
   .wallText {
+    bottom: 0;
     color: white;
     text-align: center;
     font-size: 28px;
@@ -175,11 +176,11 @@ body {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 550px;
-      height: 550px;
+      width: 400px;
+      height: fit-content;
       padding: 20px;
       .windowTitle {
-        margin-bottom: 15px;
+        line-height: 50px;
         font-size: 28px;
         font-weight: 300;
         color: white;
@@ -191,8 +192,7 @@ body {
       .window {
         border: 2px solid grey;
         position: relative;
-        width: 451px;
-        height: 451px;
+        width: 351px;
         aspect-ratio: 1 / 1;
         overflow: hidden;
         background-size: cover, 100% 100%, 100% 100%;
@@ -387,7 +387,7 @@ body {
       p {
         color: white;
         font-size: 20px;
-        width: 100%;
+        width: 80%;
         padding-right: 20px;
         font-weight: 200;
         line-height: 42px;

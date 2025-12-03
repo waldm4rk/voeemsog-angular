@@ -57,7 +57,6 @@ export interface Post{
 export class ApiService {
   // 🔑 Базовый URL для всех API запросов
   private readonly BASE_URL = 'http://localhost:8080';
-
   constructor(private http: HttpClient) { }
 
   /**
