@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { CookiesService } from 'app/cookies.service';
 import { ApiService, StoryCategory } from 'app/services/api.service';
 import { Story } from 'app/services/api.service';
@@ -22,7 +22,8 @@ export class LiteratureComponent {
     private cookies: CookiesService,
     private title: Title,
     private service: ApiService,
-    private router: Router
+    private router: Router,
+    private meta: Meta
   ) {}
   stories = new Map<string, Story[]>;
   langCode = "en_US";
@@ -31,6 +32,8 @@ export class LiteratureComponent {
       this.title.setTitle("Voeemsog | " + (translations?.['MAIN']?.['LITERATURE'] ?? "Literature"));
     });
     this.fetchData();
+  this.meta.updateTag({name: 'description', content:"Voeemsog books and short stories are here absolutely for free!"})
+
   }
   fetchData(){
     this.fetchCategories();

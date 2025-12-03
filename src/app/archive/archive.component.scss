@@ -99,13 +99,18 @@
             }
     }
     .soon{
+        h1{
+            color: rgba(255, 255, 255, 0.314);
+            transition: 0.5s;
+        }
         h2{
             transition: 0.5s;
             z-index: 99;
             color: rgba(255, 255, 255, 0.314);
         }
         &:hover{
-            h2{
+            cursor: default !important;
+            h2, h1{
                 transform: scale(1.1);
                 color: white;
             }

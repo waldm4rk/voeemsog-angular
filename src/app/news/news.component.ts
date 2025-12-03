@@ -6,7 +6,7 @@ import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AdminService } from 'app/admin.service';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 @Component({
@@ -33,7 +33,8 @@ export class NewsComponent {
     private adminService: AdminService,
     private title: Title,
     private route: ActivatedRoute,
-    private translate: TranslateModule
+    private translate: TranslateModule,
+    private meta: Meta
   ) {}
   ngOnInit() {
     let title = "Voeemsog | ";
@@ -55,7 +56,8 @@ export class NewsComponent {
         console.error('Unauthorized or error', err);
       },
     });
-    
+    this.meta.updateTag({name: 'description', content:"What's new in Voeemsog? Come in and check: dozens of new rooms, new short stories, even new music!"})
+
     this.fetchCategories();
   }
   ngAfterViewInit() {

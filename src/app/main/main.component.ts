@@ -2,7 +2,7 @@ import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/cor
 
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -14,11 +14,12 @@ export class MainComponent implements AfterViewInit {
   showScrollButton = false;
 window: any;
 
-  constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title) {}
+  constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title, private meta: Meta) {}
 
   ngOnInit(): void {
     this.cookies.updateLang();
     this.title.setTitle("Voeemsog");
+    this.meta.updateTag({name: 'description', content:'Welcome to Voeemsog dimension! Dive in unique horror experience right now!'})
   }
 
   @HostListener('window:scroll', [])

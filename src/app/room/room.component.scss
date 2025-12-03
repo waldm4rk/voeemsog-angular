@@ -60,10 +60,12 @@
       }
     }
     .seal {
+      pointer-events: none;
       img {
         width: 100%;
         height: auto;
         mix-blend-mode: darken;
+        pointer-events: none;
       }
     }
   }

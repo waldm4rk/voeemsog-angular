@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,9 +26,10 @@ setLanguage(lang: string) {
         lang,
         { path: '/', sameSite: 'Lax' }  // <-- ВАЖНО
       );
-  if(window.location.href.includes('/room') || window.location.href.includes('/rooms') || window.location.href.includes('/literature') || window.location.href.includes('/story')){
-    window.location.reload();
-  }
+  // if(window.location.href.includes('/room') || window.location.href.includes('/rooms') || window.location.href.includes('/literature') || window.location.href.includes('/story') || window.location.href.includes('license')){
+  //   window.location.reload();
+  // }
+  window.location.reload();
   this.translate.use(lang);
 }
 updateLang(){
