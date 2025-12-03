@@ -66,6 +66,9 @@
         "DONATE": "All donations to the project are voluntary and do not unlock exclusive content - they fill up the donation scale, bringing all readers closer to achieving the collective goal. When the scale is full, the content selected as the goal in the poll will be published.",
         "DONATEBUTTON": "Support the project"
     },
+    "NEWS":{
+        "TAGS": "Tags"
+    },
     "FOOTER":{
         "SOCIALS": "Socials",
         "MEMBERS": "Members",

@@ -4,6 +4,7 @@ import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
 @Component({
   selector: 'app-header',
@@ -17,33 +18,74 @@ export class HeaderComponent {
   headerTop = '0';
   isVisibleSearch = false;
   isBurgerOpen = false;
+  
+  // Сделаем эти значения реактивными
+  currentLangIndex = 0;
+  langs = ['English', 'Русский'];
+  cookieLang = ['en', 'ru'];
+  
+  // Это будет отображаться в шаблоне напрямую
+  currentLang = 'English';
 
-  constructor(private router: Router, private cookies: CookiesService, private translate: TranslateModule) {}
+  constructor(
+    private router: Router,
+    private cookies: CookiesService,
+    private translate: TranslateService  // ← важно: инжекти правильно!
+  ) {}
 
   ngOnInit(): void {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      this.isVisibleSearch = false;
-      this.isBurgerOpen = false;
+      this.closeAll();
     });
 
-    this.cookies.updateLang();
+    // Правильно получаем язык из куки
+    const savedLang = this.cookies.returnLang();
+    this.currentLangIndex = this.cookieLang.indexOf(savedLang);
+    if (this.currentLangIndex === -1) this.currentLangIndex = 0;
+
+    this.currentLang = this.langs[this.currentLangIndex];
+
+    // Устанавливаем язык в ngx-translate
+    this.translate.use(this.cookieLang[this.currentLangIndex]);
+
+    this.cookies.updateLang(); 
   }
+
+  // УБИРАЕМ ngAfterViewInit полностью! Он больше не нужен
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
     let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-    if (currentScroll > this.lastScrollTop && currentScroll > 0) {
+    if (currentScroll > this.lastScrollTop && currentScroll > 100) {
       this.headerTop = '-16vh';
-    } else if (currentScroll === 0) {
+    } else if (currentScroll <= 100) {
       this.headerTop = '0';
     }
 
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   }
 
+  prevLang() {
+    this.currentLangIndex = (this.currentLangIndex - 1 + this.langs.length) % this.langs.length;
+    this.updateLanguage();
+  }
+
+  nextLang() {
+    this.currentLangIndex = (this.currentLangIndex + 1) % this.langs.length;
+    this.updateLanguage();
+  }
+
+  private updateLanguage() {
+    this.currentLang = this.langs[this.currentLangIndex];
+    const langCode = this.cookieLang[this.currentLangIndex];
+    this.cookies.setLanguage(langCode);
+    this.translate.use(langCode);  // ← важно!
+  }
+
+  // остальные методы без изменений...
   toggleSearch(event: Event) {
     event.stopPropagation();
     this.isVisibleSearch = !this.isVisibleSearch;
@@ -53,12 +95,7 @@ export class HeaderComponent {
   toggleBurger() {
     this.isBurgerOpen = !this.isBurgerOpen;
     this.isVisibleSearch = false;
-    
-    if (this.isBurgerOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = this.isBurgerOpen ? 'hidden' : '';
   }
 
   closeMenu() {
@@ -69,18 +106,24 @@ export class HeaderComponent {
   closeAll() {
     this.isBurgerOpen = false;
     this.isVisibleSearch = false;
-    document.body.style.overflow = ''; 
+    document.body.style.overflow = '';
   }
-  home(){
+
+  home() {
     this.router.navigate(['/']);
   }
-  searchRooms(){
-    const inputElement = (document.querySelector('.searchBar input') as HTMLInputElement);
-    const query = inputElement.value.trim();
-    if(query.length > 0){
+
+  redirect(endpoint: string) {
+    this.router.navigate([endpoint]);
+  }
+
+  searchRooms() {
+    const inputElement = document.querySelector('.searchBar input') as HTMLInputElement;
+    const query = inputElement?.value.trim();
+    if (query && query.length > 0) {
       this.router.navigate(['/rooms'], { queryParams: { s: query } });
       this.isVisibleSearch = false;
-      inputElement.value = '';
+      if (inputElement) inputElement.value = '';
     }
   }
 }

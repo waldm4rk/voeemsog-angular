@@ -43,14 +43,14 @@ export class StoryComponent {
       });
   }
 
- @HostListener('window:scroll', [])
-  onScroll() {
-    const speed = -0.3; // скорость параллакса одинаковая для всех
-    const cubes = document.querySelectorAll<HTMLElement>('.cube');
+//  @HostListener('window:scroll', [])
+//   onScroll() {
+//     const speed = -0.3; // скорость параллакса одинаковая для всех
+//     const cubes = document.querySelectorAll<HTMLElement>('.cube');
 
-    cubes.forEach(cube => {
-      cube.style.top = `${window.scrollY * speed}px`;
-    });
-  }
+//     cubes.forEach(cube => {
+//       cube.style.top = `${window.scrollY * speed}px`;
+//     });
+//   }
 
 }

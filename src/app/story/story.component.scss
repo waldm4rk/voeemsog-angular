@@ -1,14 +1,14 @@
 .main {
-  position: relative; // для z-index фонового слоя
+  position: relative;
   height: auto;
-  min-height: 120vh;  // чтобы был скролл
+  min-height: 120vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
     .title {
-    padding-top: 200px;
+    padding-top: 150px;
     color: white;
     width: 100%;
     display: flex;
@@ -70,6 +70,7 @@
       font-size: 20px;
       line-height: 1.6;
       margin: 50px 0;
+      padding: 0 20px;
       pre{
         white-space: pre-wrap;   /* сохраняет переносы и пробелы, но добавляет авто-перенос */
         word-wrap: break-word;
@@ -143,7 +144,32 @@
     pointer-events: none;
   }
 }
-
-
-
+}
+@media (max-width: 576px){
+  .storyTitle{
+    h2{
+      font-size: 40px;
+    }
+  }
+}
+@media (max-width: 520px){
+  .storyTitle{
+    h2{
+      font-size: 35px;
+    }
+  }
+}
+@media (max-width: 470px){
+  .storyTitle{
+    h2{
+      font-size: 30px;
+    }
+  }
+}
+@media (max-width: 400px){
+  .storyTitle{
+    h2{
+      font-size: 27px;
+    }
+  }
 }

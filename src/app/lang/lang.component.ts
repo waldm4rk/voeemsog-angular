@@ -14,16 +14,20 @@ export class LangComponent {
   // навешиваем слушатель после инициализации вью
   ngAfterViewInit(): void {
     document.addEventListener('click', this.handleClickOutside);
-    const lang = this.cookies.returnLang();
-    const langs = document.getElementsByClassName('lang');
-    for (let i = 0; i < langs.length; i++) {
-      langs[i].innerHTML = langs[i].innerHTML.replace('✔ ', '');
-    }
-    document.getElementById(lang)?.insertAdjacentHTML('afterbegin', '✔ ');
+    this.handleIcon();
   }
 
   ngOnDestroy(): void {
     document.removeEventListener('click', this.handleClickOutside);
+  }
+
+  handleIcon(){
+    const langs = document.getElementsByClassName('lang');
+    for (let i = 0; i < langs.length; i++) {
+      langs[i].innerHTML = langs[i].innerHTML.replace('✔ ', '');
+    }
+    const lang = this.cookies.returnLang();
+    document.getElementById(lang)?.insertAdjacentHTML('afterbegin', '✔ ');
   }
 
   openMenu(): void {
@@ -55,6 +59,6 @@ export class LangComponent {
 
   setLang(lang: string): void {
     this.cookies.setLanguage(lang);
-    location.reload();
+    this.handleIcon();
   }
 }

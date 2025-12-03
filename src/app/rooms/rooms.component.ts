@@ -55,7 +55,6 @@ export class RoomsComponent implements OnInit {
     }
 
   updateButtonStates(click: boolean): void {
-    console.log(this.page + ' / ' + this.lastPage);
     if (this.page == 1) {
       (
         document.getElementsByClassName('prev')[0] as HTMLButtonElement
@@ -83,6 +82,7 @@ export class RoomsComponent implements OnInit {
     this.loading = true;
 
     // 📞 Вызываем функцию сервиса, передавая нужный эндпоинт
+    this.page = Math.max(this.page, 1);
     this.dataService
       .getData<ApiResponse[]>(`rooms/page/${this.page}?lang=${this.langCode}`)
       .subscribe({
@@ -117,9 +117,11 @@ export class RoomsComponent implements OnInit {
       next: (count: number) => {
         this.lastPage = count || 0;
         this.cashedLastPage = this.lastPage;
-        console.log(count, this.lastPage);
         this.loading = false;
         this.updateButtonStates(false);
+        if(this.data.length == 0){
+            this.page = 0;
+        }
       },
       error: (err) => {
         console.error(err.status);

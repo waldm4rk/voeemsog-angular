@@ -27,6 +27,9 @@ setLanguage(lang: string) {
         lang,
         { path: '/', sameSite: 'Lax' }  // <-- ВАЖНО
       );
+  if(window.location.href.includes('/room') || window.location.href.includes('/rooms') || window.location.href.includes('/literature') || window.location.href.includes('/story')){
+    window.location.reload();
+  }
   this.translate.use(lang);
 }
 updateLang(){
