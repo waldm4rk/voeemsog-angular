@@ -26,6 +26,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: -5px;
     h1 {
       font-size: 56px;
       font-weight: 300;
@@ -169,6 +170,15 @@ html {
           background: none;
           border: none;
           color: white;
+          transition: text-shadow 0.3s ease-in-out;
+
+            &:hover:not(:disabled) {
+              text-shadow: 
+                0 0 8px rgba(255, 255, 255, 0.6),
+                0 0 16px rgba(255, 255, 255, 0.4),
+                0 0 24px rgba(255, 255, 255, 0.2);
+            }
+          
           &:disabled{
             color: gray;
             cursor: default;
