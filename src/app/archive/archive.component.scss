@@ -1,6 +1,5 @@
 .archMain{
-    padding-top: 15vh;
-    min-height: 120vh;
+    padding-top: 150px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("assets/rooms/bg.jpg");
     background-size: cover;
@@ -99,7 +98,19 @@
                 }
             }
     }
-    
+    .soon{
+        h2{
+            transition: 0.5s;
+            z-index: 99;
+            color: rgba(255, 255, 255, 0.314);
+        }
+        &:hover{
+            h2{
+                transform: scale(1.1);
+                color: white;
+            }
+        }
+    }
     .title {
         width: 100%;
         display: flex;

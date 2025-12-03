@@ -38,3 +38,8 @@ img{
 .active{
     display: block !important;
 }
+@media (max-width: 730px){
+    .wrapper{
+        display: none;
+    }
+}

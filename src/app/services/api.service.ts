@@ -67,7 +67,6 @@ export class ApiService {
    */
   getData<T>(endpoint: string): Observable<HttpResponse<T>> {
     const url = `${this.BASE_URL}/${endpoint}`;
-    console.log(`Отправка GET-запроса на: ${url}`);
     
     // 🚀 Используем метод .get() из HttpClient
     // <T> позволяет типизировать возвращаемые данные

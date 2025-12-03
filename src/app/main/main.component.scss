@@ -226,7 +226,7 @@ body {
           border: 2px solid white;
           filter: grayscale(0%);
           transform: scale(1.03);
-          box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
           cursor: pointer;
         }
         .windowWrap &:hover {
@@ -565,6 +565,9 @@ footer{
         align-items: center;
         div{
           width: 100%;
+          p{
+            width: 100%;
+          }
         }
       }
     }
@@ -611,6 +614,13 @@ footer{
       h1 {
         font-size: 25px;
       }
+      .flexWrap{
+        div{
+          p{
+            font-size: 20px;
+          }
+        }
+      }
     }
   }
 
@@ -655,6 +665,23 @@ footer{
       .archiveLink{
         justify-content: center;
         margin-left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 690px){
+  .info{
+    .infoWrap{
+      h1{
+        font-size: 22px;
+      }
+      .flexWrap{
+        div{
+          p{
+            font-size: 18px;
+          }
+        }
       }
     }
   }
@@ -737,15 +764,16 @@ footer{
   .headSec {
     .txts {
       font-weight: 800;
+      height: 20%;
       h1,
       h3 {
         font-weight: 600;
       }
       h1 {
-        font-size: 24px;
+        font-size: 30px;
       }
       h3 {
-        font-size: 15px;
+        font-size: 17px;
       }
     }
   }
