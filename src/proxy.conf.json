@@ -1,0 +1,7 @@
+{
+    "/api": {
+    "target": "https://mz7uwphrhe39.share.zrok.io",
+    "secure": false,
+    "changeOrigin": true 
+    }
+}

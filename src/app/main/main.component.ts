@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 export class MainComponent implements AfterViewInit {
 
   showScrollButton = false;
+window: any;
 
   constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title) {}
 
@@ -55,5 +56,8 @@ export class MainComponent implements AfterViewInit {
         tooltip.style.opacity = '0';
       });
     });
+  }
+  redirectToNews(section: number) {
+    window.location.href = `/news?tag=${section}`;
   }
 }

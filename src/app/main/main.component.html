@@ -17,15 +17,15 @@
   <div class="curText"><h1>{{'MAIN.ACTUAL' | translate}}</h1></div>
   <div class="winDiv">
 
-    <div class="windowWrap">
-      <p class="windowTitle">{{'MAIN.MEDIA' | translate}}</p>
+    <div class="windowWrap" (click)="redirectToNews(3)">
+      <p class="windowTitle">{{'MAIN.COMMUNITY' | translate}}</p>
       <div class="window">
         <h2>Ехала</h2>
         <h3>Здарова шашлык</h3>
       </div>
     </div>
 
-    <div class="windowWrap">
+    <div class="windowWrap" (click)="redirectToNews(1)">
       <p class="windowTitle">{{'MAIN.LITERATURE' | translate}}</p>
       <div class="window">
         <h2>Гоглик нефор</h2>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="windowWrap">
+    <div class="windowWrap" (click)="redirectToNews(2)">
       <p class="windowTitle">{{'MAIN.ROOMS' | translate}}</p>
       <div class="window">
         <h2>AU-123-TIST</h2>

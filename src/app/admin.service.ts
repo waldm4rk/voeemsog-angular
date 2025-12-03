@@ -10,7 +10,6 @@ import { ApiResponse } from './services/api.service';
 export class AdminService {
 
   private baseUrl = 'http://localhost:8080'; // твой API
-
   constructor(private http: HttpClient) {}
 
   sendRoom(data: any): Observable<any> {

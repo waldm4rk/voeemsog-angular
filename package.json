@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "watch:sass": "sass --watch scss:css"
+    "watch:sass": "sass --watch scss:css",
+    "build:pages": "ng build --configuration production --base-href /voeemsog-angular/"
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "@angular/cli": "^19.2.5",
     "@angular/compiler-cli": "^19.2.16",
     "@types/jasmine": "~5.1.0",
+    "angular-cli-ghpages": "^2.0.3",
     "jasmine-core": "~5.6.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
