@@ -26,6 +26,7 @@
         justify-content: center;
         flex-wrap: wrap;
         margin-top: 37px;
+        padding: 0 15px;
         gap: 15px;
         .category{
             position: relative;
@@ -90,7 +91,9 @@
         }
     }
     .posts{
-        width: 100%;
+        width: 80%;
+        margin-left: 50%;
+        transform: translateX(-50%);
         margin-top: 50px;
         display: flex;
         flex-direction: column;
@@ -98,10 +101,10 @@
         gap: 25px;
         .post{
             position: relative;
-            width: 80%;
             height: fit-content;
             background-color: white;
             padding: 30px 50px;
+            max-width: 980px;
             .postTitle{
                 font-size: 28px;
                 margin-bottom: 28px;
@@ -115,14 +118,7 @@
             }
             .postText{
                 width: 100%;
-                pre{
-                    white-space: pre-wrap;
-                    word-wrap: break-word;
-                    font-family: 'Montserrat', sans-serif !important;
-                    font-size: 15px;
-                    font-weight: 500;
-                    line-height: 17px;
-                }
+                height: fit-content;
             }
             .meta{
                 position: absolute;
@@ -150,10 +146,37 @@
         }
     }
 }
+@media (max-width: 660px){
+    .wrapper{
+        .posts{
+            .post{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                .postTitle{
+                    margin-bottom: 5px;
+                }
+                .meta{
+                    position: relative;
+                    top: 0;
+                    right: 0;
+                    text-align: left;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+}
 @media (max-width: 490px){
     .wrapper{
         .title{
             font-size: 35px;
+        }
+        .posts{
+            width: calc(100% - 20px);
+            .post{
+                padding: 20px !important;
+            }
         }
     }
 }
