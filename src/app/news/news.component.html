@@ -6,8 +6,7 @@
             <span class="categoryName">{{category}}</span>
         </div>
     </div>
-    <!-- *ngIf="!loading" -->
-    <section class="posts">
+    <section class="posts" *ngIf="!loading">
         <div class="post #post {{post.tags.join(' ')}} {{post.pinned == true ? 'pinned' : ''}}" *ngFor="let post of filter" >
             <h2 class="postTitle">
                 <span>{{post.title}}</span>
@@ -15,14 +14,6 @@
             </h2> 
             <div class="meta">{{post.postDate}}<br/>{{'NEWS.TAGS' | translate}}: {{post.tags.join(', ')}}<br/><a *ngIf="this.isAuthorized" (click)="deletePost(post.id)">X</a></div>
             <div class="postText" style="white-space: pre;" [innerHTML]="post.text"></div>
-        </div>
-        <div class="post #post">
-            <h2 class="postTitle">
-                <span>Пост 123</span>
-                <img src="assets/news/pin.jpg" alt="">
-            </h2> 
-            <div class="meta">12.12.2025<br/>{{'NEWS.TAGS' | translate}}: Литература, Публикация<br/><a *ngIf="this.isAuthorized" (click)="deletePost('a')">X</a></div>
-            <div class="postText" style="white-space: pre-wrap;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium temporibus officiis vel doloribus consequuntur! Amet neque iste quaerat voluptatem quisquam sed pariatur, impedit quam fuga illum aliquam laboriosam sunt iure.</div>
         </div>
     </section>
 </div>
