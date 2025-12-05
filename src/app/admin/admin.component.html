@@ -10,9 +10,14 @@
                 <input [(ngModel)]="room.lightLevel" type="text" name="lightLevel" placeholder="Свет (число)">
             </div>
             <textarea name="text" id="descr" [(ngModel)]="roomTranslation.description" rows="40" placeholder="Текст" cols="100" id=""></textarea>
-            <select [(ngModel)]="roomTranslation.lang" name="lang" id="lang">
-                <option value="en_US">en_US</option>
-                <option value="ru_RU">ru_RU</option>
+            <select [(ngModel)]="roomTranslation.lang"  name="lang" id="lang">
+                <option *ngIf="roomTranslation.lang == 'en_US'" selected="selected" value="en_US">en_US</option>
+                <option *ngIf="roomTranslation.lang == 'en_US'" value="ru_RU">ru_RU</option>
+                <option *ngIf="roomTranslation.lang == 'ru_RU'" selected="selected" value="ru_RU">ru_RU</option>
+                <option *ngIf="roomTranslation.lang == 'ru_RU'" value="en_US">en_US</option>
+
+                <option *ngIf="roomTranslation.lang != 'ru_RU' && roomTranslation.lang != 'en_US'" value="en_US">en_US</option>
+                <option *ngIf="roomTranslation.lang != 'ru_RU' && roomTranslation.lang != 'en_US'" value="ru_RU">ru_RU</option>
             </select>
             <button type="submit">Проверить</button>
         </form>
@@ -25,7 +30,7 @@
                 <div class="name">{{roomTranslation.name}}</div>
             </div>
         </div>
-        <div class="content">
+        <div class="content" *ngIf="paragraphs.length">
             <div class="containerWrap" *ngFor="let paragraph of paragraphs">
                 <div class="container" *ngIf="paragraph.reverse == false">
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) != 'INFO'">
@@ -36,9 +41,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/danger.svg">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/light.svg">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/floor.svg">
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -53,9 +58,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/danger.svg">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/light.svg">
-                        <img style="max-width: 80px; aspect-ratio: 1/1;" src="assets/room/floor.svg">
+                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         
@@ -81,14 +86,6 @@
                 <span class="text">
                 </span>
             </div> -->
-        </div>
-        <div class="footer">
-            <img src="assets/room/footer line.png">
-            <div class="footerText">
-                <a href="#">Back</a>
-                <span>Page <input type="text" pattern="^[0-9]*$"> / 2</span>
-                <a href="#">Next page ></a>
-            </div>
         </div>
     </div>
     

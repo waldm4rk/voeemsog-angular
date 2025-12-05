@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService, ApiResponse } from '../services/api.service';
 import { Subscription } from 'rxjs';
 import { CommonModule, getLocaleDateFormat } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CookiesService } from 'app/cookies.service';
 import {
   HttpClient,
   HttpResponse,
@@ -24,7 +25,9 @@ export class AdminComponent implements OnInit {
   constructor(
     private dataService: ApiService,
     private router: Router,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private route: ActivatedRoute,
+    private cookies: CookiesService
   ) {}
   loading: boolean = false;
   room: room = {
@@ -55,22 +58,33 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['/error']);
     },
   });
+  this.room.code = this.route.snapshot.queryParamMap.get('code') || '';
+  this.room.floor = Number(this.route.snapshot.queryParamMap.get('floor') || 0);
+  this.room.dangerType = Number(this.route.snapshot.queryParamMap.get('danger') || 0);
+  this.room.size = this.route.snapshot.queryParamMap.get('size') || '';
+  this.room.color = this.route.snapshot.queryParamMap.get('color') || '';
+  this.room.lightLevel = Number(this.route.snapshot.queryParamMap.get('light') || 0);
+  this.roomTranslation.lang = this.route.snapshot.queryParamMap.get('lang') || 'en_US';
+  this.roomTranslation.name = this.route.snapshot.queryParamMap.get('name') || '';
+  this.roomTranslation.description = this.route.snapshot.queryParamMap.get('description') || '';
 }
 
 
   formatText(): void {
     let formatted = this.roomTranslation.description;
-    this.adminService.getRoomByCode(this.roomTranslation.lang, this.room.code).subscribe({
-      next: (response: ApiResponse[]) => {
-        
-        console.log("BODY =", response);
-        // Cast response.body to any (or the correct type) before accessing .description to avoid the compile error
-        this.roomTranslation.description = response[0].description || '';
-      },
-      error: (err: HttpErrorResponse) => {
-        console.log(err);
-      },
-    });
+    if(this.roomTranslation.description.length == 0){
+      this.adminService.getRoomByCode(this.roomTranslation.lang, this.room.code).subscribe({
+        next: (response: ApiResponse[]) => {
+          
+          console.log("BODY =", response);
+          // Cast response.body to any (or the correct type) before accessing .description to avoid the compile error
+          this.roomTranslation.description = response[0].description || '';
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        },
+      });
+    }
     // жирный: *текст*
     formatted = formatted.replace(
       /(?<!\*)\*([^*]+)\*(?!\*)/g,
@@ -153,12 +167,14 @@ export class AdminComponent implements OnInit {
     // });
   }
   submitRoom(): void {
+    if(!confirm("Опубликовать комнату?")) return;
     this.adminService.sendRoom(this.room).subscribe({
       next: (res) => console.log('OK', res),
       error: (err) => console.error('Error', err),
     });
   }
   submitTranslation(): void {
+    if(!confirm("Опубликовать перевод?")) return;
     this.dataService
       .getData<string>('rooms/code/uuid/' + this.room.code)
       .subscribe({
