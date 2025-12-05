@@ -30,6 +30,10 @@ export class AdminService {
   deletePost(postId: any): Observable<any> {
     return this.http.delete(`${this.baseUrl}/post/${postId}`, { withCredentials: true });
   }
+  deleteRoom(code: string): Observable<any>{
+    console.log("deleted");
+    return this.http.delete(`${this.baseUrl}/admin/room/code/${code}`, {withCredentials: true});
+  }
 }
 export interface PostDTO{
   title: string;

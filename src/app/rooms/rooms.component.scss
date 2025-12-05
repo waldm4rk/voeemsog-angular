@@ -124,6 +124,13 @@ html {
               padding: 10px;
               background: transparent;
             }
+            .adminLinks{
+              cursor: default;
+              a:first-child{
+                margin-right: 20px;
+                cursor: pointer;
+              }
+            }
           }
           td:first-child{
             min-width: 280px;
