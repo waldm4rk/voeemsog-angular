@@ -31,6 +31,19 @@
               <td>{{ room.lightLevel }} / 5</td>
               <td>{{ room.floor }}</td>
               <td>{{ room.date }}</td>
+              <td *ngIf="isAuthorized" class="adminLinks"><a (click)='deleteRoom($event, room.code)'>❌</a><a [routerLink]="['/admin-dashboard']"
+   [queryParams]="{
+     code: room.code,
+     name: room.name,
+     description: room.description,
+     danger: room.dangerType,
+     light: room.lightLevel,
+     floor: room.floor,
+     date: room.date,
+     size: room.size,
+     color: room.color,
+     lang: this.langCode
+   }">📝</a></td>
             </tr>
           </tbody>
         </table>

@@ -4,11 +4,12 @@ import { of, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
 import {Meta, Title} from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
+import { AdminService } from 'app/admin.service';
 @Component({
   selector: 'app-room',
   templateUrl: './rooms.component.html',
@@ -24,6 +25,7 @@ export class RoomsComponent implements OnInit {
   page: number = 1;
   lastPage: number = 999999;
   cashedLastPage: number = -1;
+  isAuthorized: boolean = false;
   constructor(
     private dataService: ApiService,
     private router: Router,
@@ -32,7 +34,8 @@ export class RoomsComponent implements OnInit {
     private title: Title,
     private translateService: TranslateService,
     private route: ActivatedRoute,
-    private meta: Meta
+    private meta: Meta,
+    private adminService: AdminService
   ) {}
   ngOnInit(): void {
     // Вызов при инициализации (или по событию, как в fetchUserData)
@@ -54,7 +57,14 @@ export class RoomsComponent implements OnInit {
       }
     });
     this.meta.updateTag({name: 'description', content:"Main, most popular and canonical type of content in Voeemsog - rooms! Dozens of rooms are right here... just step in."})
-
+    this.dataService.checkCookie().subscribe({
+      next: (response: HttpResponse<void>) => {
+        // Любой успешный ответ → авторизован
+        this.isAuthorized = true;
+      },
+      error: (err: HttpErrorResponse) => {
+      },
+    });
     }
 
   updateButtonStates(click: boolean): void {
@@ -159,7 +169,9 @@ export class RoomsComponent implements OnInit {
   }
 
   redirectToPage(code: string): void {
-    this.router.navigateByUrl('/room?code=' + code);
+    if(!this.loading){
+      this.router.navigateByUrl('/room?code=' + code);
+    }
   }
 
   filterByName(): void {
@@ -202,4 +214,26 @@ export class RoomsComponent implements OnInit {
         },
       });
   }
+  deleteRoom(event: MouseEvent, code: string): void{
+    event.stopPropagation();
+    if(!confirm(`Are you sure you wanna delete ${code}?`)){
+      return;
+    }
+    this.adminService.deleteRoom(code).subscribe({
+    next: () => {
+      console.log('Room deleted successfully');
+      // Удаляем из локального массива data, чтобы таблица обновилась сразу
+      this.data = this.data.filter(room => room.code !== code);
+      this.loading = false;
+    },
+    error: (err) => {
+      console.error('Delete failed', err);
+      alert('Ошибка при удалении комнаты: ' + (err.error?.message || err.message));
+      this.loading = false;
+    }
+  });
+  }
+  // editRoom(event: MouseEvent, room: ApiResponse): void{
+  //   window.location.href = `/admin-dashboard?code=${room.code}&name=${room.name}`
+  // }
 }
