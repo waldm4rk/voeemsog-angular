@@ -13,6 +13,7 @@ import { AdminChooseComponent } from './admin-choose/admin-choose.component';
 import { NewsComponent } from './news/news.component';
 import { AdminNewsComponent } from './admin-news/admin-news.component';
 import { LicenseComponent } from './license/license.component';
+import { AdminStoriesComponent } from './admin-stories/admin-stories.component';
 
 export const routes: Routes = [
     {
@@ -36,7 +37,7 @@ export const routes: Routes = [
         component: ArchiveComponent
     },
     {
-        path: "admin-dashboard",
+        path: "admin/rooms",
         component: AdminComponent
     },
     {
@@ -56,7 +57,7 @@ export const routes: Routes = [
         component: ErrorComponent
     },
     {
-        path: "admin-choose",
+        path: "admin/choose",
         component: AdminChooseComponent
     },
     {
@@ -64,14 +65,17 @@ export const routes: Routes = [
         component: NewsComponent
     },
     {
-        path: "admin-news",
+        path: "admin/news",
         component: AdminNewsComponent
     },
     {
         path: "license",
         component: LicenseComponent
     },
-
+    {
+        path: "admin/stories",
+        component: AdminStoriesComponent
+    },
 
     {path: '**', component: ErrorComponent}
 ];

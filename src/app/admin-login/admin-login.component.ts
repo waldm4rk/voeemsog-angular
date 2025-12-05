@@ -74,7 +74,7 @@ export class AdminLoginComponent implements OnInit {
         if (response.status == 401) {
           this.router.navigate(['/']);
         }else if(response.status == 200){
-          this.router.navigate(['/admin-choose']);
+          this.router.navigate(['/admin/choose']);
         }
       },
       error: (err: HttpErrorResponse) => {

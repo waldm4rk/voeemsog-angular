@@ -1,0 +1,10 @@
+<div class="wrapper" *ngIf="isAuthorized">
+    <form (ngSubmit)="submitStory()">
+        <input type="text" [(ngModel)]="story.title" placeholder="Название" name="title">
+        <select name="category" *ngIf="this.categories.length > 0" [(ngModel)]="story.category.id" id="category">
+            <option *ngFor="let category of this.categories" [ngValue]="category.id">{{category.title}}</option>
+        </select>
+        <textarea name="text" [(ngModel)]="story.text" placeholder="Текст" style="white-space: pre-wrap"></textarea>
+        <button>Опубликовать</button>
+    </form>
+</div>

@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService, Story } from 'app/services/api.service';
@@ -6,22 +6,35 @@ import { HostListener } from '@angular/core';
 import { CookiesService } from 'app/cookies.service';
 import { Title } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
+import { AdminService } from 'app/admin.service';
 @Component({
   selector: 'app-story',
-  imports: [TranslateModule],
+  imports: [TranslateModule, NgIf],
   templateUrl: './story.component.html',
   styleUrl: './story.component.scss'
 })
 export class StoryComponent {
   storyId!: string;
   data: Story | undefined;
-  constructor(private route: ActivatedRoute, private dataService: ApiService, private translate: TranslateModule, private cookies: CookiesService) {}
+  isAuthorized: boolean = false;
+  constructor(private route: ActivatedRoute, private dataService: ApiService, private translate: TranslateModule, private cookies: CookiesService
+    , private adminService: AdminService
+  ) {}
 
   ngOnInit(): void {
     // Подписка на параметр id из маршрута
     this.route.paramMap.subscribe(params => {
       this.storyId = params.get('id')!;
       this.loadStory(this.storyId);
+    });
+    this.dataService.checkCookie().subscribe({
+      next: (response: HttpResponse<void>) => {
+        // Любой успешный ответ → авторизован
+        this.isAuthorized = true;
+      },
+      error: (err: HttpErrorResponse) => {
+      },
     });
   }
   loadStory(storyId: string){
@@ -40,7 +53,18 @@ export class StoryComponent {
         error: (err) => {
           window.location.href = '/error';
         },
-      });
+    });
+  }
+  deleteStory(){
+    if(!confirm("Удалить историю?")) return;
+    this.adminService.deleteStory(this.storyId).subscribe({
+      next: (response: HttpResponse<void>) => {
+        window.location.href="/literature";
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err);
+      }
+    });
   }
 
 //  @HostListener('window:scroll', [])

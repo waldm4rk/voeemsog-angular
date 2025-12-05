@@ -1,0 +1,21 @@
+.wrapper{
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 150px;
+    display:flex;
+    justify-content: center;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        input, select, button{
+            padding: 10px;
+        }
+        button{
+            cursor: pointer;
+        }
+        textarea{
+            min-width: 300px;
+        }
+    }
+}

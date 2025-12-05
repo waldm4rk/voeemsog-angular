@@ -26,7 +26,7 @@ export interface StoryCategory{
   lang: string
 }
 export interface Story{
-  id: string,
+  id: string | null,
   title: string,
   text: string,
   category: StoryCategory,
