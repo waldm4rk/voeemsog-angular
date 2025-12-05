@@ -16,8 +16,8 @@
         </div>
     </div>
 
-    <div class="btns">
-        
+    <div class="btns" *ngIf="isAuthorized" style='display:flex; justify-content: center; font-size: 30px;'>
+        <a (click)="deleteStory()" style="display: block; height: fit-content; cursor: pointer;">🚮</a>
     </div>
 
     <div class="bg">

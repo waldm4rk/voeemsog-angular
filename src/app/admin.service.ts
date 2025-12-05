@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
-import { ApiResponse } from './services/api.service';
+import { ApiResponse, StoryCategory } from './services/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,14 +25,20 @@ export class AdminService {
     return this.http.get<ApiResponse[]>(`${this.baseUrl}/rooms/code/${roomCode}`, { params, withCredentials: true });
   }
   sendNews(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/post`, data, { withCredentials: true });
+    return this.http.post(`${this.baseUrl}/admin/post`, data, { withCredentials: true });
   }
-  deletePost(postId: any): Observable<any> {
+  deletePost(postId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/post/${postId}`, { withCredentials: true });
   }
   deleteRoom(code: string): Observable<any>{
     console.log("deleted");
     return this.http.delete(`${this.baseUrl}/admin/room/code/${code}`, {withCredentials: true});
+  }
+  postReq(url: string, data: any): Observable<any>{
+    return this.http.post(`${this.baseUrl}/${url}`, data, {withCredentials: true});
+  }
+  deleteStory(storyId: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/admin/story/${storyId}`, { withCredentials: true });
   }
 }
 export interface PostDTO{
@@ -41,4 +47,11 @@ export interface PostDTO{
   tags: string[];
   postDate: Date;
   pinned: boolean;
+}
+export interface StoryDTO{
+  title: string,
+  text: string;
+  category: {id: number};
+  readingTime: number;
+  lang: string;
 }
