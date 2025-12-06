@@ -51,6 +51,20 @@ export interface Post{
   tags: string[],
   pinned: boolean
 }
+export interface Album{
+  id: string,
+  title: string,
+  description: string,
+  description_ru: string,
+  coverLink: string
+}
+export interface Track{
+  id: string,
+  title: string,
+  description: string,
+  description_ru: string,
+  link: string
+}
 @Injectable({
   providedIn: 'root'
 })

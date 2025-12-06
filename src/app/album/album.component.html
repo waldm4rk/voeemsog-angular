@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <div class="overlay"></div>
+    <div class="title">
+        <h1>{{'HEADER.ARCHIVE' | translate}}</h1>
+        <h4>музыка</h4>
+    </div>
+    <div class="container">
+        <section class="meta">
+            <img [src]="'/assets/music/' + this.album.coverLink" alt="">
+            <div class="info">
+                <h2 class="album_title">{{this.album.title}}</h2>
+                <span class="album_description" [innerHTML]="this.cookies.returnLang() == 'en' ? this.album.description : this.album.description_ru"></span>
+            </div>
+        </section>
+        <section class="tracks_container">
+            <h2>Содержание альбома</h2>
+            <hr>
+            <div class="tracks">
+                <div *ngFor="let embed of safeEmbeds" class="player">
+                        <iframe
+                            width="100%"
+                            height="166"
+                            scrolling="no"
+                            frameborder="no"
+                            [src]="embed">
+                        </iframe>
+                        <p [innerText]="this.cookies.returnLang() == 'en' ? this.getTrackInfo(embed).description : this.getTrackInfo(embed).description_ru"></p>
+                </div>
+            </div>
+        </section>
+        <!-- <div *ngFor="let embed of safeEmbeds" class="player">
+        <iframe
+            width="100%"
+            height="166"
+            scrolling="no"
+            frameborder="no"
+            [src]="embed">
+        </iframe>
+        </div> -->
+    </div>
+</div>
