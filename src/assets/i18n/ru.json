@@ -18,7 +18,13 @@
         "OFCANNON": "каноничного контента.",
         "COMMUNITY": "Комьюнити",
         "LITERATURE": "Литература",
-        "ROOMS": "Комнаты"
+        "ROOMS": "Комнаты",
+        "COMMUNITY_TITLE": "Новости",
+        "COMMUNITY_DESCR": "Комьюнити",
+        "LITERATURE_TITLE": "Узнать о",
+        "LITERATURE_DESCR": "новых рассказах",
+        "ROOMS_TITLE": "Исследовать",
+        "ROOMS_DESCR": "новые комнаты"
     },
     "ROOMS":{
         "INPUT": "Название или код...",

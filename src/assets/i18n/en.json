@@ -18,7 +18,13 @@
         "OFCANNON": "of canonical content.",
         "COMMUNITY": "Community",
         "LITERATURE": "Literature",
-        "ROOMS": "Rooms"
+        "ROOMS": "Rooms",
+        "COMMUNITY_TITLE": "Community",
+        "COMMUNITY_DESCR": "news",
+        "LITERATURE_TITLE": "Read about",
+        "LITERATURE_DESCR": "new stories",
+        "ROOMS_TITLE": "Explore",
+        "ROOMS_DESCR": "latest rooms"
     },
     "ROOMS":{
         "INPUT": "Title or code...",
