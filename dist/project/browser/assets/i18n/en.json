@@ -1,0 +1,79 @@
+{
+    "HEADER": {
+        "ABOUT": "ABOUT",
+        "ROOMS": "ROOMS",
+        "ARCHIVE": "ARCHIVE",
+        "SEARCH": "SEARCH"
+    },
+    "MAIN":{
+        "WELCOME": "WELCOME TO YOUR",
+        "HORROR": "WORST NIGHTMARE",
+        "BUTTON": "Where am I?",
+        "ACTUAL": "RECENT",
+        "WALL": "Wall of updates",
+        "WELCOMEVOEEMSOG": "Welcome to Voeemsog dimension.",
+        "DESCRIPTION": "We are sorry that you are here. Follow the rules and do not try to find a way out on your own. For your safety, please stay in the first safe room you find. You will be found and helped. Do not contact anyone except humans and do not leave the first floor.",
+        "GOTOARCHIVE": "Go to archive",
+        "ARCHIVEIS": "Archive is a catalog",
+        "OFCANNON": "of canonical content.",
+        "COMMUNITY": "Community",
+        "LITERATURE": "Literature",
+        "ROOMS": "Rooms"
+    },
+    "ROOMS":{
+        "INPUT": "Title or code...",
+        "NAME": "Title",
+        "CODE": "Code",
+        "DANGER": "Danger",
+        "LIGHT": "Light",
+        "FLOOR": "Floor",
+        "DATEPUB": "Date",
+        "PREV": "Previous",
+        "PAGE": "Page",
+        "NEXT": "Next",
+        "ERROR": "No rooms found"
+    },
+    "ARCHIVE":{
+        "REPORTS": "ROOM REPORTS",
+        "MEDIA": "PHOTO AND VIDEO MATERIALS",
+        "AUDIO": "AUDIO MATERIALS",
+        "CREATURES": "CREATURE GUIDES",
+        "MISC": "MISCELLANEOUS",
+        "SOON": "SOON",
+        "ARCHIVE": "Archive"
+    },
+    "LITERATURE":{
+        "READINGTIME": "Reading time",
+        "MINUTES": "min.",
+        "STORIES": "STORIES",
+        "ADDED": "added"
+    },
+    "ERROR":{
+        "ERROR": "Error",
+        "TITLE": "Seems like you're lost...",
+        "SUBTITLE": "In Voeemsog it's absolutely normal",
+        "BUTTON": "Back",
+        "NOTE": "* the button does not guarantee the subject's transfer to a safe room.",
+        "SUB": "Sincerely, SIT."
+    },
+    "ABOUT":{
+        "DESCRIPTION": "<b>Voeemsog</b> is a rapidly developing collaborative web creation project. It is not just a collection of stories - it is a whole world ready to become the subject of your research or the basis for your creativity. Our foundation is the parallel dimension of Voeemsog, full of secrets and mysteries. We give you the key to this door. Your imagination is your main tool here. <br/><br/> <b>Your creativity can become canon.</b> If your work develops the universe and corresponds to its spirit, with your consent, we will officially add it to the Voeemsog canon. Write, draw, compose music, make videos - you will remain the author forever, and your name will be mentioned in the history of this world.",
+        "TEAM": "Voeemsog team",
+        "LORE": "Lore",
+        "DESIGN": "Design",
+        "MUSIC": "Music",
+        "ROOMS": "Rooms",
+        "PR": "Promotion",
+        "DONATE": "All donations to the project are voluntary and do not unlock exclusive content - they fill up the donation scale, bringing all readers closer to achieving the collective goal. When the scale is full, the content selected as the goal in the poll will be published.",
+        "DONATEBUTTON": "Support the project"
+    },
+    "NEWS":{
+        "TAGS": "Tags"
+    },
+    "FOOTER":{
+        "SOCIALS": "Socials",
+        "MEMBERS": "Members",
+        "CONTRIBUTORS": "Contributors",
+        "LICENSE": "License"
+    }
+}
