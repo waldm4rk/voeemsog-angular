@@ -1,1 +1,0 @@
-.wrapper{width:100%;min-height:100vh;padding-top:150px;display:flex;justify-content:center}.wrapper form{display:flex;flex-direction:column;gap:20px}.wrapper form input,.wrapper form select,.wrapper form button{padding:10px}.wrapper form button{cursor:pointer}.wrapper form textarea{min-width:300px}
