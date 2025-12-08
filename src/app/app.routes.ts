@@ -14,6 +14,8 @@ import { NewsComponent } from './news/news.component';
 import { AdminNewsComponent } from './admin-news/admin-news.component';
 import { LicenseComponent } from './license/license.component';
 import { AdminStoriesComponent } from './admin-stories/admin-stories.component';
+import { MusicComponent } from './music/music.component';
+import { AlbumComponent } from './album/album.component';
 
 export const routes: Routes = [
     {
@@ -76,6 +78,13 @@ export const routes: Routes = [
         path: "admin/stories",
         component: AdminStoriesComponent
     },
-
+    {
+        path: "music",
+        component: MusicComponent
+    },
+    {
+        path: "album/:id",
+        component: AlbumComponent
+    },
     {path: '**', component: ErrorComponent}
 ];

@@ -51,12 +51,26 @@ export interface Post{
   tags: string[],
   pinned: boolean
 }
+export interface Album{
+  id: string,
+  title: string,
+  description: string,
+  description_ru: string,
+  coverLink: string
+}
+export interface Track{
+  id: string,
+  title: string,
+  description: string,
+  description_ru: string,
+  link: string
+}
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   // 🔑 Базовый URL для всех API запросов
-  private readonly BASE_URL = 'http://localhost:8080';
+  private readonly BASE_URL = 'https://api.voeemsog.com';
   constructor(private http: HttpClient) { }
 
   /**

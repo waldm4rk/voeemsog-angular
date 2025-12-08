@@ -1,7 +1,7 @@
 .archMain{
     padding-top: 150px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("assets/rooms/bg.jpg");
+    url("https://media.voeemsog.com/rooms/bg.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -35,12 +35,12 @@
                 transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
 
                 /* картинка через второй класс */
-                &.roomsReports { background-image: url("/../assets/archive/roomsReports.jpg"); }
-                &.creatures { background-image: url("/../assets/archive/creatures.jpg"); }
-                &.literature { background-image: url("/../assets/archive/literature.jpg"); }
-                &.photoVideo { background-image: url("/../assets/archive/photoVideo.jpg"); }
-                &.audio { background-image: url("/../assets/archive/audio.jpg"); }
-                &.other { background-image: url("/../assets/archive/other.jpg"); }
+                &.roomsReports { background-image: url("https://media.voeemsog.com/archive/roomsReports.jpg"); }
+                &.creatures { background-image: url("https://media.voeemsog.com/archive/creatures.jpg"); }
+                &.literature { background-image: url("https://media.voeemsog.com/archive/literature.jpg"); }
+                &.photoVideo { background-image: url("https://media.voeemsog.com/archive/photoVideo.jpg"); }
+                &.audio { background-image: url("https://media.voeemsog.com/archive/audio.jpg"); }
+                &.other { background-image: url("https://media.voeemsog.com/archive/other.jpg"); }
 
                 background-repeat: no-repeat;
                 background-position: center center;
