@@ -118,6 +118,7 @@ export class RoomsComponent implements OnInit {
           this.loading = false;
         },
       });
+      this.loading = false;
   }
 
   getNumberOfPages(): void {

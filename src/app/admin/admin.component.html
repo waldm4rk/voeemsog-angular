@@ -24,7 +24,7 @@
     </div>
     <div class="page">
         <div class="title">
-            <div class="seal"><img src="assets/room/sit seal.png" alt=""></div>
+            <div class="seal"><img src="https://media.voeemsog.com/room/info/seals/ivan.jpg" alt=""></div>
             <div class="info">
                 <div class="id">{{room.code}}</div>
                 <div class="name">{{roomTranslation.name}}</div>
@@ -41,9 +41,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
-                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
-                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -58,34 +58,15 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
-                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
-                        <img src="https://ik.imagekit.io/voeemsog/{{roomTranslation.lang}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         
                     </div>
                 </div>
             </div>
-            <!-- <div class="container reverse">
-                <div class="images">
-                    <img src="assets/room/danger.svg">
-                    <img src="assets/room/light.svg">
-                    <img src="assets/room/floor.svg">
-                </div>
-                <span class="text">
-                    {{ 
-                        sliceStringBySentences(data.at(0)?.description, 10, 0)
-                         }}.
-                </span>
-            </div>
-            <div class="container">
-                <div class="images">
-                    <img class="big" src="assets/room/shape.svg">
-                </div>
-                <span class="text">
-                </span>
-            </div> -->
         </div>
     </div>
     

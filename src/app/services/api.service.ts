@@ -70,7 +70,7 @@ export interface Track{
 })
 export class ApiService {
   // 🔑 Базовый URL для всех API запросов
-  private readonly BASE_URL = 'http://localhost:8080';
+  private readonly BASE_URL = 'https://api.voeemsog.com';
   constructor(private http: HttpClient) { }
 
   /**
