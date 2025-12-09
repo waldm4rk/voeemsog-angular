@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
-import { ApiResponse, StoryCategory } from './services/api.service';
+import { Album, ApiResponse, StoryCategory, Track } from './services/api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,18 @@ export class AdminService {
   }
   deleteStory(storyId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/admin/story/${storyId}`, { withCredentials: true });
+  }
+  putAlbum(data: Album): Observable<any>{
+    return this.http.post(`${this.baseUrl}/admin/music/album`, data, {withCredentials: true});
+  }
+  putTracks(data: Track[]): void {
+  for (const track of data) {
+    this.http.post(`${this.baseUrl}/admin/music/track`, track, { withCredentials: true })
+      .subscribe({
+        next: (response) => console.log(`Трек ${track.id} успешно обновлен/сохранен.`, response),
+        error: (error) => console.error(`Ошибка при сохранении трека ${track.id}:`, error)
+      });
+    }
   }
 }
 export interface PostDTO{

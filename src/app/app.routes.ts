@@ -16,6 +16,7 @@ import { LicenseComponent } from './license/license.component';
 import { AdminStoriesComponent } from './admin-stories/admin-stories.component';
 import { MusicComponent } from './music/music.component';
 import { AlbumComponent } from './album/album.component';
+import { AdminMusicComponent } from './admin-music/admin-music.component';
 
 export const routes: Routes = [
     {
@@ -85,6 +86,10 @@ export const routes: Routes = [
     {
         path: "album/:id",
         component: AlbumComponent
+    },
+    {
+        path: "admin/music",
+        component: AdminMusicComponent
     },
     {path: '**', component: ErrorComponent}
 ];

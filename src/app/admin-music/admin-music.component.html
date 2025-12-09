@@ -1,0 +1,30 @@
+<div class="wrapper" *ngIf="this.isAuthorized">
+    <form (submit)="tryPublish($event)" name="album">
+        <h2>Создать/отредактировать альбом</h2>
+        <div>
+            <select name="album" id="albumSelect">
+                <option *ngFor="let album of this.albums" value="{{album.id}}">{{album.title}}</option>
+                <option value="NEW">Создать новый...</option>
+            </select>
+            <button style="font-size: 16px;" (click)="this.getInfo()" type="button">⬇️</button>
+        </div>
+        <input type="text" id="title" name="albumtitle" placeholder="Название альбома" [(ngModel)]="this.currentAlbum.title">
+        <textarea id="description" name="albumdescr" placeholder="Описание альбома (английское)" [(ngModel)]="this.currentAlbum.description"></textarea>
+        <textarea id="descriptionRu" name="albumdescrru" placeholder="Описание альбома (русское)"  [(ngModel)]="this.currentAlbum.description_ru"></textarea>
+        <input type="text" id="coverLink" name="albumcover" placeholder="Ссылка на обложку (media.voeemsog.com/...)" style="width: 90%;" [(ngModel)]="this.currentAlbum.coverLink">
+
+        <div class="tracks" *ngIf="this.ordered" style="width: 90%; display: flex; flex-direction: column; align-items: center;">
+            <h4 style="margin-bottom: 20px;">Список треков</h4>
+            <div *ngFor="let track of this.tracks; trackBy: trackByFn" class="track">
+                <textarea [name]="'trackdescr' + track.id" class="trackDescription" placeholder="Описание трека (английское)"  [(ngModel)]="track.description"></textarea>
+                <textarea [name]="'trackdescrru' + track.id" class="trackDescriptionRu" placeholder="Описание трека (русское)" [(ngModel)]="track.description_ru"></textarea>
+                <input type="text" [name]="'tracklink' + track.id" class="trackLink" placeholder="Ссылка (саундклауд)" style="width: 100%;" [(ngModel)]="track.link">
+                <button (click)="this.deleteTrack(this.tracks.indexOf(track))" type="button">X</button>
+                <hr>
+            </div>
+            <button (click)="this.addTrack()" style="padding: 10px; cursor: pointer;" type="button">Добавить трек</button>
+        </div>
+
+        <button type="submit">Опубликовать</button>
+    </form>
+</div>

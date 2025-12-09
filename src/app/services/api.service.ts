@@ -60,10 +60,11 @@ export interface Album{
 }
 export interface Track{
   id: string,
-  title: string,
   description: string,
   description_ru: string,
-  link: string
+  link: string,
+  order: number,
+  album_id: string
 }
 @Injectable({
   providedIn: 'root'
