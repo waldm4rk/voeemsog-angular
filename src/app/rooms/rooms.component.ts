@@ -26,6 +26,9 @@ export class RoomsComponent implements OnInit {
   lastPage: number = 999999;
   cashedLastPage: number = -1;
   isAuthorized: boolean = false;
+  buttonNext = document.getElementsByClassName('next')[0] as HTMLElement;
+  buttonPrev = document.getElementsByClassName('prev')[0] as HTMLElement;
+  mediaQuery = window.matchMedia('(max-width: 400px)');
   constructor(
     private dataService: ApiService,
     private router: Router,
@@ -65,7 +68,7 @@ export class RoomsComponent implements OnInit {
       error: (err: HttpErrorResponse) => {
       },
     });
-    }
+  }
 
   updateButtonStates(click: boolean): void {
     if (this.page == 1) {
@@ -234,7 +237,4 @@ export class RoomsComponent implements OnInit {
     }
   });
   }
-  // editRoom(event: MouseEvent, room: ApiResponse): void{
-  //   window.location.href = `/admin-dashboard?code=${room.code}&name=${room.name}`
-  // }
 }

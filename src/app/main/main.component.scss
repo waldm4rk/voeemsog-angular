@@ -196,7 +196,6 @@ body {
         width: 351px;
         aspect-ratio: 1 / 1;
         overflow: hidden;
-        background-size: cover, 100% 100%, 100% 100%;
         background-position: center, center, center;
         background-repeat: no-repeat, no-repeat, no-repeat;
 
@@ -761,7 +760,7 @@ footer{
     }
   }
 }
-@media (max-width: 470px) {
+@media (max-width: 477px) {
   .headSec {
     .txts {
       font-weight: 800;
