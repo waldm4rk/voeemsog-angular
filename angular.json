@@ -41,7 +41,7 @@
                 "src/assets",
                 {
                   "glob": "**/*",
-                  "input": "static-files",
+                  "input": "src/static-files",
                   "output": "/"
                 }
               ],

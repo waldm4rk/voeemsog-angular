@@ -29,7 +29,7 @@
 
     <div class="searchBar" [ngClass]="{'visible': isVisibleSearch}">
       <form (submit)="searchRooms(); $event.preventDefault()">
-        <input type="text" maxlength="82">
+        <input type="text" maxlength="82" class="globalSearch" autofocus>
         <img class="icon" src="https://media.voeemsog.com/header/arrow.svg" (click)="searchRooms(); $event.preventDefault()" alt="">
       </form>
     </div>

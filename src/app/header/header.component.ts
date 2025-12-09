@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,8 @@ export class HeaderComponent {
   headerTop = '0';
   isVisibleSearch = false;
   isBurgerOpen = false;
-  
+  @ViewChild('searchElement') 
+  globalSearchElement: ElementRef<HTMLInputElement> | undefined;
   // Сделаем эти значения реактивными
   currentLangIndex = 0;
   langs = ['English', 'Русский'];
@@ -91,7 +92,6 @@ export class HeaderComponent {
     this.isVisibleSearch = !this.isVisibleSearch;
     this.isBurgerOpen = false;
   }
-
   toggleBurger() {
     this.isBurgerOpen = !this.isBurgerOpen;
     this.isVisibleSearch = false;

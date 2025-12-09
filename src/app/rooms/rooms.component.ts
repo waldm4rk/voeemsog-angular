@@ -52,13 +52,6 @@ export class RoomsComponent implements OnInit {
     this.translateService.use(this.cookies.returnLang()).subscribe((translations: any) => {
       this.title.setTitle("Voeemsog | " + (translations?.['MAIN']?.['ROOMS'] ?? "Rooms"));
     });
-    this.route.queryParams.subscribe(params => {
-      const search = params['s'] || '';
-      if(search && search.length >= 0) {
-        this.userInput = search;
-        this.filterByName();
-      }
-    });
     this.meta.updateTag({name: 'description', content:"Main, most popular and canonical type of content in Voeemsog - rooms! Dozens of rooms are right here... just step in."})
     this.dataService.checkCookie().subscribe({
       next: (response: HttpResponse<void>) => {
@@ -113,6 +106,13 @@ export class RoomsComponent implements OnInit {
 
           // Access the body (the data) and default to an empty array if null:
           this.data = response.body ?? [];
+          this.route.queryParams.subscribe(params => {
+          const search = params['s'] || '';
+          if(search && search.length >= 0) {
+            this.userInput = search;
+            this.filterByName();
+          }
+        });
         },
         error: (err) => {
           // Error handler often contains the status code for non-2xx responses
