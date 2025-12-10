@@ -78,6 +78,10 @@
     "NEWS":{
         "TAGS": "Теги"
     },
+    "MUSIC": {
+        "MUSIC": "Музыка",
+        "ALBUMS": "Альбомы"
+    },
 
     "FOOTER":{
         "SOCIALS": "Соцсети",

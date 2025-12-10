@@ -78,6 +78,11 @@
     "NEWS":{
         "TAGS": "Tags"
     },
+    "MUSIC": {
+        "MUSIC": "Music",
+        "ALBUMS": "Albums"
+    },
+
     "FOOTER":{
         "SOCIALS": "Socials",
         "MEMBERS": "Members",
