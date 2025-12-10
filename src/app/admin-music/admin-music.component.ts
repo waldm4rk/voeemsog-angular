@@ -57,14 +57,7 @@ export class AdminMusicComponent {
     event.preventDefault();
     if(!confirm("Опубликовать альбом?")) return;
     this.getTrackOrderNumbers();
-    this.admin.putAlbum(this.currentAlbum).subscribe({
-      next: (response: HttpResponse<void>) => {
-        console.log(response);
-      },
-      error: (err: HttpErrorResponse) => {
-        console.error(err);
-      }
-    });
+    this.admin.putAlbum(this.currentAlbum);
     this.admin.putTracks(this.tracks);
   }
   getTrackOrderNumbers(){

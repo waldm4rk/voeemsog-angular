@@ -40,8 +40,12 @@ export class AdminService {
   deleteStory(storyId: string): Observable<any> {
     return this.http.delete(`${this.baseUrl}/admin/story/${storyId}`, { withCredentials: true });
   }
-  putAlbum(data: Album): Observable<any>{
-    return this.http.post(`${this.baseUrl}/admin/music/album`, data, {withCredentials: true});
+  putAlbum(data: Album): void{
+    this.http.post(`${this.baseUrl}/admin/music/album`, data, {withCredentials: true})
+    .subscribe({
+      next: (response) => console.log(`Альбом ${data.title} успешно сохранен. `, response),
+      error: (error) => console.error("Произошла ошибка при сохранении альбома", error)
+    });
   }
   putTracks(data: Track[]): void {
   for (const track of data) {
