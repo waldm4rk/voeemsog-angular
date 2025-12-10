@@ -18,7 +18,7 @@
         <ul>
           <li><a routerLink="/rooms" (click)="closeMenu()">{{'HEADER.ROOMS' | translate}}</a></li>
           <li><a routerLink="/archive" (click)="closeMenu()">{{'HEADER.ARCHIVE' | translate}}</a></li>
-          <li><a routerLink="/" (click)="closeMenu()">{{'HEADER.ABOUT' | translate}}</a></li>
+          <li><a routerLink="/about" (click)="closeMenu()">{{'HEADER.ABOUT' | translate}}</a></li>
           <li style="display:flex; justify-content: space-between;">
             <a (click)="prevLang()"><</a>
             <a id="currentLang">{{ currentLang }}</a>

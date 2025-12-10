@@ -33,8 +33,6 @@
                 cursor: pointer;
                 overflow: hidden;
                 transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
-
-                /* картинка через второй класс */
                 &.roomsReports { background-image: url("https://media.voeemsog.com/archive/roomsReports.jpg"); }
                 &.creatures { background-image: url("https://media.voeemsog.com/archive/creatures.jpg"); }
                 &.literature { background-image: url("https://media.voeemsog.com/archive/literature.jpg"); }
@@ -57,12 +55,10 @@
                     z-index: 1;
                 }
 
-                /* градиент через псевдоэлемент */
                 &::before {
                     content: '';
                     position: absolute;
                     inset: 0;
-                    /* два градиента: серый сверху, черный снизу */
                     background: 
                         linear-gradient(to right, transparent 0%, rgba(66,66,66,0.5) 100%), 
                         linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 100%);
@@ -73,7 +69,6 @@
 
 
                 &:not(.soon):hover::before {
-                    /* Плавно убираем верхний (серый) градиент, оставляя видимым черный */
                     opacity: 0; 
                 }
                 
@@ -110,10 +105,6 @@
         }
         &:hover{
             cursor: default !important;
-            h2, h1{
-                transform: scale(1.1);
-                color: white;
-            }
         }
     }
     .title {
@@ -140,8 +131,8 @@
             left: -5px;
             bottom: 0;
             width: 100%;
-            height: 2px; /* толщина подчёркивания */
-            background-color: white; /* цвет текста */
+            height: 2px;
+            background-color: white;
             }
     }
 }

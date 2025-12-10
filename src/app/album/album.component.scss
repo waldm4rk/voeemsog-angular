@@ -51,6 +51,10 @@
             display: flex;
             gap: 80px;
             flex-wrap: wrap;
+            flex-direction: row;
+            .info{
+                width: 50%;
+            }
             img{
                 width: 500px;
                 aspect-ratio: 1 / 1;
