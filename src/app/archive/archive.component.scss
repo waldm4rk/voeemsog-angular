@@ -105,6 +105,10 @@
         }
         &:hover{
             cursor: default !important;
+            h2{
+                color: white;
+                transform: scale(1.1);
+            }
         }
     }
     .title {
