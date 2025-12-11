@@ -6,6 +6,20 @@
   overflow: hidden;
 }
 footer {
+
+  .lineWrap{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .line{
+      width: 70%;
+      height: 1px;
+      background-color: white;
+      opacity: 0.5;
+      position: relative;
+    }
+  }
   z-index: 1000;
   .flexWrap {
     display: flex;
@@ -61,13 +75,6 @@ footer {
         }
       }
     }
-  }
-  .line {
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='2' stroke-dasharray='30%2c 30' stroke-dashoffset='47' stroke-linecap='square'/%3e%3c/svg%3e");    width: 1920px;
-    height: 2px;
-    width: 1920px;
-    margin-left: 50%;
-    transform: translateX(-50%);
   }
 }
 
