@@ -345,7 +345,7 @@ body {
       flex-wrap: wrap;
       align-items: flex-start;
       padding-left: 1cm;
-      div{
+      div:not(.infoMarkWrapper){
         flex: 1;
         height: 100%;
         width: 100%;
@@ -384,7 +384,6 @@ body {
       min-height: 100px;
       overflow: hidden;
       display: flex;
-      align-items: flex-end;
       h2 {
         display: inline-block;
         width: fit-content;
@@ -427,7 +426,6 @@ body {
         }
       }
       img {
-        margin-bottom: 27px;
         transform: scale(1);
         transition: 0.25s ease;
         bottom: 0;
@@ -446,25 +444,49 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  .infoMarkWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    aspect-ratio: 1 / 1 !important;
+    border: 1px solid #666;
+    border-radius: 100%;
+    cursor: pointer;
+    &:hover{
+      border: 1px solid white;
+      background: white;
+      .infoMark{
+        filter: invert(1);
+      }
+      .tooltiptext{
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+    &:hover + .tooltiptext{
+      visibility: visible;
+        opacity: 1;
+    }
+  }
   img.infoMark {
-    margin-bottom: 27px;
     transform: scale(1);
     transition: 0.25s ease;
-    cursor: pointer;
     position: relative;
+    aspect-ratio: 1 / 1 !important;
+    // &:hover {
+    //   filter: invert(1);
+    // }
 
-    &:hover {
-      filter: invert(1);
-    }
-
-    &:hover + .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
+    // &:hover + .tooltiptext {
+    //   visibility: visible;
+    //   opacity: 1;
+    // }
   }
 
   .tooltiptext {
     position: absolute;
+    margin-left: auto;
     background-color: white;
     color: black;
     white-space: nowrap;

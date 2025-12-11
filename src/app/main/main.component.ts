@@ -33,13 +33,14 @@ window: any;
   }
   ngAfterViewInit(): void {
     const infoMarks: NodeListOf<HTMLElement> =
-      this.el.nativeElement.querySelectorAll('.infoMark');
-
+      this.el.nativeElement.querySelectorAll('.infoMarkWrapper .infoMark');
+    const infoMarkWrapper: HTMLDivElement = this.el.nativeElement.querySelector(".infoMarkWrapper");
     infoMarks.forEach(infoMark => {
       const tooltip = infoMark.nextElementSibling as HTMLElement | null;
+      console.log(tooltip);
       if (!tooltip || !tooltip.classList.contains('tooltiptext')) return;
 
-      infoMark.addEventListener('mouseenter', () => {
+      infoMarkWrapper.addEventListener('mouseenter', () => {
         const rect = infoMark.getBoundingClientRect();
         tooltip.style.position = 'fixed';
         tooltip.style.left = `${rect.left + rect.width / 2}px`;
