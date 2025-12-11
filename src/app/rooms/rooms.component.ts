@@ -15,7 +15,8 @@ import { AdminService } from 'app/admin.service';
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.scss',
   standalone: true, // обязательно для Standalone Component
-  imports: [CommonModule, RouterModule, FormsModule, TranslateModule],
+  imports: [CommonModule, RouterModule, FormsModule, TranslateModule,
+  ],
 })
 export class RoomsComponent implements OnInit {
   data: ApiResponse[] = [];
@@ -29,6 +30,7 @@ export class RoomsComponent implements OnInit {
   buttonNext = document.getElementsByClassName('next')[0] as HTMLElement;
   buttonPrev = document.getElementsByClassName('prev')[0] as HTMLElement;
   mediaQuery = window.matchMedia('(max-width: 400px)');
+  search: string = '';
   constructor(
     private dataService: ApiService,
     private router: Router,
@@ -60,6 +62,9 @@ export class RoomsComponent implements OnInit {
       },
       error: (err: HttpErrorResponse) => {
       },
+    });
+    this.route.queryParams.subscribe(params => {
+      this.search = params['s'] || '';
     });
   }
 
@@ -112,7 +117,9 @@ export class RoomsComponent implements OnInit {
             this.userInput = search;
             this.filterByName();
           }
-        });
+          this.clearAllQueryParams();
+          });
+        // });
         },
         error: (err) => {
           // Error handler often contains the status code for non-2xx responses
@@ -132,7 +139,7 @@ export class RoomsComponent implements OnInit {
     }
     this.dataService.getNumOfRooms(this.langCode).subscribe({
       next: (count: number) => {
-        this.lastPage = count || 0;
+        this.lastPage = count || this.page;
         this.cashedLastPage = this.lastPage;
         this.loading = false;
         this.updateButtonStates(false);
@@ -195,9 +202,6 @@ export class RoomsComponent implements OnInit {
 
           // Access the body (the data) and default to an empty array if null:
           this.data = response.body ?? [];
-          this.lastPage =
-            Math.floor(this.data.length / 10) +
-            (this.data.length % 10 == 0 ? 0 : 1);
           this.updateButtonStates(false);
           this.loading = false;
         },
@@ -217,6 +221,9 @@ export class RoomsComponent implements OnInit {
           this.loading = false;
         },
       });
+      this.lastPage =
+            Math.floor(this.data.length / 10) +
+            (this.data.length % 10 == 0 ? 0 : 1);
   }
   deleteRoom(event: MouseEvent, code: string): void{
     event.stopPropagation();
@@ -237,4 +244,13 @@ export class RoomsComponent implements OnInit {
     }
   });
   }
+  clearAllQueryParams() {
+  this.router.navigate(
+    [], // Stay on the current route
+    {
+      relativeTo: this.route,
+      queryParams: {}, // Set queryParams to an empty object
+    }
+  );
+}
 }

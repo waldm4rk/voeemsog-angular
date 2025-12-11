@@ -80,7 +80,8 @@
     },
     "MUSIC": {
         "MUSIC": "Music",
-        "ALBUMS": "Albums"
+        "ALBUMS": "Albums",
+        "TRACKS": "Tracks"
     },
 
     "FOOTER":{

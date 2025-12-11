@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
+import { routes } from 'app/app.routes';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -31,7 +33,8 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private cookies: CookiesService,
-    private translate: TranslateService  // ← важно: инжекти правильно!
+    private translate: TranslateService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -40,7 +43,6 @@ export class HeaderComponent {
     ).subscribe(() => {
       this.closeAll();
     });
-
     // Правильно получаем язык из куки
     const savedLang = this.cookies.returnLang();
     this.currentLangIndex = this.cookieLang.indexOf(savedLang);
@@ -121,9 +123,19 @@ export class HeaderComponent {
     const inputElement = document.querySelector('.searchBar input') as HTMLInputElement;
     const query = inputElement?.value.trim();
     if (query && query.length > 0) {
-      this.router.navigate(['/rooms'], { queryParams: { s: query } });
-      this.isVisibleSearch = false;
-      if (inputElement) inputElement.value = '';
+      if(window.location.href.includes("/rooms")){
+        this.router.navigate(
+          [],
+          {
+            relativeTo: this.route,
+            queryParams: { s: query },
+          }
+        );
+        this.toggleSearch(event!);
+      }
+      this.router.navigate(['/rooms'], {
+        queryParams: { s: query }
+      });
     }
   }
 }
