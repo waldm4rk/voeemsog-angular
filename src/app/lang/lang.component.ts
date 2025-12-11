@@ -11,7 +11,6 @@ export class LangComponent {
   @ViewChild('menu', { static: false }) menuRef!: ElementRef<HTMLDivElement>;
   @ViewChild('icon', { static: false }) iconRef!: ElementRef<HTMLElement>;
   constructor(private cookies: CookiesService) {}
-  // навешиваем слушатель после инициализации вью
   ngAfterViewInit(): void {
     document.addEventListener('click', this.handleClickOutside);
     this.handleIcon();
@@ -40,20 +39,15 @@ export class LangComponent {
     const menu = this.menuRef?.nativeElement;
     const icon = this.iconRef?.nativeElement;
 
-    if (!menu) return; // если вдруг нет элемента — безопасно выйти
-
-    // если меню не активно — ничего не делаем
+    if (!menu) return;
     if (!menu.classList.contains('active')) return;
 
     const target = event.target as Node;
 
-    // клик внутри меню → не закрываем
     if (menu.contains(target)) return;
 
-    // клик по иконке → не закрываем
     if (icon && icon.contains(target)) return;
 
-    // клик снаружи → закрываем меню
     menu.classList.remove('active');
   };
 

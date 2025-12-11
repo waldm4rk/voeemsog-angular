@@ -44,25 +44,15 @@ export class LiteratureComponent {
       .getData<StoryCategory[]>(`stories/categories?lang=${this.langCode}`)
       .subscribe({
         next: (response: HttpResponse<StoryCategory[]>) => {
-          // Access the status code here:
           const statusCode = response.status;
-          // if(statusCode != 200){
-          //   this.lastPage = this.page;
-          //   this.updateButtonStates(false);
-          //   return;
-          // }
-
-          // Access the body (the data) and default to an empty array if null:
           const categories: StoryCategory[] = response.body ?? [];
           categories.forEach(cat => {
             this.stories.set(cat.id, []);
-            console.log(cat.id);
           });
           this.fetchStories();
         },
         error: (err) => {
-          // Error handler often contains the status code for non-2xx responses
-          const errorStatusCode = err.status; // This works for errors like 4xx and 5xx
+          const errorStatusCode = err.status;
           console.error(`HTTP Error Status Code: ${errorStatusCode}`);
         },
       });
@@ -75,11 +65,9 @@ export class LiteratureComponent {
         next: (response: HttpResponse<Story[]>) => {
           const stories = response.body ?? [];
           this.stories.set(key, stories);
-          console.log(this.stories);
         },
         error: (err) => {
-          // Error handler often contains the status code for non-2xx responses
-          const errorStatusCode = err.status; // This works for errors like 4xx and 5xx
+          const errorStatusCode = err.status;
           console.error(`HTTP Error Status Code: ${errorStatusCode}`);
         },
       });
@@ -87,6 +75,5 @@ export class LiteratureComponent {
   }
   redirectToPage(id: string): void {
     this.router.navigateByUrl('/story/' + id);
-    console.log("aaa");
   }
 }

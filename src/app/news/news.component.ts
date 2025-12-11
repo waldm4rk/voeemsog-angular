@@ -48,11 +48,9 @@ export class NewsComponent {
     this.title.setTitle(title);
     this.dataService.checkCookie().subscribe({
       next: (response: HttpResponse<void>) => {
-        // Любой успешный ответ → авторизован
         this.isAuthorized = true;
       },
       error: (err: HttpErrorResponse) => {
-        // Любая ошибка (401, 403, 404) → редирект
         console.error('Unauthorized or error', err);
       },
     });
@@ -75,18 +73,16 @@ export class NewsComponent {
     for (let category of this.categories) {
       requestParams += `tags=${category}&`;
     }
-    requestParams = requestParams.slice(0, -1); // Remove the trailing '&'
+    requestParams = requestParams.slice(0, -1);
     this.dataService.getData<Post[]>(`post?${requestParams}`).subscribe({
       next: (response: HttpResponse<Post[]>) => {
 
         this.loading = false;
         if(response.body == null) return;
         this.posts = response.body?.sort((a, b) => {
-        // pinned сначала
         if (a.pinned && !b.pinned) return -1;
         if (!a.pinned && b.pinned) return 1;
 
-        // дальше — обычная сортировка по дате, если нужно
         return new Date(b.postDate).getTime() - new Date(a.postDate).getTime();
       });
       },
@@ -97,15 +93,15 @@ export class NewsComponent {
   }
   getPinned() {
     const pinnedPosts = this.posts
-      .filter((post) => post.pinned) // только закрепленные
+      .filter((post) => post.pinned)
       .sort(
         (a, b) =>
           new Date(b.postDate).getTime() -
           new Date(a.postDate).getTime()
-      ); // новые первыми
+      ); 
 
     const regularPosts = this.posts
-      .filter((post) => !post.pinned) // остальные
+      .filter((post) => !post.pinned)
       .sort(
         (a, b) =>
           new Date(b.postDate).getTime() -
@@ -136,30 +132,9 @@ export class NewsComponent {
     }
     this.fetchPosts();
   }
-  // filter() {
-  //   const posts = Array.from(
-  //     document.getElementsByClassName('post')
-  //   ) as HTMLElement[];
-  //   if (this.filterCat.length === 0) {
-  //     // Если ни одной категории не выбрано — показываем все посты
-  //     posts.forEach((el) => (el.style.display = ''));
-  //     return;
-  //   }
-
-  //   for (let el of posts) {
-  //     // Проверяем, есть ли у элемента хотя бы один класс из filterCat
-  //     const matches = this.filterCat.some((cat) => el.classList.contains(cat));
-
-  //     if (matches) {
-  //       el.style.display = ''; // Показываем
-  //     } else {
-  //         el.style.display = 'none'; // Скрываем
-  //     }
-  //   }
-  // }
   get filter(): Post[] {
     if (this.filterCat.length === 0) {
-      return this.posts; // show all
+      return this.posts;
     }
 
     return this.posts.filter(post =>
@@ -172,22 +147,15 @@ export class NewsComponent {
     const index = this.filterCat.indexOf(category);
 
     if (index > -1) {
-      // Категория уже выбрана — удаляем (toggle)
       this.filterCat.splice(index, 1);
     } else {
-      // Категории нет — добавляем
       this.filterCat.push(category);
-      console.log(this.filterCat);
     }
-    console.log(this.filterCat);
-    console.log(category);
     document.getElementsByClassName(category)[0]?.classList.toggle('active');
   }
   deletePost(postId: string) {
     this.adminService.deletePost(postId).subscribe({
       next: (response: any) => {
-        console.log('Post deleted successfully', response);
-        // Обновляем список постов после удаления
         this.fetchPosts();
       },
       error: (err: any) => {
