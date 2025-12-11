@@ -4,7 +4,6 @@
         <h4>{{'MAIN.LITERATURE' | translate}}</h4>
     </div>
     <div class="main">
-        <!-- ХОХЛАМ: Продублируй этот див, вручную пропиши данные и тестируй респонсив -->
         <div class="category" *ngFor="let item of this.stories | mapToArray">
             <div class="cat_title">
                 <h1>{{item.value[0]?.category?.title}}</h1>

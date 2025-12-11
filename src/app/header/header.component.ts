@@ -22,12 +22,9 @@ export class HeaderComponent {
   isBurgerOpen = false;
   @ViewChild('searchElement') 
   globalSearchElement: ElementRef<HTMLInputElement> | undefined;
-  // Сделаем эти значения реактивными
   currentLangIndex = 0;
   langs = ['English', 'Русский'];
   cookieLang = ['en', 'ru'];
-  
-  // Это будет отображаться в шаблоне напрямую
   currentLang = 'English';
 
   constructor(
@@ -43,20 +40,16 @@ export class HeaderComponent {
     ).subscribe(() => {
       this.closeAll();
     });
-    // Правильно получаем язык из куки
     const savedLang = this.cookies.returnLang();
     this.currentLangIndex = this.cookieLang.indexOf(savedLang);
     if (this.currentLangIndex === -1) this.currentLangIndex = 0;
 
     this.currentLang = this.langs[this.currentLangIndex];
 
-    // Устанавливаем язык в ngx-translate
     this.translate.use(this.cookieLang[this.currentLangIndex]);
 
     this.cookies.updateLang(); 
   }
-
-  // УБИРАЕМ ngAfterViewInit полностью! Он больше не нужен
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -85,10 +78,9 @@ export class HeaderComponent {
     this.currentLang = this.langs[this.currentLangIndex];
     const langCode = this.cookieLang[this.currentLangIndex];
     this.cookies.setLanguage(langCode);
-    this.translate.use(langCode);  // ← важно!
+    this.translate.use(langCode);
   }
 
-  // остальные методы без изменений...
   toggleSearch(event: Event) {
     event.stopPropagation();
     this.isVisibleSearch = !this.isVisibleSearch;

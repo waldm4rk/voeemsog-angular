@@ -44,7 +44,6 @@ export class AlbumComponent {
     this.apiService.getData<Track[]>(`music/tracks/${this.albumId}`).subscribe({
       next: (response: HttpResponse<Track[]>) => {
         this.tracks = response.body || [];
-        console.log(this.tracks);
         this.safeEmbeds = this.tracks.map(track =>
           this.sanitizer.bypassSecurityTrustResourceUrl(
             `https://w.soundcloud.com/player/?url=${encodeURIComponent(track.link)}`

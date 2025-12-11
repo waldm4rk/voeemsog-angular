@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
   selector: 'app-room',
   templateUrl: './room.component.html',
   styleUrl: './room.component.scss',
-  standalone: true, // обязательно для Standalone Component
+  standalone: true,
   imports: [CommonModule, TranslateModule],
 })
 export class RoomComponent implements OnInit {
@@ -30,7 +30,6 @@ export class RoomComponent implements OnInit {
     private title: Title
   ) {}
   ngOnInit(): void {
-    // Вызов при инициализации (или по событию, как в fetchUserData)
     if (this.cookies.returnLang() == 'en') {
       this.langCode = 'en_US';
     } else if (this.cookies.returnLang() == 'ru') {
@@ -65,26 +64,21 @@ export class RoomComponent implements OnInit {
   }
   formatText(text: string): string {
     let formatted = text || '';
-    // жирный: *текст*
     formatted = formatted.replace(
       /(?<!\*)\*([^*]+)\*(?!\*)/g,
       '<strong>$1</strong>'
     );
 
-    // курсив: **текст**
     formatted = formatted.replace(/\*\*([^*]+)\*\*/g, '<em>$1</em>');
 
-    // перечеркнутый: --текст--
     formatted = formatted.replace(/--([^-\n]+)--/g, '<s>$1</s>');
 
-    // подчеркнутый: _текст_
     formatted = formatted.replace(/_([^_\n]+)_/g, '<u>$1</u>');
 
     formatted = formatted.replace(/^>\s*(.+)$/gm, '<li>$1</li>');
 
-    // Объединяем подряд идущие <li> в <ul>
     formatted = formatted.replace(/(<li>[\s\S]*?<\/li>)/g, (match) => {
-      // Если это одиночный li — оборачиваем
+
       if (!match.startsWith('<ul>')) {
         const items = match
           .split('\n')

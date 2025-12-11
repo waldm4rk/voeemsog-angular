@@ -37,7 +37,6 @@ window: any;
     const infoMarkWrapper: HTMLDivElement = this.el.nativeElement.querySelector(".infoMarkWrapper");
     infoMarks.forEach(infoMark => {
       const tooltip = infoMark.nextElementSibling as HTMLElement | null;
-      console.log(tooltip);
       if (!tooltip || !tooltip.classList.contains('tooltiptext')) return;
 
       infoMarkWrapper.addEventListener('mouseenter', () => {
