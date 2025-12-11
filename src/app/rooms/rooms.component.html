@@ -53,7 +53,7 @@
         <button class="prev" (click)="prevPage()">{{'ROOMS.PREV' | translate}}</button>
         <div>
           <form (ngSubmit)="goToPage()">
-            {{'ROOMS.PAGE' | translate}} <input type="number" class="pageNumber" value="{{data.length == 0 ? '' : this.page}}" maxlength="2"> / {{this.lastPage}}
+          <input type="number" class="pageNumber" value="{{data.length == 0 ? '' : this.page}}" maxlength="2"> / {{this.lastPage}}
           </form>
         </div>
         <button class="next" (click)="nextPage()">{{'ROOMS.NEXT' | translate}}</button>
