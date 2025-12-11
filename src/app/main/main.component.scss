@@ -196,7 +196,7 @@ body {
         overflow: hidden;
         background-position: center, center, center;
         background-repeat: no-repeat, no-repeat, no-repeat;
-        background-size: cover;
+        background-size: cover !important;
         transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
 
         display: flex;
