@@ -493,14 +493,6 @@ body {
     transition: 0.25s ease;
     position: relative;
     aspect-ratio: 1 / 1 !important;
-    // &:hover {
-    //   filter: invert(1);
-    // }
-
-    // &:hover + .tooltiptext {
-    //   visibility: visible;
-    //   opacity: 1;
-    // }
   }
 
   .tooltiptext {

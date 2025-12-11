@@ -232,8 +232,6 @@ export class RoomsComponent implements OnInit {
     }
     this.adminService.deleteRoom(code).subscribe({
     next: () => {
-      console.log('Room deleted successfully');
-      // Удаляем из локального массива data, чтобы таблица обновилась сразу
       this.data = this.data.filter(room => room.code !== code);
       this.loading = false;
     },
@@ -246,10 +244,10 @@ export class RoomsComponent implements OnInit {
   }
   clearAllQueryParams() {
   this.router.navigate(
-    [], // Stay on the current route
+    [],
     {
       relativeTo: this.route,
-      queryParams: {}, // Set queryParams to an empty object
+      queryParams: {},
     }
   );
 }

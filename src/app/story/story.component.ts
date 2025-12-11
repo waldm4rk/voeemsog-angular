@@ -23,14 +23,12 @@ export class StoryComponent {
   ) {}
 
   ngOnInit(): void {
-    // Подписка на параметр id из маршрута
     this.route.paramMap.subscribe(params => {
       this.storyId = params.get('id')!;
       this.loadStory(this.storyId);
     });
     this.dataService.checkCookie().subscribe({
       next: (response: HttpResponse<void>) => {
-        // Любой успешный ответ → авторизован
         this.isAuthorized = true;
       },
       error: (err: HttpErrorResponse) => {
@@ -66,15 +64,5 @@ export class StoryComponent {
       }
     });
   }
-
-//  @HostListener('window:scroll', [])
-//   onScroll() {
-//     const speed = -0.3; // скорость параллакса одинаковая для всех
-//     const cubes = document.querySelectorAll<HTMLElement>('.cube');
-
-//     cubes.forEach(cube => {
-//       cube.style.top = `${window.scrollY * speed}px`;
-//     });
-//   }
 
 }

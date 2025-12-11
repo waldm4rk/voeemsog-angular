@@ -30,8 +30,6 @@ export class MusicComponent {
     this.apiService.getData<Album[]>("music/albums").subscribe({
       next: (response: HttpResponse<Album[]>) => {
         this.albums = response.body || [];
-        console.log(this.albums);
-        console.log(response);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err);
