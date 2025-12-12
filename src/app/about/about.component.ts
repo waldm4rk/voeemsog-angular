@@ -55,6 +55,7 @@ export class AboutComponent {
         next: (response: HttpResponse<string[]>) => {
           if(response.body){
             this.donationInfo = response.body;
+            console.log(this.donationInfo);
           }
         },
         error: (err) => {
