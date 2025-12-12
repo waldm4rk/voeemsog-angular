@@ -85,6 +85,7 @@ export class NewsComponent {
 
         return new Date(b.postDate).getTime() - new Date(a.postDate).getTime();
       });
+       console.log(this.posts);
       },
       error: (err) => {
         console.error(`HTTP Error Status Code: ${err.status}`);

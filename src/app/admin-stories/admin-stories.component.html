@@ -4,6 +4,7 @@
         <select name="category" *ngIf="this.categories.length > 0" [(ngModel)]="story.category.id" id="category">
             <option *ngFor="let category of this.categories" [ngValue]="category.id">{{category.title}}</option>
         </select>
+        <input type="number" [(ngModel)]="story.order" placeholder="Порядковый номер">
         <textarea name="text" [(ngModel)]="story.text" placeholder="Текст" style="white-space: pre-wrap"></textarea>
         <button>Опубликовать</button>
     </form>

@@ -6,6 +6,7 @@ import { ApiService, Story, StoryCategory } from 'app/services/api.service';
 import { NgIf, NgForOf } from '@angular/common';
 import { CookiesService } from 'app/cookies.service';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-admin-stories',
   imports: [NgIf, NgForOf, FormsModule],
@@ -13,16 +14,18 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './admin-stories.component.scss'
 })
 export class AdminStoriesComponent {
-  constructor(private dataService: ApiService, private router: Router, private adminService: AdminService, private cookies: CookiesService) {}
+  constructor(private dataService: ApiService, private router: Router, private adminService: AdminService, private cookies: CookiesService, private route: ActivatedRoute) {}
   langCode: string = 'en_US';
   isAuthorized: boolean = false;
   
   story: StoryDTO = {
+    id: '',
     title: '',
     text: '',
     category: {id: -1},
     readingTime: 0,
     lang: 'en_US',
+    order: -1
   };
 
   categories: StoryCategory[] = [];
@@ -40,6 +43,9 @@ export class AdminStoriesComponent {
         this.router.navigate(['/error']);
       },
     });
+    this.story.id = this.route.snapshot.queryParamMap.get('id') || '';
+    this.story.title = this.route.snapshot.queryParamMap.get('title') || '';
+    this.story.text = this.route.snapshot.queryParamMap.get('text') || '';
   } 
   postInit(){
     if (this.cookies.returnLang() == 'en') {

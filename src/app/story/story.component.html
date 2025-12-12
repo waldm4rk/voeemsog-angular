@@ -18,6 +18,16 @@
 
     <div class="btns" *ngIf="isAuthorized" style='display:flex; justify-content: center; font-size: 30px;'>
         <a (click)="deleteStory()" style="display: block; height: fit-content; cursor: pointer;">🚮</a>
+        <a [routerLink]="['/admin/stories']"
+   [queryParams]="{
+     id: this.data?.id,
+     title: this.data?.title,
+     text: this.data?.text,
+     category: this.data?.category,
+     date: this.data?.date,
+     readingTime: this.data?.readingTime,
+     lang: this.data?.lang
+   }" style="display: block; height: fit-content; cursor: pointer;">📝</a>
     </div>
 
     <div class="bg">

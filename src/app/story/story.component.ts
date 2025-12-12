@@ -8,9 +8,10 @@ import { Title } from '@angular/platform-browser';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgIf } from '@angular/common';
 import { AdminService } from 'app/admin.service';
+import { RouterModule, Router } from '@angular/router';
 @Component({
   selector: 'app-story',
-  imports: [TranslateModule, NgIf],
+  imports: [TranslateModule, NgIf, RouterModule],
   templateUrl: './story.component.html',
   styleUrl: './story.component.scss'
 })
@@ -64,5 +65,7 @@ export class StoryComponent {
       }
     });
   }
+  editStory(){
 
+  }
 }

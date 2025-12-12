@@ -65,9 +65,11 @@ export interface PostDTO{
   pinned: boolean;
 }
 export interface StoryDTO{
+  id: string,
   title: string,
   text: string;
   category: {id: number};
   readingTime: number;
   lang: string;
+  order: number
 }
