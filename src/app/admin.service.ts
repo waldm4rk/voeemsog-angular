@@ -28,7 +28,7 @@ export class AdminService {
     return this.http.post(`${this.baseUrl}/admin/post`, data, { withCredentials: true });
   }
   deletePost(postId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/post/${postId}`, { withCredentials: true });
+    return this.http.delete(`${this.baseUrl}/admin/post/${postId}`, { withCredentials: true });
   }
   deleteRoom(code: string): Observable<any>{
     console.log("deleted");
