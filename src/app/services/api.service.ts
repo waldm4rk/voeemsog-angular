@@ -32,7 +32,8 @@ export interface Story{
   category: StoryCategory,
   date: Date,
   readingTime: number,
-  lang: string
+  lang: string,
+  order: number
 }
 export interface StringMap {
   [key: string]: string;
