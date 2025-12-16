@@ -18,6 +18,15 @@ ngOnInit() {
       );
   }
   this.translate.use(this.cookieService.get('lang'));
+
+  if(window.location.href.endsWith('voeemsog.com/') || window.location.href.endsWith('localhost:4200/')){
+    this.cookieService.set('lang', 'en', {path: '/', sameSite: 'Lax'});
+    window.location.reload();
+  }
+  else if(window.location.href.endsWith('/ru')){
+    this.cookieService.set('lang', 'ru', {path: '/', sameSite: 'Lax'});
+    window.location.reload();
+  }
 }
 setLanguage(lang: string) {
   this.cookieService.set('lang', lang);
