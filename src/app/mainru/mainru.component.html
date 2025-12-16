@@ -1,0 +1,76 @@
+<section class="headSec">
+    <div class="txts">
+        <h3>ДОБРО ПОЖАЛОВАТЬ В ТВОЙ</h3>
+        <h1>ХУДШИЙ КОШМАР</h1>
+    </div>
+        <div class="btnDiv">
+            <div class="whereBtn">
+                <button onClick="document.getElementsByClassName('info')[0].scrollIntoView({ behavior: 'smooth', block: 'center' });">Где я?</button>
+                <div class="arrow">
+                    <img src="https://media.voeemsog.com/main/arrow.svg" alt="">
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="current">
+  <div class="curText"><h1>АКТУАЛЬНОЕ</h1></div>
+  <div class="winDiv">
+
+    <div class="windowWrap" (click)="redirectToNews(3)">
+      <p class="windowTitle">Комьюнити</p>
+      <div class="window">
+        <h2>Новости</h2>
+        <h3>сообщества</h3>
+      </div>
+    </div>
+
+    <div class="windowWrap" (click)="redirectToNews(1)">
+      <p class="windowTitle">Литература</p>
+      <div class="window">
+        <h2>Узнать о</h2>
+        <h3>новых рассказах</h3>
+      </div>
+    </div>
+
+    <div class="windowWrap" (click)="redirectToNews(2)">
+      <p class="windowTitle">Комнаты</p>
+      <div class="window">
+        <h2>Исследовать</h2>
+        <h3>последние комнаты</h3>
+      </div>
+    </div>
+  </div>
+  
+  <h2 class="wallText"><a href="/news">Стена обновлений</a></h2>
+</section>
+
+<section class="info">
+  <div class="infoWrap">
+    <h1>Добро пожаловать в измерение Voeemsog.</h1>
+    <div class="flexWrap">
+      <div>
+        <p>Воеемсог - измерение состоящее из десятков тысяч комнат на каждом из бесконечного количества этажей. Что скрывает за собой следующая дверь? Рискнете ли вы проверить или будете сидеть в безопасных комнатах до конца своих дней?</p>
+      </div>
+      <div>
+        <iframe class="trailer" src="https://www.youtube.com/embed/gkRpAL2uM_8" controls="0" frameborder="0"></iframe>
+      </div>
+    </div>
+    <div class="archiveWrap">
+      <div class="archiveLink">
+        <h2><a href="/archive">Перейти в архив</a></h2>
+          <div class="infoMarkWrapper">
+            <img class="infoMark" src="https://media.voeemsog.com/nav-buttons/infoMark.svg" alt="!" width="15px">
+          <span class="tooltiptext">Архив это каталог<br/>каноничного контента<br/>
+            <img src="https://media.voeemsog.com/main/tooltipArrow.svg" alt="">
+          </span>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+

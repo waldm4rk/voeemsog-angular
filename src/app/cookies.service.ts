@@ -29,7 +29,18 @@ setLanguage(lang: string) {
   // if(window.location.href.includes('/room') || window.location.href.includes('/rooms') || window.location.href.includes('/literature') || window.location.href.includes('/story') || window.location.href.includes('license')){
   //   window.location.reload();
   // }
-  window.location.reload();
+  if(!window.location.href.includes('/ru')){
+    window.location.reload();
+  }else{
+    if(lang == 'en'){
+      window.location.href = "/";
+    }
+  }
+  if(window.location.href.endsWith('voeemsog.com/') || window.location.href.endsWith("localhost:4200/")){
+    if(lang == 'ru'){
+      window.location.href = "/ru";
+    }
+  }
   this.translate.use(lang);
 }
 updateLang(){

@@ -17,11 +17,16 @@ import { AdminStoriesComponent } from './admin-stories/admin-stories.component';
 import { MusicComponent } from './music/music.component';
 import { AlbumComponent } from './album/album.component';
 import { AdminMusicComponent } from './admin-music/admin-music.component';
+import { MainruComponent } from './mainru/mainru.component';
 
 export const routes: Routes = [
     {
         path: "",
         component: MainComponent
+    },
+    {
+        path: "ru",
+        component: MainruComponent
     },
     {
         path: "room",

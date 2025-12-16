@@ -3,6 +3,8 @@ import { Component, ElementRef, AfterViewInit, HostListener } from '@angular/cor
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookiesService } from 'app/cookies.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { OnInit, OnDestroy } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -13,13 +15,36 @@ export class MainComponent implements AfterViewInit {
 
   showScrollButton = false;
 window: any;
+ private links: HTMLLinkElement[] = [];
 
-  constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title, private meta: Meta) {}
+
+  constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title, private meta: Meta, private renderer: Renderer2) {}
 
   ngOnInit(): void {
     this.cookies.updateLang();
-    this.title.setTitle("Voeemsog");
-    this.meta.updateTag({name: 'description', content:'Welcome to Voeemsog dimension! Dive in unique horror experience right now!'})
+    this.title.setTitle("Voeemsog — horror dimension");
+    this.meta.updateTag({name: 'description', content:'Explore rooms, dangers and lore of the Voeemsog dimension.'});
+    this.meta.updateTag({name: 'og:description', content:'Explore rooms, dangers and lore of the Voeemsog dimension.'});
+    this.meta.updateTag({name: 'og:title', content:'Voeemsog — horror dimension'});
+    this.meta.updateTag({name: "og:url", content: 'https://voeemsog.com/'});
+    
+    this.addAlternate('ru', 'https://voeemsog.com/ru');
+    this.addAlternate('en', 'https://voeemsog.com/');
+    this.addAlternate('x-default', 'https://voeemsog.com/');
+  }
+  ngOnDestroy(): void {
+    // чистим head при уходе со страницы
+    this.links.forEach(link => link.remove());
+  }
+
+  private addAlternate(lang: string, href: string) {
+    const link = this.renderer.createElement('link');
+    link.rel = 'alternate';
+    link.hreflang = lang;
+    link.href = href;
+
+    this.renderer.appendChild(document.head, link);
+    this.links.push(link);
   }
 
   @HostListener('window:scroll', [])

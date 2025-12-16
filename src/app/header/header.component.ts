@@ -104,7 +104,14 @@ export class HeaderComponent {
   }
 
   home() {
-    this.router.navigate(['/']);
+    if(this.cookies.returnLang() == 'ru'){
+      this.router.navigate(['/ru']);
+    }else if(this.cookies.returnLang() == 'en'){
+      this.router.navigate(['/']);
+    }else{
+      this.router.navigate(['/']);
+      this.cookies.setLanguage('en');
+    }
   }
 
   redirect(endpoint: string) {
