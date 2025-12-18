@@ -22,7 +22,7 @@ window: any;
 
   ngOnInit(): void {
     if(this.cookies.returnLang() != 'en'){
-      this.cookies.setLanguage('en', false);
+      this.cookies.setLanguage('en', true);
     }
     this.title.setTitle("Voeemsog — horror dimension");
     this.meta.updateTag({name: 'description', content:'Explore rooms, dangers and lore of the Voeemsog dimension.'});

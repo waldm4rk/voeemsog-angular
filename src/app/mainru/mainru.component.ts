@@ -22,7 +22,7 @@ window: any;
 
   ngOnInit(): void {
     if(this.cookies.returnLang() != 'ru'){
-      this.cookies.setLanguage('ru', false);
+      this.cookies.setLanguage('ru', true);
     }
     this.title.setTitle("Voeemsog — хоррор измерение");
     this.meta.updateTag({name: 'description', content:'Исследуйте комнаты, опасности и лор измерения Воеемсог.'});
