@@ -52,7 +52,7 @@ export class LangComponent {
   };
 
   setLang(lang: string): void {
-    this.cookies.setLanguage(lang);
+    this.cookies.setLanguage(lang, true);
     this.handleIcon();
   }
 }

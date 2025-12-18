@@ -21,7 +21,9 @@ window: any;
   constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title, private meta: Meta, private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.cookies.updateLang();
+    if(this.cookies.returnLang() != 'ru'){
+      this.cookies.setLanguage('ru', false);
+    }
     this.title.setTitle("Voeemsog — хоррор измерение");
     this.meta.updateTag({name: 'description', content:'Исследуйте комнаты, опасности и лор измерения Воеемсог.'});
     this.meta.updateTag({name: 'og:description', content:'Исследуйте комнаты, опасности и лор измерения Воеемсог.'});
@@ -31,8 +33,6 @@ window: any;
     this.addAlternate('ru', 'https://voeemsog.com/ru');
     this.addAlternate('en', 'https://voeemsog.com/');
     this.addAlternate('x-default', 'https://voeemsog.com/');
-
-    this.cookies.setLanguage('ru');
   }
   ngOnDestroy(): void {
     // чистим head при уходе со страницы

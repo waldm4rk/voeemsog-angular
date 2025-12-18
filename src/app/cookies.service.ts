@@ -18,9 +18,10 @@ ngOnInit() {
       );
   }
   this.translate.use(this.cookieService.get('lang'));
-
-  if(window.location.href.endsWith('voeemsog.com/') || window.location.href.endsWith('localhost:4200/')){
+  const path = window.location.pathname;
+  if(path === '/'){
     this.cookieService.set('lang', 'en', {path: '/', sameSite: 'Lax'});
+    console.log("a");
     window.location.reload();
   }
   else if(window.location.href.endsWith('/ru')){
@@ -28,7 +29,7 @@ ngOnInit() {
     window.location.reload();
   }
 }
-setLanguage(lang: string) {
+setLanguage(lang: string, reload: boolean) {
   this.cookieService.set('lang', lang);
   this.cookieService.set(
         'lang',
@@ -38,19 +39,23 @@ setLanguage(lang: string) {
   // if(window.location.href.includes('/room') || window.location.href.includes('/rooms') || window.location.href.includes('/literature') || window.location.href.includes('/story') || window.location.href.includes('license')){
   //   window.location.reload();
   // }
-  if(!window.location.href.includes('/ru')){
-    window.location.reload();
-  }else{
-    if(lang == 'en'){
-      window.location.href = "/";
+  if(lang == 'en' && window.location.href.includes('/ru')){
+    window.location.href = "/";
+  }
+  else if(lang == 'ru' && (window.location.href.endsWith('voeemsog.com/') || window.location.href.endsWith('localhost:4200/'))){
+    window.location.href = "/ru";
+  } else{
+    if(reload){
+      window.location.reload();
     }
   }
-  if(window.location.href.endsWith('voeemsog.com/') || window.location.href.endsWith("localhost:4200/")){
-    if(lang == 'ru'){
-      window.location.href = "/ru";
-    }
-  }
-  this.translate.use(lang);
+  // if(!window.location.href.includes('/ru')){
+  //   window.location.reload();
+  // }else{
+  //   if(lang == 'en'){
+  //     window.location.href = "/";
+  //   }
+  // }
 }
 updateLang(){
   if(!this.cookieService.check('lang')) {

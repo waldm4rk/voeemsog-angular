@@ -21,7 +21,9 @@ window: any;
   constructor(private el: ElementRef, private cookies: CookiesService, private translateService: TranslateService, private title: Title, private meta: Meta, private renderer: Renderer2) {}
 
   ngOnInit(): void {
-    this.cookies.updateLang();
+    if(this.cookies.returnLang() != 'en'){
+      this.cookies.setLanguage('en', false);
+    }
     this.title.setTitle("Voeemsog — horror dimension");
     this.meta.updateTag({name: 'description', content:'Explore rooms, dangers and lore of the Voeemsog dimension.'});
     this.meta.updateTag({name: 'og:description', content:'Explore rooms, dangers and lore of the Voeemsog dimension.'});

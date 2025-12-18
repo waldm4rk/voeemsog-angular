@@ -77,7 +77,7 @@ export class HeaderComponent {
   private updateLanguage() {
     this.currentLang = this.langs[this.currentLangIndex];
     const langCode = this.cookieLang[this.currentLangIndex];
-    this.cookies.setLanguage(langCode);
+    this.cookies.setLanguage(langCode, false);
     this.translate.use(langCode);
   }
 
@@ -110,7 +110,7 @@ export class HeaderComponent {
       this.router.navigate(['/']);
     }else{
       this.router.navigate(['/']);
-      this.cookies.setLanguage('en');
+      this.cookies.setLanguage('en', false);
     }
   }
 
