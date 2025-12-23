@@ -59,7 +59,7 @@ export class AdminComponent implements OnInit {
     },
   });
   this.room.code = this.route.snapshot.queryParamMap.get('code') || '';
-  this.room.floor = Number(this.route.snapshot.queryParamMap.get('floor') || 0);
+  this.room.floor = 1;
   this.room.dangerType = Number(this.route.snapshot.queryParamMap.get('danger') || 0);
   this.room.size = this.route.snapshot.queryParamMap.get('size') || '';
   this.room.color = this.route.snapshot.queryParamMap.get('color') || '';
