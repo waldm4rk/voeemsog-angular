@@ -60,6 +60,7 @@ export class AdminMusicComponent {
     this.tracks.forEach((track, index) => {
       track.album_id = this.currentAlbum.id;
       track.order = index;
+      console.log(track);
     });
   
     this.admin.putAlbum(this.currentAlbum);
