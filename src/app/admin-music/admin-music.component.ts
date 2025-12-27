@@ -57,6 +57,11 @@ export class AdminMusicComponent {
     event.preventDefault();
     if(!confirm("Опубликовать альбом?")) return;
     this.getTrackOrderNumbers();
+    this.tracks.forEach((track, index) => {
+      track.album_id = this.currentAlbum.id;
+      track.order = index;
+    });
+  
     this.admin.putAlbum(this.currentAlbum);
     this.admin.putTracks(this.tracks);
   }
