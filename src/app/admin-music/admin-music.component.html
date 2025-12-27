@@ -16,9 +16,9 @@
         <div class="tracks" style="width: 90%; display: flex; flex-direction: column; align-items: center;">
             <h4 style="margin-bottom: 20px;">Список треков</h4>
             <div *ngFor="let track of this.tracks; let i = index" class="track">
-                <textarea [name]="'trackdescr' + track.id" class="trackDescription" placeholder="Описание трека (английское)"  [(ngModel)]="track.description"></textarea>
-                <textarea [name]="'trackdescrru' + track.id" class="trackDescriptionRu" placeholder="Описание трека (русское)" [(ngModel)]="track.description_ru"></textarea>
-                <input type="text" [name]="'tracklink' + track.id" class="trackLink" placeholder="Ссылка (саундклауд)" style="width: 100%;" [(ngModel)]="track.link">
+                <textarea [name]="'trackdescr' + i" class="trackDescription" placeholder="Описание трека (английское)"  [(ngModel)]="track.description"></textarea>
+                <textarea [name]="'trackdescrru' + i" class="trackDescriptionRu" placeholder="Описание трека (русское)" [(ngModel)]="track.description_ru"></textarea>
+                <input type="text" [name]="'tracklink' + i" class="trackLink" placeholder="Ссылка (саундклауд)" style="width: 100%;" [(ngModel)]="track.link">
                 <button (click)="this.deleteTrack(this.tracks.indexOf(track))" type="button">X</button>
                 <hr>
             </div>
