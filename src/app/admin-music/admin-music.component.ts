@@ -6,6 +6,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgIf, NgForOf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
+import { switchMap } from 'rxjs';
 @Component({
   selector: 'app-admin-music',
   imports: [NgIf, NgForOf, FormsModule],
@@ -53,18 +54,26 @@ export class AdminMusicComponent {
       }
     })
   }
-  tryPublish(event: Event){
+  tryPublish(event: Event) {
     event.preventDefault();
-    if(!confirm("Опубликовать альбом?")) return;
-    this.getTrackOrderNumbers();
-    this.tracks.forEach((track, index) => {
-      track.album_id = this.currentAlbum.id;
-      track.order = index;
-      console.log(track);
-    });
+    if (!confirm('Опубликовать альбом?')) return;
   
-    this.admin.putAlbum(this.currentAlbum);
-    this.admin.putTracks(this.tracks);
+    this.getTrackOrderNumbers();
+  
+    this.admin.putAlbum(this.currentAlbum).pipe(
+      switchMap(album => {
+  
+        this.tracks.forEach((track, index) => {
+          track.album_id = album.id; // 🔥 теперь НЕ null
+          track.order = index;
+        });
+  
+        return this.admin.putTracks(this.tracks);
+      })
+    ).subscribe({
+      next: () => console.log('Альбом и треки сохранены'),
+      error: err => console.error('Ошибка публикации', err)
+    });
   }
   getTrackOrderNumbers(){
     for(let i = 0; i < this.tracks.length; i++){
