@@ -96,6 +96,7 @@ export class AdminMusicComponent {
   }
   addTrack(){
     this.tracks.push({'id':'', 'description':'','description_ru':'', 'link':'', 'order': 0, 'album_id': ''});
+    this.ordered = true;
   }
   deleteTrack(index: number){
     this.tracks.splice(index, 1);
