@@ -21,6 +21,7 @@ export class RoomComponent implements OnInit {
   langCode: string = 'ru_RU';
   paragraphsObject: paragraph[] = [];
   author: string = '';
+  infoLang: 'en' | 'ru' = 'en';
   constructor(
     private dataService: ApiService,
     private cd: ChangeDetectorRef,
@@ -35,7 +36,17 @@ export class RoomComponent implements OnInit {
     } else if (this.cookies.returnLang() == 'ru') {
       this.langCode = 'ru_RU';
     }
+    this.infoLang = this.cookies.returnLang() === 'ru' ? 'ru' : 'en';
     this.fetchUserData();
+  }
+
+  roomInfoImage(kind: 'danger' | 'light', value: number | undefined): string {
+    const maxLevel = kind === 'danger' ? 2 : 5;
+    const parsedLevel = Number(value);
+    const level = Number.isFinite(parsedLevel)
+      ? Math.max(0, Math.min(maxLevel, Math.trunc(parsedLevel)))
+      : 0;
+    return '/room/info/' + this.infoLang + '/' + kind + '-' + level + '.jpg';
   }
 
   fetchUserData(): void {
@@ -101,7 +112,7 @@ export class RoomComponent implements OnInit {
         const regex = /\$AUTHOR\(([^)]+)\)/;
         const match = element.match(regex);
         if (match && match[1]) {
-          this.author = match[1].trim();
+          this.author = match[1].trim().toLowerCase();
         }
         element = element.replace(regex, ``);
       }

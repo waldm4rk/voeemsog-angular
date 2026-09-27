@@ -102,8 +102,8 @@ export class ApiService {
         select: 'id,title,text,post_date,tags,pinned',
         order: 'pinned.desc,post_date.desc'
       };
-      if (tags.length) params.tags = 'ov.{' + tags.join(',') + '}';
-      return this.read<any[]>('posts', params, rows => rows.map(row => ({
+      if (tags.length) params['tags'] = 'ov.{' + tags.join(',') + '}';
+      return this.read<any[]>('posts', params, rows => rows.map((row: any) => ({
         id: row.id, title: row.title, text: row.text, postDate: row.post_date,
         tags: row.tags ?? [], pinned: row.pinned ?? false
       }))) as Observable<HttpResponse<T>>;
@@ -129,7 +129,7 @@ export class ApiService {
     }
     if (path === 'music/albums') {
       return this.read<any>('album', { select: 'id,title,description,description_ru,cover_link' },
-        rows => rows.map(row => this.mapAlbum(row))) as Observable<HttpResponse<T>>;
+        rows => rows.map((row: any) => this.mapAlbum(row))) as Observable<HttpResponse<T>>;
     }
     if (path.startsWith('music/album/')) {
       const id = path.slice('music/album/'.length);
@@ -142,7 +142,7 @@ export class ApiService {
       return this.read<any[]>('track', {
         select: 'id,description,description_ru,link,order,album_id',
         album_id: 'eq.' + albumId, order: 'order.asc'
-      }, rows => rows.map(row => ({
+      }, rows => rows.map((row: any) => ({
         id: row.id, description: row.description, description_ru: row.description_ru,
         link: row.link, order: row.order, album_id: row.album_id
       }))) as Observable<HttpResponse<T>>;

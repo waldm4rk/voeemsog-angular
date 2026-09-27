@@ -3,14 +3,14 @@
     <nav>
       <ul>
         <li class="burger" (click)="toggleBurger()">
-          <img src="https://media.voeemsog.com/header/burger.svg" alt="">
+          <img src="/header/burger.svg" alt="">
         </li>
         <li class="desktop-link" (click)="redirect('/about')"><a routerLink="/about">{{'HEADER.ABOUT' | translate}}</a></li>
         <li class="desktop-link" (click)="redirect('/rooms')"><a routerLink="/rooms">{{'HEADER.ROOMS' | translate}}</a></li>
-        <li class="logo"><img src="https://media.voeemsog.com/header/logo.svg" alt="" (click)="home()"></li>
+        <li class="logo"><img src="/header/logo.svg" alt="" (click)="home()"></li>
         <li class="desktop-link" (click)="redirect('/archive')"><a routerLink="/archive">{{'HEADER.ARCHIVE' | translate}}</a></li>
         <li class="search-text desktop-link" (click)="toggleSearch($event)"><a>{{'HEADER.SEARCH' | translate}}</a></li>
-        <li class="search-text search-icon" (click)="toggleSearch($event)"><img src="https://media.voeemsog.com/header/search.svg" alt=""></li>
+        <li class="search-text search-icon" (click)="toggleSearch($event)"><img src="/header/search.svg" alt=""></li>
       </ul>
     </nav>
 
@@ -30,7 +30,7 @@
     <div class="searchBar" [ngClass]="{'visible': isVisibleSearch}">
       <form (submit)="searchRooms(); $event.preventDefault()">
         <input type="text" maxlength="82" class="globalSearch" autofocus>
-        <img class="icon" src="https://media.voeemsog.com/header/arrow.svg" (click)="searchRooms(); $event.preventDefault()" alt="">
+        <img class="icon" src="/header/arrow.svg" (click)="searchRooms(); $event.preventDefault()" alt="">
       </form>
     </div>
   </div>

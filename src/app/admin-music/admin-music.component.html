@@ -11,7 +11,7 @@
         <input type="text" id="title" name="albumtitle" placeholder="Название альбома" [(ngModel)]="this.currentAlbum.title">
         <textarea id="description" name="albumdescr" placeholder="Описание альбома (английское)" [(ngModel)]="this.currentAlbum.description"></textarea>
         <textarea id="descriptionRu" name="albumdescrru" placeholder="Описание альбома (русское)"  [(ngModel)]="this.currentAlbum.description_ru"></textarea>
-        <input type="text" id="coverLink" name="albumcover" placeholder="Ссылка на обложку (media.voeemsog.com/...)" style="width: 90%;" [(ngModel)]="this.currentAlbum.coverLink">
+        <input type="text" id="coverLink" name="albumcover" placeholder="Ссылка на обложку (/music/...)" style="width: 90%;" [(ngModel)]="this.currentAlbum.coverLink">
 
         <div class="tracks" style="width: 90%; display: flex; flex-direction: column; align-items: center;">
             <h4 style="margin-bottom: 20px;">Список треков</h4>

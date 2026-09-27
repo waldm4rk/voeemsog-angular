@@ -24,7 +24,7 @@
     </div>
     <div class="page">
         <div class="title">
-            <div class="seal"><img src="https://media.voeemsog.com/room/info/seals/ivan.jpg" alt=""></div>
+            <div class="seal"><img src="/room/info/seals/ivan.jpg" alt=""></div>
             <div class="info">
                 <div class="id">{{room.code}}</div>
                 <div class="name">{{roomTranslation.name}}</div>
@@ -41,9 +41,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
-                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
-                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img src='/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -58,9 +58,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
-                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
-                        <img src="https://media.voeemsog.com/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img src='/room/info/{{roomTranslation.lang}}/danger-{{room.dangerType}}.jpg'>
+                        <img src="/room/info/{{roomTranslation.lang}}/light-{{room.lightLevel}}.jpg">
+                        <img src="/room/info/{{roomTranslation.lang}}/floor-1.jpg"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         
