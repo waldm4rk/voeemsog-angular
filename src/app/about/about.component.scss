@@ -2,7 +2,7 @@
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding: 100px 0;
+    padding: 400px 0;
     background: radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%) 
     ,rgb(43, 52, 54);
     background-blend-mode: multiply;
@@ -15,7 +15,7 @@
     width: 130px;
     height: 125px;
     margin-top: 10%;
-    background-image: url("https://media.voeemsog.com/about/lamp.svg");
+    background-image: url("/about/lamp.svg");
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -27,7 +27,7 @@
     right: 5px;
     cursor: pointer;
     z-index: 5;
-    background-image: url("https://media.voeemsog.com/about/trigger.svg");
+    background-image: url("/about/trigger.svg");
     background-repeat: no-repeat;
     background-size: cover;
 

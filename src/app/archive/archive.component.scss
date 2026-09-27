@@ -1,7 +1,7 @@
 .archMain{
     padding-top: 150px;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://media.voeemsog.com/rooms/bg.jpg");
+    url("/rooms/bg.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -32,12 +32,12 @@
                 cursor: pointer;
                 overflow: hidden;
                 transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
-                &.roomsReports { background-image: url("https://media.voeemsog.com/archive/roomsReports.jpg"); }
-                &.creatures { background-image: url("https://media.voeemsog.com/archive/creatures.jpg"); }
-                &.literature { background-image: url("https://media.voeemsog.com/archive/literature.jpg"); }
-                &.photoVideo { background-image: url("https://media.voeemsog.com/archive/photoVideo.jpg"); }
-                &.audio { background-image: url("https://media.voeemsog.com/archive/audio.jpg"); }
-                &.other { background-image: url("https://media.voeemsog.com/archive/other.jpg"); }
+                &.roomsReports { background-image: url("/archive/roomsReports.jpg"); }
+                &.creatures { background-image: url("/archive/creatures.jpg"); }
+                &.literature { background-image: url("/archive/literature.jpg"); }
+                &.photoVideo { background-image: url("/archive/photoVideo.jpg"); }
+                &.audio { background-image: url("/archive/audio.jpg"); }
+                &.other { background-image: url("/archive/other.jpg"); }
 
                 background-repeat: no-repeat;
                 background-position: center center;

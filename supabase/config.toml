@@ -1,0 +1,8 @@
+project_id = "voeemsog"
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[functions.kofi-webhook]
+verify_jwt = false

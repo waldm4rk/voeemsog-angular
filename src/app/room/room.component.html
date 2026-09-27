@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="page">
         <div class="title">
-            <div class="seal"><img src="https://media.voeemsog.com/room/info/seals/{{this.author}}.jpg" alt=""></div>
+            <div class="seal"><img src="/room/info/seals/{{author}}.jpg" alt=""></div>
             <div class="info">
                 <div class="id">{{data.at(0)?.code}}</div>
                 <div class="name">{{data.at(0)?.name}}</div>
@@ -18,9 +18,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/danger-{{this.data.at(0)?.dangerType}}.jpg'>
-                        <img src="https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/light-{{this.data.at(0)?.lightLevel}}.jpg">
-                        <img src="https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img [src]="roomInfoImage('danger', data.at(0)?.dangerType)" alt="Room danger level">
+                        <img [src]="roomInfoImage('light', data.at(0)?.lightLevel)" alt="Room light level">
+                        <img [src]="'/room/info/' + infoLang + '/floor-1.jpg'" alt="Floor"></div>
                     </div>
                     <div class="text" *ngIf="paragraph.text != ''" [innerHTML]="paragraph.text">
                         
@@ -35,9 +35,9 @@
                         >
                     </div>
                     <div class="images" *ngIf="paragraph.images == true && paragraph.params.at(0) == 'INFO'">
-                        <div class="infoContainer"><img src='https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/danger-{{this.data.at(0)?.dangerType}}.jpg'>
-                        <img src="https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/light-{{this.data.at(0)?.lightLevel}}.jpg">
-                        <img src="https://media.voeemsog.com/room/info/{{this.cookies.returnLang()}}/floor-1.jpg"></div>
+                        <div class="infoContainer"><img [src]="roomInfoImage('danger', data.at(0)?.dangerType)" alt="Room danger level">
+                        <img [src]="roomInfoImage('light', data.at(0)?.lightLevel)" alt="Room light level">
+                        <img [src]="'/room/info/' + infoLang + '/floor-1.jpg'" alt="Floor"></div>
                     </div>
                     <div class="text" [innerHTML]="paragraph.text">
                         

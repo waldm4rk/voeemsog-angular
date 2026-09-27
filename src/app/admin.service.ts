@@ -1,77 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin, Observable } from 'rxjs';
-import { HttpParams } from '@angular/common/http';
-import { Album, ApiResponse, StoryCategory, Track } from './services/api.service';
+import { Observable, throwError } from 'rxjs';
+import { Album, ApiResponse, Track } from './services/api.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AdminService {
+  sendRoom(_data: any): Observable<any> { return this.disabled(); }
+  sendTranslation(_data: any, _roomId: string): Observable<any> { return this.disabled(); }
+  getRoomByCode(_lang: string, _roomCode: string): Observable<ApiResponse[]> { return this.disabled(); }
+  sendNews(_data: any): Observable<any> { return this.disabled(); }
+  deletePost(_postId: string): Observable<any> { return this.disabled(); }
+  deleteRoom(_code: string): Observable<any> { return this.disabled(); }
+  postReq(_url: string, _data: any): Observable<any> { return this.disabled(); }
+  deleteStory(_storyId: string): Observable<any> { return this.disabled(); }
+  putAlbum(_data: Album): Observable<Album> { return this.disabled(); }
+  putTracks(_data: Track[]): Observable<any[]> { return this.disabled(); }
 
-  private baseUrl = 'https://api.voeemsog.com'; // твой API
-  constructor(private http: HttpClient) {}
-
-  sendRoom(data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/admin/room`, data, { withCredentials: true });
-  }
-  sendTranslation(data: any, roomId: string): Observable<any> {
-    const params = new HttpParams().set('roomId', roomId);
-    return this.http.put(`${this.baseUrl}/admin/room/translation`, data, { params, withCredentials: true });
-  }
-  getRoomByCode(lang: string, roomCode: string){
-    const params = new HttpParams()
-      .set('lang', lang);
-    return this.http.get<ApiResponse[]>(`${this.baseUrl}/rooms/code/${roomCode}`, { params, withCredentials: true });
-  }
-  sendNews(data: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/admin/post`, data, { withCredentials: true });
-  }
-  deletePost(postId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/admin/post/${postId}`, { withCredentials: true });
-  }
-  deleteRoom(code: string): Observable<any>{
-    console.log("deleted");
-    return this.http.delete(`${this.baseUrl}/admin/room/code/${code}`, {withCredentials: true});
-  }
-  postReq(url: string, data: any): Observable<any>{
-    return this.http.post(`${this.baseUrl}/${url}`, data, {withCredentials: true});
-  }
-  deleteStory(storyId: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/admin/story/${storyId}`, { withCredentials: true });
-  }
-  putAlbum(data: Album): Observable<Album> {
-    return this.http.post<Album>(
-      `${this.baseUrl}/admin/music/album`,
-      data,
-      { withCredentials: true }
-    );
-  }
-  putTracks(data: Track[]): Observable<any[]> {
-    return forkJoin(
-      data.map(track =>
-        this.http.post(
-          `${this.baseUrl}/admin/music/track`,
-          track,
-          { withCredentials: true }
-        )
-      )
-    );
+  private disabled<T>(): Observable<T> {
+    return throwError(() => new Error('Admin operations are disabled until the Supabase admin panel is rebuilt.'));
   }
 }
-export interface PostDTO{
+
+export interface PostDTO {
   title: string;
   text: string;
   tags: string[];
   postDate: Date;
   pinned: boolean;
 }
-export interface StoryDTO{
-  id: string,
-  title: string,
+
+export interface StoryDTO {
+  id: string;
+  title: string;
   text: string;
-  category: {id: number};
+  category: { id: number };
   readingTime: number;
   lang: string;
-  order: number
+  order: number;
 }

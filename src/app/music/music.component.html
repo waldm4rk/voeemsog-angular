@@ -12,7 +12,7 @@
         </div>
         <div class="category_content">
             <div class="album" (click)="redirectTo(album.id)" *ngFor="let album of this.albums">
-              <img [src]="'https://media.voeemsog.com/music/' + album.coverLink" alt="album">
+              <img [src]="'/music/' + album.coverLink" alt="album">
             </div>
         </div>
     </div>
