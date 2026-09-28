@@ -2,7 +2,7 @@ import { Component, importProvidersFrom } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { SeoService } from './services/seo.service';
 import { HostListener } from '@angular/core';
 
 import { filter } from 'rxjs/operators';
@@ -23,12 +23,26 @@ export class AppComponent {
 
   showScrollButton: boolean = false;
 
-  constructor(private translate: TranslateService) {
+  constructor(private router: Router,
+    private seo: SeoService,
+    private translate: TranslateService
+  ) {
   translate.addLangs(['en', 'ru']);
 
   // Берём язык браузера
   const browserLang = translate.getBrowserLang() || 'en';
   translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
+
+  this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+
+        const url = `https://voeemsog.com${event.urlAfterRedirects}`;
+
+        this.seo.setCanonical(url);
+      });
 }
   @HostListener('window:scroll', [])
   onWindowScroll() {
