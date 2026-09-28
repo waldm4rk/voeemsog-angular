@@ -353,6 +353,7 @@ header {
         flex-basis: 220px;
         img {
           transform: none;
+          min-width: 0 !important;
         }
       }
     }
