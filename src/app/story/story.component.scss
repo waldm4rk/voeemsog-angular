@@ -126,6 +126,49 @@
     .cube:nth-child(2) { transform: rotate(-20deg); }
     .cube:nth-child(3) { transform: rotate(20deg); }
   }
+  .donate-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px 55px;
+    padding: 14px 30px;
+    border: 1px solid rgba(190, 207, 211, 0.65);
+    border-radius: 2px;
+      background: rgba(117, 136, 141, 0.12);
+    color: #e8eeee;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 180ms ease, border-color 180ms ease,
+      color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+
+      .donate-icon {
+        width: 20px;
+        height: 20px;
+        flex: 0 0 20px;
+        margin-right: 10px;
+      }
+
+    &:hover {
+        background: rgba(117, 136, 141, 0.28);
+      border-color: #d3dfe1;
+      color: #fff;
+      box-shadow: 0 0 22px rgba(117, 136, 141, 0.2);
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #d3dfe1;
+      outline-offset: 4px;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
 
 .btns {
   width: 35%;

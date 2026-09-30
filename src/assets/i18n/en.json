@@ -54,6 +54,9 @@
         "STORIES": "STORIES",
         "ADDED": "added"
     },
+    "STORY": {
+        "DONATION": "Thank the author"
+    },
     "ERROR":{
         "ERROR": "Error",
         "TITLE": "Seems like you're lost...",
